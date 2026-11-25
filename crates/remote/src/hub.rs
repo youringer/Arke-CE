@@ -208,7 +208,7 @@ impl Remotes {
         }
         // WinHTTP's final URL does not repeat credentials; keep the saved identity.
         if resolved.user.is_none() {
-            resolved.user = url.user.clone();
+            resolved.user.clone_from(&url.user);
         }
         let password = self.session.lock().get(&url.origin()).cloned();
         if let Some(password) = password {

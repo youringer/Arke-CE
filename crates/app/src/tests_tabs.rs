@@ -2327,7 +2327,7 @@ fn window_title_follows_the_active_pane_and_names_pages(cx: &mut TestAppContext)
     // Back to the split tab.
     ws.update_in(cx, |ws, window, cx| ws.activate(0, window, cx));
     cx.run_until_parked();
-    assert_eq!(title(cx), "alpha - Arke");
+    assert_eq!(title(cx), "alpha - Arke-CE");
 }
 
 // --- History menus that go stale, the timeline, pinned tabs (#152) ---

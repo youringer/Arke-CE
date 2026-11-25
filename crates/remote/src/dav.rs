@@ -289,7 +289,7 @@ impl DavClient {
 
     /// Accept certificates WinHTTP does not trust (self-signed, wrong host or expired).
     #[must_use]
-    pub fn allow_untrusted_cert(mut self, on: bool) -> Self {
+    pub const fn allow_untrusted_cert(mut self, on: bool) -> Self {
         self.allow_untrusted = on;
         self
     }

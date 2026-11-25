@@ -96,16 +96,56 @@ fn describe(err: &windows::core::Error, host: &str) -> RemoteError {
     }
 }
 
+/// Sends a request body of unknown length in chunks, reporting the progress as it goes.
+fn send_stream(
+    req: *mut core::ffi::c_void,
+    reader: &mut dyn Read,
+    len: u64,
+    progress: Progress<'_>,
+) -> RemoteResult<()> {
+    let total = u32::try_from(len).map_err(|_too_big| {
+        RemoteError::Server("files over 4 GB can't be uploaded over WebDAV".into())
+    })?;
+    // SAFETY: `req` is a valid request handle and `total` is the length the server expects.
+    unsafe { WinHttpSendRequest(req, None, None, 0, total, 0) }?;
+    let mut buf = vec![0u8; CHUNK];
+    let mut sent = 0u64;
+    loop {
+        let n = reader.read(&mut buf)?;
+        if n == 0 {
+            break;
+        }
+        let mut written = 0u32;
+        // SAFETY: `buf` is a live allocation of `n` bytes and `written` is a writable u32
+        // pointer; the call only reads from `buf`.
+        unsafe {
+            WinHttpWriteData(
+                req,
+                Some(buf.as_ptr().cast()),
+                u32::try_from(n).unwrap_or(u32::MAX),
+                &raw mut written,
+            )
+        }?;
+        sent += n as u64;
+        if !progress(sent) {
+            return Err(RemoteError::Cancelled);
+        }
+    }
+    Ok(())
+}
+
 /// Reads a NUL-terminated string header.
 unsafe fn query_string(req: *mut core::ffi::c_void, info: u32) -> Option<String> {
     let mut needed = 0u32;
+    // SAFETY: `req` is a valid request handle and `needed` is a writable u32 pointer; the
+    // call only asks for the buffer size, so a null buffer is expected here.
     let _ = unsafe {
         WinHttpQueryHeaders(
             req,
             info,
             PCWSTR::null(),
             None,
-            &mut needed,
+            &raw mut needed,
             std::ptr::null_mut(),
         )
     };
@@ -114,13 +154,15 @@ unsafe fn query_string(req: *mut core::ffi::c_void, info: u32) -> Option<String>
     }
     let mut buf = vec![0u16; needed as usize / 2 + 1];
     let mut len = needed;
+    // SAFETY: `buf` is a live allocation of at least `needed` bytes and `len` is a writable
+    // u32 pointer; the buffer is only read after the call reports how much it wrote.
     unsafe {
         WinHttpQueryHeaders(
             req,
             info,
             PCWSTR::null(),
             Some(buf.as_mut_ptr().cast()),
-            &mut len,
+            &raw mut len,
             std::ptr::null_mut(),
         )
     }
@@ -261,30 +303,7 @@ impl WinHttp {
                         .map_err(fail)?;
                 }
                 Body::Stream { reader, len } => {
-                    let total = u32::try_from(*len).map_err(|_too_big| {
-                        RemoteError::Server("files over 4 GB can't be uploaded over WebDAV".into())
-                    })?;
-                    WinHttpSendRequest(req.0, None, None, 0, total, 0).map_err(fail)?;
-                    let mut buf = vec![0u8; CHUNK];
-                    let mut sent = 0u64;
-                    loop {
-                        let n = reader.read(&mut buf)?;
-                        if n == 0 {
-                            break;
-                        }
-                        let mut written = 0u32;
-                        WinHttpWriteData(
-                            req.0,
-                            Some(buf.as_ptr().cast()),
-                            u32::try_from(n).unwrap_or(u32::MAX),
-                            &raw mut written,
-                        )
-                        .map_err(fail)?;
-                        sent += n as u64;
-                        if !progress(sent) {
-                            return Err(RemoteError::Cancelled);
-                        }
-                    }
+                    send_stream(req.0, reader, *len, progress).map_err(fail)?;
                 }
             }
             WinHttpReceiveResponse(req.0, std::ptr::null_mut()).map_err(fail)?;
