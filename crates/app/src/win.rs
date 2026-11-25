@@ -795,6 +795,50 @@ impl Shell for WinShell {
         })
     }
 
+    fn open_and_wait(
+        &self,
+        path: &Path,
+        _sort: Option<arke_core::SortSpec>,
+    ) -> Result<(), ShellError> {
+        use windows::Win32::Foundation::CloseHandle;
+        use windows::Win32::System::Threading::WaitForSingleObject;
+        use windows::Win32::UI::Shell::SEE_MASK_NOCLOSEPROCESS;
+        debug_assert!(!arke_core::fs::is_ui_thread());
+        let file = wide(path.as_os_str());
+        let dir = path.parent().map(|p| wide(p.as_os_str()));
+        // SAFETY: initializes STA on this dedicated background thread; ShellExecuteEx needs COM.
+        let com =
+            unsafe { CoInitializeEx(None, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE) };
+        let mut info = SHELLEXECUTEINFOW {
+            cbSize: size_of::<SHELLEXECUTEINFOW>() as u32,
+            fMask: SEE_MASK_NOASYNC | SEE_MASK_NOCLOSEPROCESS,
+            lpFile: PCWSTR(file.as_ptr()),
+            lpDirectory: dir.as_ref().map_or(PCWSTR::null(), |d| PCWSTR(d.as_ptr())),
+            nShow: SW_SHOWNORMAL.0,
+            ..Default::default()
+        };
+        // SAFETY: the string pointers in info stay valid until after the wait.
+        let started = unsafe { ShellExecuteExW(&raw mut info) };
+        let result = started.map_err(ShellError::Windows);
+        if com.is_ok() {
+            // SAFETY: pairs with the successful CoInitializeEx above.
+            unsafe { CoUninitialize() };
+        }
+        result?;
+        // A running Office instance can consume the document and return no process handle.
+        // In that case the caller watches the file itself for the save.
+        let process = info.hProcess;
+        if !process.is_invalid() {
+            // SAFETY: valid handle returned by ShellExecuteExW with SEE_MASK_NOCLOSEPROCESS.
+            unsafe {
+                // Two hours, long enough for a presentation to be edited and saved.
+                let _ = WaitForSingleObject(process, 7_200_000);
+                let _ = CloseHandle(process);
+            }
+        }
+        Ok(())
+    }
+
     fn expand_env(&self, input: &str) -> String {
         let trimmed = input.trim();
         let input = if let Some(rest) = trimmed.strip_prefix('~') {

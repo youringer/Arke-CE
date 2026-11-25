@@ -2141,6 +2141,35 @@ impl Workspace {
         window: &mut Window,
         cx: &mut Context<Self>,
     ) {
+        // Arke (#381): a server may 301 a WebDAV mount to a different URL. Re-resolve it on
+        // each click and navigate to the current target; the saved place stays unchanged.
+        let place = arke_core::remote::RemoteUrl::from_path(&path)
+            .filter(|url| url.scheme.is_dav() && url.is_root());
+        if let Some(url) = place {
+            let remotes = Arc::clone(&self.services.remotes);
+            let (control, shift) = (modifiers.control, modifiers.shift);
+            let asked = url.clone();
+            cx.spawn_in(window, async move |this, cx| {
+                let resolved = cx
+                    .background_executor()
+                    .spawn(async move { remotes.resolve_dav(&asked) })
+                    .await;
+                let target = match resolved {
+                    Ok(current) if current != url => current.to_path(),
+                    _ => path,
+                };
+                let _ = this.update_in(cx, |this, window, cx| {
+                    if control {
+                        let at = this.active + 1;
+                        this.open_folder_tab(target, at, shift, window, cx);
+                    } else {
+                        this.navigate_active(target, window, cx);
+                    }
+                });
+            })
+            .detach();
+            return;
+        }
         if modifiers.control {
             let at = self.active + 1;
             self.open_folder_tab(path, at, modifiers.shift, window, cx);

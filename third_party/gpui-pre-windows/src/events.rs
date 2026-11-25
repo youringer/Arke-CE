@@ -10,7 +10,7 @@ use windows::{
         UI::{
             Controls::*,
             HiDpi::*,
-            Input::{Ime::*, KeyboardAndMouse::*},
+            Input::{Ime::*, KeyboardAndMouse::*, Pointer::*},
             WindowsAndMessaging::*,
         },
     },
@@ -30,6 +30,19 @@ pub(crate) const WM_GPUI_GPU_DEVICE_LOST: u32 = WM_USER + 7;
 pub(crate) const WM_GPUI_DISPLAYS_CHANGED: u32 = WM_USER + 10;
 
 const SIZE_MOVE_LOOP_TIMER_ID: usize = 1;
+
+/// Arke (#378): Windows synthesizes `WM_LBUTTON*` / `WM_MOUSEMOVE` for touchscreens and marks
+/// them with this signature in the message extra info. They must not be dispatched as real
+/// mouse presses: in a file list a press starts the marquee selection, so a finger drag only
+/// drew a selection rectangle and never scrolled. GPUI recognizes touch pans itself once it
+/// receives `PlatformInput::Touch`, including a synthetic tap for clicks.
+fn is_touch_synthesized_mouse_message() -> bool {
+    const SIGNATURE_MASK: isize = 0xFFFF_FF00;
+    const MI_WP_SIGNATURE: isize = 0xFF51_5700;
+    // SAFETY: no arguments; reads the extra info of the message currently being dispatched.
+    let extra = unsafe { GetMessageExtraInfo() }.0;
+    extra & SIGNATURE_MASK == MI_WP_SIGNATURE
+}
 
 /// Coordinates window draws on the UI thread. Owned by the platform and
 /// shared with every window (like `WindowsPlatformState::cursor_visible`),
@@ -112,6 +125,11 @@ impl WindowsWindowInner {
             WM_PAINT => self.handle_paint_msg(handle),
             WM_CLOSE => self.handle_close_msg(),
             WM_DESTROY => self.handle_destroy_msg(handle),
+            // Arke (#378): touchscreens speak WM_POINTER*, touchpads keep using Direct
+            // Manipulation (see DM_POINTERHITTEST below) and mice keep using WM_MOUSE*.
+            WM_POINTERDOWN | WM_POINTERUPDATE | WM_POINTERUP | WM_POINTERCAPTURECHANGED => {
+                self.handle_pointer_msg(msg, wparam, lparam)
+            }
             WM_MOUSEMOVE => self.handle_mouse_move_msg(handle, lparam, wparam),
             WM_MOUSELEAVE | WM_NCMOUSELEAVE => self.handle_mouse_leave_msg(),
             WM_NCMOUSEMOVE => self.handle_nc_mouse_move_msg(handle, lparam),
@@ -355,6 +373,9 @@ impl WindowsWindowInner {
     }
 
     fn handle_mouse_move_msg(&self, handle: HWND, lparam: LPARAM, wparam: WPARAM) -> Option<isize> {
+        if is_touch_synthesized_mouse_message() {
+            return Some(0);
+        }
         self.start_tracking_mouse(handle, TME_LEAVE);
         self.restore_cursor_after_hide();
 
@@ -507,12 +528,60 @@ impl WindowsWindowInner {
         answer as isize
     }
 
+    /// Arke (#378): feed touchscreen contacts into GPUI's touch gesture recognizer.
+    ///
+    /// `WM_POINTER*` lParam holds client coordinates, and `GET_POINTERID_WPARAM(wParam)` is the
+    /// pointer id. We return 0 for touch pointers so `DefWindowProc` does not synthesize mouse
+    /// messages from them; the recognizer turns a pan into a `ScrollEvent` and a tap into a
+    /// mouse down/up pair. Mouse and touchpad pointers are left alone (None -> DefWindowProc).
+    fn handle_pointer_msg(&self, msg: u32, wparam: WPARAM, lparam: LPARAM) -> Option<isize> {
+        let pointer_id = wparam.loword() as u32;
+        let mut pointer_type = POINTER_INPUT_TYPE::default();
+        if unsafe { GetPointerType(pointer_id, &mut pointer_type) }.is_err()
+            || pointer_type != PT_TOUCH
+        {
+            return None;
+        }
+
+        let phase = match msg {
+            WM_POINTERDOWN => TouchPhase::Started,
+            WM_POINTERUP | WM_POINTERCAPTURECHANGED => TouchPhase::Ended,
+            _ => TouchPhase::Moved,
+        };
+        let scale_factor = self.state.scale_factor.get();
+        let position = logical_point(
+            lparam.signed_loword() as f32,
+            lparam.signed_hiword() as f32,
+            scale_factor,
+        );
+
+        let Some(mut func) = self.state.callbacks.input.take() else {
+            return Some(0);
+        };
+        let input = PlatformInput::Touch(TouchEvent {
+            id: TouchId(u64::from(pointer_id)),
+            phase,
+            position,
+            ..Default::default()
+        });
+        let handled = !func(input).propagate;
+        self.state.callbacks.input.set(Some(func));
+        // Always consume: a touch pan must not also produce a mouse drag / marquee selection.
+        let _ = handled;
+        Some(0)
+    }
+
     fn handle_mouse_down_msg(
         &self,
         handle: HWND,
         button: MouseButton,
         lparam: LPARAM,
     ) -> Option<isize> {
+        // Arke (#378): drop the mouse messages Windows synthesizes from a finger. This has to
+        // happen before SetCapture so touch input never captures the mouse.
+        if is_touch_synthesized_mouse_message() {
+            return Some(0);
+        }
         unsafe { SetCapture(handle) };
         let pressed = &self.state.pressed_buttons;
         pressed.set(pressed.get() | button_bit(button));
@@ -546,6 +615,10 @@ impl WindowsWindowInner {
         button: MouseButton,
         lparam: LPARAM,
     ) -> Option<isize> {
+        // Arke (#378): a finger release must not release a mouse capture we never took.
+        if is_touch_synthesized_mouse_message() {
+            return Some(0);
+        }
         // Before releasing the capture: that sends `WM_CAPTURECHANGED`, which isn't a lost press.
         let pressed = &self.state.pressed_buttons;
         pressed.set(pressed.get() & !button_bit(button));

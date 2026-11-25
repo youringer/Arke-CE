@@ -5,7 +5,7 @@
 //! Only Basic authentication, and only over HTTPS (or to this computer): Basic sends the password
 //! as plain base64.
 
-use std::io::{self, Read, Write};
+use std::io::{self, Read, Seek, Write};
 use std::time::{Duration, SystemTime};
 
 use arke_core::remote::{RemoteUrl, Scheme};
@@ -15,6 +15,10 @@ use percent_encoding::{AsciiSet, NON_ALPHANUMERIC, percent_decode_str, utf8_perc
 
 use crate::error::{RemoteError, RemoteResult};
 
+/// Upload source that can be rewound when an HTTP redirect has to resend the body.
+pub trait UploadBody: Read + Seek {}
+impl<T: Read + Seek> UploadBody for T {}
+
 /// Request body.
 pub enum Body<'a> {
     /// No body.
@@ -23,8 +27,8 @@ pub enum Body<'a> {
     Bytes(&'a [u8]),
     /// Streamed upload of exactly `len` bytes.
     Stream {
-        /// Source of the bytes.
-        reader: &'a mut dyn Read,
+        /// Source of the bytes, rewindable so a 301/307 can resend it.
+        reader: &'a mut dyn UploadBody,
         /// Content-Length.
         len: u64,
     },
@@ -40,6 +44,10 @@ pub struct Request<'a> {
     pub headers: Vec<(&'static str, String)>,
     /// Body.
     pub body: Body<'a>,
+    /// Whether Basic auth may be sent over plain http after a redirect.
+    pub allow_insecure: bool,
+    /// Whether WinHTTP should accept an untrusted TLS certificate.
+    pub ignore_cert_errors: bool,
 }
 
 /// Progress callback: bytes moved so far in this request (sent or received); return `false`
@@ -55,6 +63,13 @@ pub trait Transport: Send + Sync + 'static {
         out: &mut dyn Write,
         progress: Progress<'_>,
     ) -> RemoteResult<u16>;
+
+    /// Arke (#381): the URL a request ended up at after HTTP redirects. Default: no
+    /// redirect information. WinHTTP answers with its final URL so a WebDAV place whose
+    /// server redirects (and whose target URL changes) can be re-resolved on every click.
+    fn resolve(&self, _url: &str) -> RemoteResult<Option<String>> {
+        Ok(None)
+    }
 }
 
 /// Characters left as they are in a path segment (RFC 3986 unreserved).
@@ -226,6 +241,8 @@ pub struct DavClient {
     transport: std::sync::Arc<dyn Transport>,
     /// The user allowed Basic sign-in over plain http for this location.
     allow_insecure: bool,
+    /// The user accepted TLS certificates WinHTTP does not trust.
+    allow_untrusted: bool,
 }
 
 /// Writes at most `left` bytes and then reports "full" by returning a short write of 0, which
@@ -266,7 +283,15 @@ impl DavClient {
             password,
             transport,
             allow_insecure,
+            allow_untrusted: false,
         }
+    }
+
+    /// Accept certificates WinHTTP does not trust (self-signed, wrong host or expired).
+    #[must_use]
+    pub fn allow_untrusted_cert(mut self, on: bool) -> Self {
+        self.allow_untrusted = on;
+        self
     }
 
     fn headers(&self) -> RemoteResult<Vec<(&'static str, String)>> {
@@ -312,12 +337,15 @@ impl DavClient {
     ) -> RemoteResult<u16> {
         let url = request_url(&self.url, path, dir);
         headers.extend(self.headers()?);
+        let allow_insecure = self.allow_insecure || is_loopback(&self.url.host);
         self.transport.send(
             Request {
                 method,
                 url,
                 headers,
                 body,
+                allow_insecure,
+                ignore_cert_errors: self.allow_untrusted,
             },
             out,
             progress,
@@ -403,7 +431,7 @@ impl DavClient {
     pub fn upload(
         &self,
         path: &str,
-        reader: &mut dyn Read,
+        reader: &mut dyn UploadBody,
         len: u64,
         progress: Progress<'_>,
     ) -> RemoteResult<()> {

@@ -3124,6 +3124,19 @@ impl Explorer {
                     .set_key_file(&url, place.key_file.clone());
             }
         }
+        // Arke (#381): re-apply the http permissions too; settings load after startup.
+        for origin in &settings.insecure_http {
+            if let Some(url) = arke_core::remote::RemoteUrl::from_path(std::path::Path::new(origin))
+            {
+                self.services.remotes.set_insecure_allowed(&url, true);
+            }
+        }
+        self.services
+            .remotes
+            .set_allow_http_all(settings.allow_http_dav);
+        self.services
+            .remotes
+            .set_allow_untrusted_cert(settings.allow_untrusted_cert);
         self.density = settings.density;
         if settings.preview_pane && !self.preview_pane {
             self.preview_cue.fire();

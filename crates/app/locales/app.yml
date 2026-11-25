@@ -3152,6 +3152,22 @@ settings.network_thumbnails:
   en: "Thumbnails on network locations"
   zh-TW: "網路位置也顯示縮圖"
   zh-CN: "网络位置也显示缩略图"
+settings.allow_http_dav:
+  en: "Allow HTTP WebDAV sign-in"
+  zh-TW: "允許 HTTP WebDAV 登入"
+  zh-CN: "允许 HTTP WebDAV 登录"
+settings.allow_http_dav_desc:
+  en: "Allow Basic sign-in over plain http for every WebDAV server. The password is sent unencrypted; leave off unless the server has no HTTPS."
+  zh-TW: "允許對所有 WebDAV 伺服器使用明文 http 基本驗證登入，密碼將以未加密方式傳送；除非伺服器沒有 HTTPS，否則請保持關閉。"
+  zh-CN: "允许对所有 WebDAV 服务器使用明文 HTTP 基本验证登录，密码未加密传输；除非服务器没有 HTTPS，否则请保持关闭。"
+settings.allow_untrusted_cert:
+  en: "Allow untrusted TLS certificates"
+  zh-TW: "接受不受信任的 TLS 憑證"
+  zh-CN: "接受不受信任的 TLS 证书"
+settings.allow_untrusted_cert_desc:
+  en: "Accept self-signed, expired or wrong-host certificates for WebDAV. Only enable for a server you trust; the connection is not authenticated."
+  zh-TW: "接受 WebDAV 自我簽署、過期或 hostname 不符的憑證。僅對信任的伺服器啟用，連線將無法驗證身分。"
+  zh-CN: "接受 WebDAV 自签名、过期或域名不符的证书。仅对信任的服务器启用，连接将无法验证身份。"
   de: Miniaturansichten an Netzwerkorten
   es: Miniaturas en ubicaciones de red
   pt-BR: Miniaturas em locais de rede

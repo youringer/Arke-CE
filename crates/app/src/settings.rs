@@ -578,6 +578,11 @@ pub(crate) struct Settings {
     /// Origins (`http://user@host:port`) the user allowed to sign in over plain http, where the
     /// password crosses the network unencrypted. Per location and per user, never per network.
     pub(crate) insecure_http: Vec<String>,
+    /// Arke (#381): allow plain http WebDAV sign-in everywhere, not just for origins the user
+    /// approved individually. Off by default because Basic auth sends the password in clear.
+    pub(crate) allow_http_dav: bool,
+    /// Arke: accept TLS certificates WinHTTP reports as untrusted (default off).
+    pub(crate) allow_untrusted_cert: bool,
     /// Names the user gave mapped drives, network places and saved remote locations, shown
     /// instead of the default ones (`place_names.rs`). Windows' own labels are never changed.
     pub(crate) place_names: crate::place_names::Names,
@@ -813,6 +818,8 @@ impl Default for Settings {
             net_places: Vec::new(),
             remote_places: Vec::new(),
             insecure_http: Vec::new(),
+            allow_http_dav: false,
+            allow_untrusted_cert: false,
             place_names: crate::place_names::Names::new(),
             favorite_names: crate::place_names::Names::new(),
             theme: ThemeMode::default(),

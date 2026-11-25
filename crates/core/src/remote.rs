@@ -167,6 +167,12 @@ impl RemoteUrl {
         Self::parse(text.trim().trim_matches('"').trim(), true)
     }
 
+    /// Arke (#381): parses the final URL reported by the HTTP transport after redirects.
+    /// Like [`Self::from_path`], `%XX` in the path is kept literal (it is already encoded).
+    pub fn from_resolved(text: &str) -> Option<Self> {
+        Self::parse(text.trim(), false)
+    }
+
     fn parse(s: &str, decode: bool) -> Option<Self> {
         let (scheme, rest) = split_scheme(s)?;
         let end = rest.find(['/', '\\']).unwrap_or(rest.len());

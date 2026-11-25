@@ -6,6 +6,7 @@ use std::collections::{HashMap, HashSet};
 use std::io::Write as _;
 use std::path::{Path, PathBuf};
 use std::sync::Arc;
+use std::sync::atomic::{AtomicBool, Ordering};
 use std::time::{Duration, SystemTime};
 
 use arke_core::remote::{RemoteUrl, Scheme};
@@ -14,7 +15,7 @@ use parking_lot::Mutex;
 use sha2::Digest as _;
 
 use crate::creds::SecretStore;
-use crate::dav::{DavClient, Transport};
+use crate::dav::{DavClient, Transport, UploadBody};
 use crate::error::{HostKey, RemoteError, RemoteResult};
 use crate::known_hosts::KnownHosts;
 use crate::mtp::{Device, Portable};
@@ -78,6 +79,10 @@ pub struct Remotes {
     key_files: Mutex<HashMap<String, PathBuf>>,
     /// Origins the user allowed to sign in over plain http (Basic auth, password unencrypted).
     insecure: Mutex<HashSet<String>>,
+    /// Arke (#381): global "allow http WebDAV" setting, in addition to per-origin allowances.
+    allow_http_all: AtomicBool,
+    /// Arke: accept TLS certificates WinHTTP does not trust, when the user opts in.
+    allow_untrusted_cert: AtomicBool,
     conns: Mutex<HashMap<String, Slot>>,
 }
 
@@ -128,6 +133,8 @@ impl Remotes {
             session: Mutex::default(),
             key_files: Mutex::default(),
             insecure: Mutex::default(),
+            allow_http_all: AtomicBool::new(false),
+            allow_untrusted_cert: AtomicBool::new(false),
             conns: Mutex::default(),
         })
     }
@@ -165,9 +172,52 @@ impl Remotes {
         }
     }
 
+    /// Arke (#381): the global setting allows plain http for every WebDAV place.
+    pub fn set_allow_http_all(&self, allowed: bool) {
+        self.allow_http_all.store(allowed, Ordering::Relaxed);
+    }
+
+    /// Arke: accept untrusted TLS certificates for every WebDAV place.
+    pub fn set_allow_untrusted_cert(&self, allowed: bool) {
+        self.allow_untrusted_cert.store(allowed, Ordering::Relaxed);
+    }
+
     /// Whether the user allowed plain-http sign-in to this location.
     pub fn insecure_allowed(&self, url: &RemoteUrl) -> bool {
-        self.insecure.lock().contains(&url.origin())
+        self.allow_http_all.load(Ordering::Relaxed) || self.insecure.lock().contains(&url.origin())
+    }
+
+    /// Arke (#381): follows HTTP redirects for a WebDAV place and returns the URL the server
+    /// ended up at, so a place whose target changes (301/302) can be opened at its current
+    /// address. The saved place URL stays stable; only the navigation target changes.
+    pub fn resolve_dav(&self, url: &RemoteUrl) -> RemoteResult<RemoteUrl> {
+        if !url.scheme.is_dav() {
+            return Ok(url.clone());
+        }
+        let request = crate::dav::request_url(
+            url,
+            &url.path,
+            url.is_root() || url.path.ends_with('/'),
+        );
+        let Some(final_url) = self.transport.resolve(&request)? else {
+            return Ok(url.clone());
+        };
+        let mut resolved = RemoteUrl::from_resolved(&final_url)
+            .ok_or_else(|| RemoteError::Server(format!("invalid redirect target {final_url}")))?;
+        if !resolved.scheme.is_dav() {
+            return Err(RemoteError::Server(format!(
+                "redirect left WebDAV: {final_url}"
+            )));
+        }
+        // WinHTTP's final URL does not repeat credentials; keep the saved identity.
+        if resolved.user.is_none() {
+            resolved.user = url.user.clone();
+        }
+        let password = self.session.lock().get(&url.origin()).cloned();
+        if let Some(password) = password {
+            self.session.lock().insert(resolved.origin(), password);
+        }
+        Ok(resolved)
     }
 
     fn auth(&self, url: &RemoteUrl) -> SshAuth {
@@ -278,6 +328,7 @@ impl Remotes {
             Arc::clone(&self.transport),
             self.insecure_allowed(url),
         )
+        .allow_untrusted_cert(self.allow_untrusted_cert.load(Ordering::Relaxed))
     }
 
     /// The phones and other portable devices connected now.
@@ -357,7 +408,13 @@ impl Remotes {
         if self.stat(url).is_ok() {
             return Err(RemoteError::Exists);
         }
-        self.upload_file(Path::new(""), url, &mut std::io::empty(), 0, &NoProgress)
+        self.upload_file(
+            Path::new(""),
+            url,
+            &mut std::io::Cursor::new(Vec::new()),
+            0,
+            &NoProgress,
+        )
     }
 
     /// Renames or moves on the same server; never replaces an existing item.
@@ -479,7 +536,7 @@ impl Remotes {
         &self,
         source: &Path,
         url: &RemoteUrl,
-        reader: &mut dyn std::io::Read,
+        reader: &mut dyn UploadBody,
         len: u64,
         sink: &dyn TransferSink,
     ) -> RemoteResult<()> {

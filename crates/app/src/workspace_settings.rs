@@ -1323,6 +1323,23 @@ impl Workspace {
                     st.network_thumbnails = !st.network_thumbnails;
                 }),
             ),
+            // Arke (#381): explicit opt-in for plain-http WebDAV sign-in.
+            card(
+                Icon::NetDrive,
+                t!("settings.allow_http_dav"),
+                Some(t!("settings.allow_http_dav_desc")),
+                switch("allow-http-dav", s.allow_http_dav, |st| {
+                    st.allow_http_dav = !st.allow_http_dav;
+                }),
+            ),
+            card(
+                Icon::Globe,
+                t!("settings.allow_untrusted_cert"),
+                Some(t!("settings.allow_untrusted_cert_desc")),
+                switch("allow-untrusted-cert", s.allow_untrusted_cert, |st| {
+                    st.allow_untrusted_cert = !st.allow_untrusted_cert;
+                }),
+            ),
             card(
                 Icon::Drive,
                 t!("settings.folder_sizes"),
@@ -1695,12 +1712,12 @@ impl Workspace {
         let mut files = regroup(
             files,
             &[
-                (Some(t!("settings.group_show")), &[0, 2, 1, 5, 6, 7, 8]),
+                (Some(t!("settings.group_show")), &[0, 2, 1, 5, 6, 7, 10]),
                 (
                     Some(t!("settings.group_behavior")),
-                    &[4, 3, 11, 12, 13, 14, 15],
+                    &[4, 3, 13, 14, 15, 16, 17, 8, 9],
                 ),
-                (Some(t!("settings.group_confirm")), &[9, 10]),
+                (Some(t!("settings.group_confirm")), &[11, 12]),
             ],
         );
         files.push(group(Some(t!("settings.group_file_ops")), file_ops_rows(s)));

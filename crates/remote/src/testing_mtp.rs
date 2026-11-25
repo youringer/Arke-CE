@@ -258,7 +258,7 @@ mod tests {
             remotes.upload_file(
                 Path::new("a"),
                 &dcim.join("a"),
-                &mut std::io::empty(),
+                &mut std::io::Cursor::new(Vec::new()),
                 0,
                 &NoProgress
             ),

@@ -104,7 +104,7 @@ fn browses_and_changes_a_real_sftp_server() {
     ));
 
     // Upload, new folder, rename (never over an existing name), delete.
-    let mut data: &[u8] = b"uploaded bytes";
+    let mut data = std::io::Cursor::new(b"uploaded bytes".to_vec());
     hub.upload_file(
         Path::new("up.bin"),
         &url.join("docs/up.bin"),
@@ -229,7 +229,7 @@ fn browses_and_changes_a_webdav_server_over_winhttp() {
     let local = hub.fetch(&file, u64::MAX).unwrap();
     assert_eq!(std::fs::read(local).unwrap(), b"dav says hi");
 
-    let mut data: &[u8] = b"put me";
+    let mut data = std::io::Cursor::new(b"put me".to_vec());
     hub.upload_file(
         Path::new("x"),
         &docs.join("new.txt"),

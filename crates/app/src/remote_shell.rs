@@ -14,11 +14,11 @@ use std::collections::HashSet;
 use std::path::{Path, PathBuf};
 use std::sync::Arc;
 use std::sync::atomic::Ordering;
-use std::time::SystemTime;
+use std::time::{Duration, Instant, SystemTime};
 
 use arke_core::remote::RemoteUrl;
 use arke_core::{Entry, EntryKind};
-use arke_remote::{RemoteError, Remotes, TransferSink};
+use arke_remote::{NoProgress, RemoteError, Remotes, TransferSink};
 use parking_lot::Mutex;
 
 use crate::shell::{
@@ -267,6 +267,9 @@ pub(crate) fn start(
             remotes.set_insecure_allowed(&url, true);
         }
     }
+    // Arke (#381): the global http switch is applied here and again when settings load.
+    remotes.set_allow_http_all(store.read(cx).settings.allow_http_dav);
+    remotes.set_allow_untrusted_cert(store.read(cx).settings.allow_untrusted_cert);
     remotes
 }
 
@@ -528,6 +531,83 @@ fn outcome(result: Result<(), ShellError>) -> Result<OpOutcome, ShellError> {
     }
 }
 
+/// Arke (#381): Office cannot randomly read/write WebDAV files, so ppt/pptx are opened from
+/// the local download cache. Watch that copy until the edit settles, then upload it back.
+fn is_slide(path: &str) -> bool {
+    path.rsplit_once('.').is_some_and(|(_, ext)| {
+        ext.eq_ignore_ascii_case("ppt") || ext.eq_ignore_ascii_case("pptx")
+    })
+}
+
+fn wait_for_local_save(local: &Path, baseline: SystemTime, baseline_size: u64) {
+    let mut changed_at: Option<Instant> = None;
+    for _ in 0..300 {
+        std::thread::sleep(Duration::from_secs(1));
+        let Ok(meta) = std::fs::metadata(local) else {
+            continue;
+        };
+        let changed = meta.len() != baseline_size
+            || meta
+                .modified()
+                .ok()
+                .is_some_and(|time| time > baseline);
+        if !changed {
+            continue;
+        }
+        match changed_at {
+            None => changed_at = Some(Instant::now()),
+            Some(at) if at.elapsed() >= Duration::from_secs(5) => return,
+            _ => {}
+        }
+    }
+}
+
+impl RemoteShell {
+    /// Opens a remote slide from its cache copy and uploads the saved copy back if it changed
+    /// and nobody else changed the server's file in the meantime.
+    fn open_slide(&self, url: &RemoteUrl, local: &Path) -> Result<(), ShellError> {
+        let before = self.remotes.stat(url)?;
+        let baseline = std::fs::metadata(local)
+            .ok()
+            .and_then(|meta| meta.modified().ok())
+            .unwrap_or(before.modified.unwrap_or(SystemTime::UNIX_EPOCH));
+        self.inner.open_and_wait(local, None)?;
+        // An already running Office instance may have received the file without handing us a
+        // process to wait on: watch the cache copy for a saved change as well.
+        wait_for_local_save(local, baseline, before.size);
+        let meta = match std::fs::metadata(local) {
+            Ok(meta) => meta,
+            Err(_) => return Ok(()),
+        };
+        let changed = meta.len() != before.size
+            || meta
+                .modified()
+                .ok()
+                .is_some_and(|time| time > baseline);
+        if !changed {
+            return Ok(());
+        }
+        let current = match self.remotes.stat(url) {
+            Ok(current) => current,
+            Err(e) => {
+                log::warn!("not uploading {}: cannot check remote copy: {e}", url);
+                return Ok(());
+            }
+        };
+        if current.size != before.size || current.modified != before.modified {
+            log::warn!("not uploading {}: the remote file changed while it was open", url);
+            return Ok(());
+        }
+        let mut file = std::fs::File::open(local)?;
+        self.remotes
+            .upload_file(local, url, &mut file, meta.len(), &NoProgress)?;
+        // Invalidate the cache so the next open downloads the version we just saved.
+        let _ = std::fs::remove_file(local);
+        log::info!("uploaded saved slide back to {url}");
+        Ok(())
+    }
+}
+
 impl Shell for RemoteShell {
     fn load_places(&self) -> Vec<Place> {
         let mut places = self.inner.load_places();
@@ -551,7 +631,12 @@ impl Shell for RemoteShell {
             // A downloaded copy has no folder to step through.
             Some(url) => {
                 let local = self.remotes.fetch(&url, OPEN_MAX)?;
-                self.inner.open(&local, None)
+                if is_slide(&url.path) {
+                    self.open_slide(&url, &local)?;
+                    Ok(())
+                } else {
+                    self.inner.open(&local, None)
+                }
             }
             None => self.inner.open(path, sort),
         }

@@ -848,6 +848,15 @@ pub(crate) trait Shell: Send + Sync + 'static {
     /// `sort` is the order of the folder view it is opened from: viewers that step through the folder (Photos'
     /// previous and next) follow it, as when opened from File Explorer. `None` outside a folder view.
     fn open(&self, path: &Path, sort: Option<arke_core::SortSpec>) -> Result<(), ShellError>;
+    /// Arke (#381): open and wait until the program that handled the file exits, so a remote
+    /// Office file can be uploaded back after editing. Default: same as `open`.
+    fn open_and_wait(
+        &self,
+        path: &Path,
+        sort: Option<arke_core::SortSpec>,
+    ) -> Result<(), ShellError> {
+        self.open(path, sort)
+    }
     /// Expands environment variables such as `%USERPROFILE%` and a leading `~`. Pure.
     fn expand_env(&self, input: &str) -> String;
     /// Local time for display. Pure.

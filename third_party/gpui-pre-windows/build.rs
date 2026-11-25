@@ -5,9 +5,12 @@ fn main() {
     println!("cargo:rerun-if-changed=build.rs");
     #[cfg(target_os = "windows")]
     {
-        // Compile HLSL shaders
+        // Arke local build: shaders are compiled at runtime from shaders.hlsl, so no fxc.exe
+        // (Windows SDK) is needed even in release builds.
         #[cfg(not(debug_assertions))]
-        compile_shaders();
+        {
+            let _ = compile_shaders;
+        }
     }
 }
 
