@@ -542,7 +542,7 @@ mod tests {
         let http = WinHttp::new().unwrap();
         let final_url = http.resolve(&url).unwrap();
         assert!(final_url.is_some(), "server did not redirect");
-        eprintln!("final URL: {}", final_url.unwrap());
+        println!("final URL: {}", final_url.unwrap());
     }
 
     /// Live check with a self-signed HTTPS server: `ARKE_TEST_HTTPS_URL=https://localhost:8443/dav`.
