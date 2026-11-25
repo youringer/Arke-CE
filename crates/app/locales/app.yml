@@ -1212,6 +1212,14 @@ settings.group_layout:
   es: Diseño
   pt-BR: Layout
   ja: レイアウト
+settings.group_network:
+  en: Network and WebDAV
+  zh-TW: 網路與 WebDAV
+  zh-CN: 网络与 WebDAV
+  de: Netzwerk und WebDAV
+  es: Red y WebDAV
+  pt-BR: Rede e WebDAV
+  ja: ネットワークと WebDAV
 settings.group_show:
   en: "Show"
   zh-TW: "顯示"

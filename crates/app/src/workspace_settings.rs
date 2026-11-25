@@ -1839,9 +1839,10 @@ impl Workspace {
             files,
             &[
                 (Some(t!("settings.group_show")), &[0, 2, 1, 5, 6, 7, 10]),
+                (Some(t!("settings.group_network")), &[8, 9]),
                 (
                     Some(t!("settings.group_behavior")),
-                    &[4, 3, 13, 14, 15, 16, 17, 8, 9],
+                    &[4, 3, 13, 14, 15, 16, 17],
                 ),
                 (Some(t!("settings.group_confirm")), &[11, 12]),
             ],
