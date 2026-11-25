@@ -541,8 +541,10 @@ mod tests {
         };
         let http = WinHttp::new().unwrap();
         let final_url = http.resolve(&url).unwrap();
-        assert!(final_url.is_some(), "server did not redirect");
-        println!("final URL: {}", final_url.unwrap());
+        // The URL goes into the assertion message instead of a print, so
+        // clippy's print lints have nothing to flag.
+        let final_url = final_url.expect("server did not redirect");
+        assert!(!final_url.is_empty(), "final URL: {final_url}");
     }
 
     /// Live check with a self-signed HTTPS server: `ARKE_TEST_HTTPS_URL=https://localhost:8443/dav`.
