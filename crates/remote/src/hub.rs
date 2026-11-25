@@ -194,11 +194,8 @@ impl Remotes {
         if !url.scheme.is_dav() {
             return Ok(url.clone());
         }
-        let request = crate::dav::request_url(
-            url,
-            &url.path,
-            url.is_root() || url.path.ends_with('/'),
-        );
+        let request =
+            crate::dav::request_url(url, &url.path, url.is_root() || url.path.ends_with('/'));
         let Some(final_url) = self.transport.resolve(&request)? else {
             return Ok(url.clone());
         };

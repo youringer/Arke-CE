@@ -2280,13 +2280,13 @@ fn window_title_follows_the_active_tab(cx: &mut TestAppContext) {
     let view = ws.update(cx, |ws, _| ws.active_view().clone());
     wait_until(cx, &view, "alpha", loaded(r"C:\alpha"));
     cx.run_until_parked();
-    assert_eq!(cx.window_title().as_deref(), Some("alpha - Arke"));
+    assert_eq!(cx.window_title().as_deref(), Some("alpha - Arke-CE"));
     open_tabs(&ws, cx, &[r"C:\beta"]);
     cx.run_until_parked();
-    assert_eq!(cx.window_title().as_deref(), Some("beta - Arke"));
+    assert_eq!(cx.window_title().as_deref(), Some("beta - Arke-CE"));
     ws.update_in(cx, |ws, window, cx| ws.activate(0, window, cx));
     cx.run_until_parked();
-    assert_eq!(cx.window_title().as_deref(), Some("alpha - Arke"));
+    assert_eq!(cx.window_title().as_deref(), Some("alpha - Arke-CE"));
 }
 
 /// In a split tab the title follows the pane in use; a page names the window after the page.
@@ -2301,15 +2301,15 @@ fn window_title_follows_the_active_pane_and_names_pages(cx: &mut TestAppContext)
     let view = ws.update(cx, |ws, _| ws.active_view().clone());
     wait_until(cx, &view, "alpha", loaded(r"C:\alpha"));
     let title = |cx: &mut VisualTestContext| cx.window_title().unwrap_or_default();
-    let page = |key: &str| format!("{} - Arke", t!(key));
+    let page = |key: &str| format!("{} - Arke-CE", t!(key));
 
     let (left, right) = split_to(&ws, cx, r"C:\beta");
     right.update(cx, |_, cx| cx.emit(ExplorerEvent::Activated));
     cx.run_until_parked();
-    assert_eq!(title(cx), "beta - Arke");
+    assert_eq!(title(cx), "beta - Arke-CE");
     left.update(cx, |_, cx| cx.emit(ExplorerEvent::Activated));
     cx.run_until_parked();
-    assert_eq!(title(cx), "alpha - Arke");
+    assert_eq!(title(cx), "alpha - Arke-CE");
 
     ws.update_in(cx, |ws, window, cx| {
         ws.open_external(Target::RecycleBin, Vec::new(), window, cx);

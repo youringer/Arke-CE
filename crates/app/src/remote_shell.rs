@@ -534,9 +534,8 @@ fn outcome(result: Result<(), ShellError>) -> Result<OpOutcome, ShellError> {
 /// Arke (#381): Office cannot randomly read/write WebDAV files, so ppt/pptx are opened from
 /// the local download cache. Watch that copy until the edit settles, then upload it back.
 fn is_slide(path: &str) -> bool {
-    path.rsplit_once('.').is_some_and(|(_, ext)| {
-        ext.eq_ignore_ascii_case("ppt") || ext.eq_ignore_ascii_case("pptx")
-    })
+    path.rsplit_once('.')
+        .is_some_and(|(_, ext)| ext.eq_ignore_ascii_case("ppt") || ext.eq_ignore_ascii_case("pptx"))
 }
 
 fn wait_for_local_save(local: &Path, baseline: SystemTime, baseline_size: u64) {
@@ -546,11 +545,8 @@ fn wait_for_local_save(local: &Path, baseline: SystemTime, baseline_size: u64) {
         let Ok(meta) = std::fs::metadata(local) else {
             continue;
         };
-        let changed = meta.len() != baseline_size
-            || meta
-                .modified()
-                .ok()
-                .is_some_and(|time| time > baseline);
+        let changed =
+            meta.len() != baseline_size || meta.modified().ok().is_some_and(|time| time > baseline);
         if !changed {
             continue;
         }
@@ -579,11 +575,8 @@ impl RemoteShell {
             Ok(meta) => meta,
             Err(_) => return Ok(()),
         };
-        let changed = meta.len() != before.size
-            || meta
-                .modified()
-                .ok()
-                .is_some_and(|time| time > baseline);
+        let changed =
+            meta.len() != before.size || meta.modified().ok().is_some_and(|time| time > baseline);
         if !changed {
             return Ok(());
         }
@@ -595,7 +588,10 @@ impl RemoteShell {
             }
         };
         if current.size != before.size || current.modified != before.modified {
-            log::warn!("not uploading {}: the remote file changed while it was open", url);
+            log::warn!(
+                "not uploading {}: the remote file changed while it was open",
+                url
+            );
             return Ok(());
         }
         let mut file = std::fs::File::open(local)?;

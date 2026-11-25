@@ -8,16 +8,15 @@
 use std::io::{Read, Seek, SeekFrom, Write};
 
 use windows::Win32::Networking::WinHttp::{
-    WINHTTP_ACCESS_TYPE_AUTOMATIC_PROXY, WINHTTP_ACCESS_TYPE_NAMED_PROXY, WINHTTP_ADDREQ_FLAG_ADD,
-    WINHTTP_FLAG_SECURE,
     SECURITY_FLAG_IGNORE_CERT_CN_INVALID, SECURITY_FLAG_IGNORE_CERT_DATE_INVALID,
-    SECURITY_FLAG_IGNORE_UNKNOWN_CA,
-    WINHTTP_OPTION_REDIRECT_POLICY, WINHTTP_OPTION_REDIRECT_POLICY_NEVER,
-    WINHTTP_OPTION_SECURITY_FLAGS, WINHTTP_OPEN_REQUEST_FLAGS,
-    WINHTTP_QUERY_FLAG_NUMBER, WINHTTP_QUERY_LOCATION, WINHTTP_QUERY_STATUS_CODE,
-    WinHttpAddRequestHeaders, WinHttpCloseHandle, WinHttpConnect, WinHttpOpen, WinHttpOpenRequest,
-    WinHttpQueryHeaders, WinHttpReadData, WinHttpReceiveResponse, WinHttpSendRequest,
-    WinHttpSetOption, WinHttpSetTimeouts, WinHttpWriteData,
+    SECURITY_FLAG_IGNORE_UNKNOWN_CA, WINHTTP_ACCESS_TYPE_AUTOMATIC_PROXY,
+    WINHTTP_ACCESS_TYPE_NAMED_PROXY, WINHTTP_ADDREQ_FLAG_ADD, WINHTTP_FLAG_SECURE,
+    WINHTTP_OPEN_REQUEST_FLAGS, WINHTTP_OPTION_REDIRECT_POLICY,
+    WINHTTP_OPTION_REDIRECT_POLICY_NEVER, WINHTTP_OPTION_SECURITY_FLAGS, WINHTTP_QUERY_FLAG_NUMBER,
+    WINHTTP_QUERY_LOCATION, WINHTTP_QUERY_STATUS_CODE, WinHttpAddRequestHeaders,
+    WinHttpCloseHandle, WinHttpConnect, WinHttpOpen, WinHttpOpenRequest, WinHttpQueryHeaders,
+    WinHttpReadData, WinHttpReceiveResponse, WinHttpSendRequest, WinHttpSetOption,
+    WinHttpSetTimeouts, WinHttpWriteData,
 };
 use windows::core::PCWSTR;
 
@@ -101,7 +100,14 @@ fn describe(err: &windows::core::Error, host: &str) -> RemoteError {
 unsafe fn query_string(req: *mut core::ffi::c_void, info: u32) -> Option<String> {
     let mut needed = 0u32;
     let _ = unsafe {
-        WinHttpQueryHeaders(req, info, PCWSTR::null(), None, &mut needed, std::ptr::null_mut())
+        WinHttpQueryHeaders(
+            req,
+            info,
+            PCWSTR::null(),
+            None,
+            &mut needed,
+            std::ptr::null_mut(),
+        )
     };
     if needed < 2 {
         return None;
@@ -428,7 +434,8 @@ mod tests {
                     }
                     headers.push_str(&line);
                 }
-                let response = if expect_depth && headers.to_ascii_lowercase().contains("depth: 0") {
+                let response = if expect_depth && headers.to_ascii_lowercase().contains("depth: 0")
+                {
                     "HTTP/1.1 207 Multi-Status\r\nContent-Length: 0\r\nConnection: close\r\n\r\n"
                 } else if !expect_depth {
                     "HTTP/1.1 307 Temporary Redirect\r\nLocation: /final\r\nContent-Length: 0\r\nConnection: close\r\n\r\n"

@@ -222,7 +222,7 @@ fn the_name_shows_wherever_the_drive_does(cx: &mut TestAppContext) {
         view.read_with(cx, |v, _| v.tab_title().to_string()),
         "Backup (Z:)"
     );
-    assert_eq!(cx.window_title().as_deref(), Some("Backup (Z:) - Arke"));
+    assert_eq!(cx.window_title().as_deref(), Some("Backup (Z:) - Arke-CE"));
     let crumbs = view.update_in(cx, |v, window, _| v.crumb_labels_for_test(window));
     assert_eq!(crumbs, ["Backup (Z:)"]);
     view.update(cx, |v, _| v.search_in_for_test(PathBuf::from(DRIVE)));
@@ -234,7 +234,7 @@ fn the_name_shows_wherever_the_drive_does(cx: &mut TestAppContext) {
     // Back to the default everywhere.
     rename(&ws, cx, DRIVE, "");
     assert_eq!(view.read_with(cx, |v, _| v.tab_title().to_string()), r"Z:\");
-    assert_eq!(cx.window_title().as_deref(), Some(r"Z:\ - Arke"));
+    assert_eq!(cx.window_title().as_deref(), Some(r"Z:\ - Arke-CE"));
     let crumbs = view.update_in(cx, |v, window, _| v.crumb_labels_for_test(window));
     assert_eq!(crumbs, ["Z:"]);
     assert_eq!(

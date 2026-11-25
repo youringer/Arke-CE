@@ -3160,26 +3160,42 @@ settings.network_thumbnails:
   en: "Thumbnails on network locations"
   zh-TW: "網路位置也顯示縮圖"
   zh-CN: "网络位置也显示缩略图"
-settings.allow_http_dav:
-  en: "Allow HTTP WebDAV sign-in"
-  zh-TW: "允許 HTTP WebDAV 登入"
-  zh-CN: "允许 HTTP WebDAV 登录"
-settings.allow_http_dav_desc:
-  en: "Allow Basic sign-in over plain http for every WebDAV server. The password is sent unencrypted; leave off unless the server has no HTTPS."
-  zh-TW: "允許對所有 WebDAV 伺服器使用明文 http 基本驗證登入，密碼將以未加密方式傳送；除非伺服器沒有 HTTPS，否則請保持關閉。"
-  zh-CN: "允许对所有 WebDAV 服务器使用明文 HTTP 基本验证登录，密码未加密传输；除非服务器没有 HTTPS，否则请保持关闭。"
-settings.allow_untrusted_cert:
-  en: "Allow untrusted TLS certificates"
-  zh-TW: "接受不受信任的 TLS 憑證"
-  zh-CN: "接受不受信任的 TLS 证书"
-settings.allow_untrusted_cert_desc:
-  en: "Accept self-signed, expired or wrong-host certificates for WebDAV. Only enable for a server you trust; the connection is not authenticated."
-  zh-TW: "接受 WebDAV 自我簽署、過期或 hostname 不符的憑證。僅對信任的伺服器啟用，連線將無法驗證身分。"
-  zh-CN: "接受 WebDAV 自签名、过期或域名不符的证书。仅对信任的服务器启用，连接将无法验证身份。"
   de: Miniaturansichten an Netzwerkorten
   es: Miniaturas en ubicaciones de red
   pt-BR: Miniaturas em locais de rede
   ja: ネットワーク上の縮小表示
+settings.allow_http_dav:
+  en: "Allow HTTP WebDAV sign-in"
+  zh-TW: "允許 HTTP WebDAV 登入"
+  zh-CN: "允许 HTTP WebDAV 登录"
+  de: "HTTP-WebDAV-Anmeldung erlauben"
+  es: "Permitir el inicio de sesión WebDAV por HTTP"
+  pt-BR: "Permitir login WebDAV via HTTP"
+  ja: "HTTP の WebDAV ログインを許可"
+settings.allow_http_dav_desc:
+  en: "Allow Basic sign-in over plain http for every WebDAV server. The password is sent unencrypted; leave off unless the server has no HTTPS."
+  zh-TW: "允許對所有 WebDAV 伺服器使用明文 http 基本驗證登入，密碼將以未加密方式傳送；除非伺服器沒有 HTTPS，否則請保持關閉。"
+  zh-CN: "允许对所有 WebDAV 服务器使用明文 HTTP 基本验证登录，密码未加密传输；除非服务器没有 HTTPS，否则请保持关闭。"
+  de: "Erlaubt die Basic-Anmeldung über unverschlüsseltes http für alle WebDAV-Server. Das Passwort wird unverschlüsselt übertragen; lassen Sie dies deaktiviert, sofern der Server kein HTTPS unterstützt."
+  es: "Permite el inicio de sesión básico por http sin cifrar para todos los servidores WebDAV. La contraseña se envía sin cifrar; déjalo desactivado salvo que el servidor no tenga HTTPS."
+  pt-BR: "Permite o login básico por http sem criptografia para todos os servidores WebDAV. A senha é enviada sem criptografia; deixe desativado a menos que o servidor não tenha HTTPS."
+  ja: "すべての WebDAV サーバーで平文 http の基本認証を許可します。パスワードは暗号化されずに送信されます。HTTPS がないサーバーでない限り無効のままにしてください。"
+settings.allow_untrusted_cert:
+  en: "Allow untrusted TLS certificates"
+  zh-TW: "接受不受信任的 TLS 憑證"
+  zh-CN: "接受不受信任的 TLS 证书"
+  de: "Nicht vertrauenswürdige TLS-Zertifikate erlauben"
+  es: "Permitir certificados TLS no confiables"
+  pt-BR: "Permitir certificados TLS não confiáveis"
+  ja: "信頼されていない TLS 証明書を許可"
+settings.allow_untrusted_cert_desc:
+  en: "Accept self-signed, expired or wrong-host certificates for WebDAV. Only enable for a server you trust; the connection is not authenticated."
+  zh-TW: "接受 WebDAV 自我簽署、過期或 hostname 不符的憑證。僅對信任的伺服器啟用，連線將無法驗證身分。"
+  zh-CN: "接受 WebDAV 自签名、过期或域名不符的证书。仅对信任的服务器启用，连接将无法验证身份。"
+  de: "Akzeptiert selbstsignierte, abgelaufene oder zum Hostnamen passende Zertifikate für WebDAV. Aktivieren Sie dies nur für Server, denen Sie vertrauen; die Verbindung wird nicht authentifiziert."
+  es: "Acepta certificados autofirmados, vencidos o de otro host para WebDAV. Actívalo solo para un servidor de confianza; la conexión no se autentica."
+  pt-BR: "Aceita certificados autoassinados, expirados ou de outro host para WebDAV. Ative apenas para servidores em que você confia; a conexão não é autenticada."
+  ja: "WebDAV で自己署名、期限切れ、またはホスト名が一致しない証明書を受け入れます。信頼できるサーバーの場合にのみ有効にしてください。接続は認証されません。"
 settings.network_thumbnails_desc:
   en: "Slower, since they're read from the server"
   zh-TW: "需從伺服器讀取，速度較慢"

@@ -1340,7 +1340,8 @@ mod tests {
         ] {
             let api = pick_for(&json, channel, &current, "-setup").unwrap();
             let from_feed =
-                pick_from_feed_for(&feed, "youringer/Arke-CE", channel, &current, "-setup").unwrap();
+                pick_from_feed_for(&feed, "youringer/Arke-CE", channel, &current, "-setup")
+                    .unwrap();
             assert_eq!(
                 (&from_feed.version, &from_feed.exe_url, &from_feed.sha_url),
                 (&api.version, &api.exe_url, &api.sha_url),
@@ -1350,7 +1351,8 @@ mod tests {
         }
         assert!(pick(&json, Channel::Stable, &v("0.3.0")).is_none_or(|r| !r.version.contains('-')));
         let latest =
-            pick_from_feed_for(&feed, "youringer/Arke-CE", Channel::Stable, &v("0.5.2"), "").unwrap();
+            pick_from_feed_for(&feed, "youringer/Arke-CE", Channel::Stable, &v("0.5.2"), "")
+                .unwrap();
         let sha = crate::win_http::get_text(latest.sha_url.as_deref().unwrap(), &[]).unwrap();
         assert_eq!(sha.split_whitespace().next().map(str::len), Some(64));
         assert!(latest.notes.starts_with("### ") && latest.notes.contains("\n\n### "));
@@ -1364,7 +1366,8 @@ mod tests {
     fn live_download_through_a_proxy() {
         let proxy = std::env::var("ARKE_TEST_PROXY").expect("ARKE_TEST_PROXY=host:port");
         crate::update_route::set(&proxy);
-        let url = "https://github.com/youringer/Arke-CE/releases/download/v0.8.1/arke-0.8.1-setup.exe";
+        let url =
+            "https://github.com/youringer/Arke-CE/releases/download/v0.8.1/arke-0.8.1-setup.exe";
         let path = std::env::temp_dir().join(format!("arke-live-route-{}.exe", std::process::id()));
         let mut file = std::fs::OpenOptions::new()
             .create(true)

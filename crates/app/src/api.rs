@@ -549,7 +549,10 @@ pub(crate) fn serve(request: &[u8], target: Target, queue: &flume::Sender<Action
     if let Some(action) = answer.action
         && queue.send(action).is_err()
     {
-        return error_reply(&ApiError::new(ErrorCode::Unavailable, "Arke-CE is quitting"));
+        return error_reply(&ApiError::new(
+            ErrorCode::Unavailable,
+            "Arke-CE is quitting",
+        ));
     }
     answer.reply
 }

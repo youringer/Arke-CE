@@ -132,7 +132,11 @@ static LAST: LazyLock<RwLock<Option<Used>>> = LazyLock::new(|| RwLock::new(None)
 pub(crate) const DEFAULT: &str = "https://v4.gh-proxy.com/";
 
 fn route_for(text: &str) -> Route {
-    let text = if text.trim().is_empty() { DEFAULT } else { text };
+    let text = if text.trim().is_empty() {
+        DEFAULT
+    } else {
+        text
+    };
     Route::parse(text).unwrap_or_else(|_| Route::Prefix(DEFAULT.into()))
 }
 
