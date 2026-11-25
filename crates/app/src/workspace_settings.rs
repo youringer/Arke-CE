@@ -2132,7 +2132,7 @@ fn about_header() -> AnyElement {
                     div()
                         .text_size(theme::fs_20())
                         .font_weight(theme::FW_STRONG)
-                        .child("Arke"),
+                        .child("Arke-CE"),
                 )
                 .child(
                     div()

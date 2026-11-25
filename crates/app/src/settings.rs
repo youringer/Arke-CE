@@ -897,7 +897,7 @@ impl Default for Settings {
             update_auto: true,
             update_checked: None,
             update_dismissed: None,
-            update_route: String::new(),
+            update_route: String::new(), // empty means the CE default route (update_route::DEFAULT)
             whats_new_auto: true,
             whats_new_seen: None,
             open_with_extra: Vec::new(),

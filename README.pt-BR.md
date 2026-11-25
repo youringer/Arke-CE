@@ -1,28 +1,28 @@
-<p align="center"><img src="crates/app/assets/brand/arke.svg" width="96" alt="Logotipo do Arke"></p>
+<p align="center"><img src="crates/app/assets/brand/arke.svg" width="96" alt="Logotipo do Arke-CE"></p>
 
-<h1 align="center">Arke</h1>
+<h1 align="center">Arke-CE</h1>
 
 <p align="center"><b>Um explorador de arquivos para Windows que nunca trava.</b><br>
 Renderizado pela GPU, escrito em Rust, um único exe pequeno.</p>
 
 <p align="center">
-  <a href="https://github.com/Koimsurai/Arke/releases"><img src="https://img.shields.io/github/v/release/Koimsurai/Arke?label=download" alt="Última versão"></a>
-  <a href="https://github.com/Koimsurai/Arke/actions/workflows/ci.yml"><img src="https://github.com/Koimsurai/Arke/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/youringer/Arke-CE/releases"><img src="https://img.shields.io/github/v/release/Koimsurai/Arke-CE?label=download" alt="Última versão"></a>
+  <a href="https://github.com/youringer/Arke-CE/actions/workflows/ci.yml"><img src="https://github.com/youringer/Arke-CE/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4" alt="Windows 10 e 11">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0-blue" alt="AGPL-3.0"></a>
 </p>
 
 <p align="center"><a href="README.md">English</a> · <a href="README.zh-CN.md">简体中文</a> · <a href="README.zh-TW.md">繁體中文</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español</a> · <b>Português (Brasil)</b></p>
 
-<p align="center"><img src=".github/assets/preview.png" alt="Arke exibindo uma pasta com o painel de visualização aberto"></p>
+<p align="center"><img src=".github/assets/preview.png" alt="Arke-CE exibindo uma pasta com o painel de visualização aberto"></p>
 
-## Por que o Arke
+## Por que o Arke-CE
 
 **Ele continua respondendo.** Listagem, ordenação, miniaturas, tamanhos de pasta, pesquisa e
 operações com arquivos rodam fora da thread da interface. Um compartilhamento de rede inacessível
 ou uma pasta com 100.000 arquivos não impede você de rolar, digitar ou trocar de guia.
 
-**Ele encontra qualquer coisa, na hora.** O Arke mantém um índice de nomes de arquivo dos seus
+**Ele encontra qualquer coisa, na hora.** O Arke-CE mantém um índice de nomes de arquivo dos seus
 discos locais. Com o serviço opcional em segundo plano, ele lê diretamente a tabela mestra de
 arquivos (MFT) do NTFS, indexando milhões de arquivos em segundos, e acompanha o journal de
 alterações, de modo que o índice já está atualizado no instante em que você o abre.
@@ -37,25 +37,25 @@ vertical, podem ser fixadas e salvas como espaços de trabalho com nome. Qualque
 dois painéis que navegam em sincronia ou comparam seus conteúdos, e arrastar um arquivo para uma
 guia, um favorito ou um segmento do caminho o solta ali mesmo.
 
-**É seguro para o seu sistema.** O Arke não tem telemetria. Fora o serviço de pesquisa opcional,
-que o Windows registra quando você o instala, o Arke só grava no registro se você ativar
-"Abrir pastas no Arke": nesse caso, ele se registra como o manipulador de pastas da sua conta do
+**É seguro para o seu sistema.** O Arke-CE não tem telemetria. Fora o serviço de pesquisa opcional,
+que o Windows registra quando você o instala, o Arke-CE só grava no registro se você ativar
+"Abrir pastas no Arke-CE": nesse caso, ele se registra como o manipulador de pastas da sua conta do
 Windows (somente em `HKEY_CURRENT_USER\Software\Classes`), e desativar a opção devolve tudo ao
 estado anterior. As extensões de shell de outros programas rodam em um processo separado, então uma
-extensão com defeito não derruba o Arke.
+extensão com defeito não derruba o Arke-CE.
 
-Se o Arke é útil para você, uma ⭐ no GitHub ajuda outras pessoas a encontrá-lo.
+Se o Arke-CE é útil para você, uma ⭐ no GitHub ajuda outras pessoas a encontrá-lo.
 
-O Arke foi destaque no [boletim semanal de tecnologia de Ruan Yifeng, edição 420](https://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html) e está listado no [awesome-rust](https://github.com/rust-unofficial/awesome-rust), no [awesome-gpui](https://github.com/zed-industries/awesome-gpui) e no AlternativeTo.
+O Arke-CE foi destaque no [boletim semanal de tecnologia de Ruan Yifeng, edição 420](https://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html) e está listado no [awesome-rust](https://github.com/rust-unofficial/awesome-rust), no [awesome-gpui](https://github.com/zed-industries/awesome-gpui) e no AlternativeTo.
 
-<p><a href="https://alternativeto.net/software/arke/about/?utm_source=badge&utm_medium=referral"><img src="https://alternativeto.net/static/badges/badge-compact-color.svg" alt="Arke no AlternativeTo" height="40"></a></p>
+<p><a href="https://alternativeto.net/software/arke/about/?utm_source=badge&utm_medium=referral"><img src="https://alternativeto.net/static/badges/badge-compact-color.svg" alt="Arke-CE no AlternativeTo" height="40"></a></p>
 
 ## Recursos
 
 <table>
   <tr>
     <td width="50%"><img src=".github/assets/split-view.png" alt="Uma guia dividida em dois painéis, detalhes à esquerda e ícones à direita"></td>
-    <td width="50%"><img src=".github/assets/context-menu.png" alt="Menu de contexto do Arke"></td>
+    <td width="50%"><img src=".github/assets/context-menu.png" alt="Menu de contexto do Arke-CE"></td>
   </tr>
   <tr>
     <td>Divida qualquer guia em dois painéis que navegam em sincronia ou comparam seus conteúdos.</td>
@@ -63,7 +63,7 @@ O Arke foi destaque no [boletim semanal de tecnologia de Ruan Yifeng, edição 4
   </tr>
   <tr>
     <td width="50%"><img src=".github/assets/quick-look.png" alt="Visualização rápida exibindo um arquivo Markdown"></td>
-    <td width="50%"><img src=".github/assets/properties.png" alt="Janela de Propriedades do Arke para uma pasta"></td>
+    <td width="50%"><img src=".github/assets/properties.png" alt="Janela de Propriedades do Arke-CE para uma pasta"></td>
   </tr>
   <tr>
     <td>A visualização rápida (Espaço) mostra Markdown como o GitHub faz, além de imagens, PDF, arquivos do Office e código.</td>
@@ -97,10 +97,10 @@ O Arke foi destaque no [boletim semanal de tecnologia de Ruan Yifeng, edição 4
   uma guia pelo menu dela, ou arraste-a até lá. Arraste-os para reordenar (os outros abrem espaço,
   como os ícones de aplicativos em um celular) ou para fora para removê-los, e renomeie-os sem
   renomear a pasta. As pastas fixadas em Acesso rápido no Explorador de Arquivos também aparecem.
-- Uma janela por padrão (desde a 0.7): pastas de outros aplicativos, Win+E e iniciar o Arke de novo
+- Uma janela por padrão (desde a 0.7): pastas de outros aplicativos, Win+E e iniciar o Arke-CE de novo
   adicionam uma guia à última janela usada. Desative "Janela única" nas configurações para ter uma
   janela para cada um.
-- Com "Novas janelas abrem em: Últimas guias", as janelas abertas quando você encerra o Arke (ou o
+- Com "Novas janelas abrem em: Últimas guias", as janelas abertas quando você encerra o Arke-CE (ou o
   Windows é desligado) voltam com as suas guias. Uma janela que você fecha enquanto outras
   continuam abertas não é mantida.
 - Pastas que se abrem ao arrastar sobre elas, uma prateleira para reunir arquivos de pastas
@@ -146,7 +146,7 @@ O Arke foi destaque no [boletim semanal de tecnologia de Ruan Yifeng, edição 4
 - Compartilhamentos de rede que falham rápido quando um servidor está offline e mostram o último
   conteúdo conhecido; `\\server` lista os seus compartilhamentos. Locais SFTP e WebDAV
   (experimental; http simples somente depois que você permitir para aquele local). Unidades
-  mapeadas e locais de rede podem ter nomes próprios, guardados apenas no Arke.
+  mapeadas e locais de rede podem ter nomes próprios, guardados apenas no Arke-CE.
 - OneDrive e outras pastas na nuvem com status de sincronização. As visualizações nunca baixam
   arquivos que existem apenas online.
 - Arquivos compactados: visualize e extraia zip e 7z (também com senha), tar (.gz, .xz, .bz2, .zst) e RAR, compacte em
@@ -159,24 +159,24 @@ O Arke foi destaque no [boletim semanal de tecnologia de Ruan Yifeng, edição 4
   funciona normalmente, e tudo o que ele não pode garantir (unidades de rede, OneDrive, arquivos em
   uso, políticas) fica a cargo do Windows. Pode ser desativado nas configurações. Arquivos soltos
   levam alguns milissegundos cada, ainda de duas a seis vezes mais rápido que o Windows.
-- As atualizações são baixadas em silêncio em segundo plano e instaladas na próxima vez que o Arke
+- As atualizações são baixadas em silêncio em segundo plano e instaladas na próxima vez que o Arke-CE
   reiniciar, nunca enquanto arquivos estão sendo copiados e nunca em uma conexão limitada.
 - Os menus abrem em janelas próprias, como os menus do Windows, então perto da borda eles passam
-  além da janela do Arke em vez de ficarem espremidos. Os comandos do Windows que você fixa em
+  além da janela do Arke-CE em vez de ficarem espremidos. Os comandos do Windows que você fixa em
   "Mostrar mais opções" (Git Bash, Windows Terminal, VS Code, 7-Zip, NanaZip...) aparecem assim
   que o menu abre, e Shift+clique com o botão direito adiciona os estendidos, como no Explorador de
   Arquivos.
 - Lançadores e scripts (Listary, ALTRun, AutoHotkey, PowerShell) podem ler as janelas, guias e
-  seleção do Arke e abrir pastas por meio de uma única interface JSON ([docs/integration.md](docs/integration.md)).
+  seleção do Arke-CE e abrir pastas por meio de uma única interface JSON ([docs/integration.md](docs/integration.md)).
 - Silencioso quando ocioso: nada mudando na tela significa nada redesenhado, inclusive minimizado.
   Tamanhos de pasta, indexação e o serviço de pesquisa rodam com baixa prioridade no modo de
-  eficiência do Windows, e com apenas o ícone da bandeja restante o Arke libera seus caches.
-- Opcionalmente (experimental), abrir pastas no Arke em vez do Explorador de Arquivos (inclusive
+  eficiência do Windows, e com apenas o ícone da bandeja restante o Arke-CE libera seus caches.
+- Opcionalmente (experimental), abrir pastas no Arke-CE em vez do Explorador de Arquivos (inclusive
   pastas abertas por outros aplicativos), também "Mostrar na pasta" de navegadores e "Abrir local do
-  arquivo" de outros aplicativos. Ele registra o Arke como o manipulador de pastas da sua conta e é
+  arquivo" de outros aplicativos. Ele registra o Arke-CE como o manipulador de pastas da sua conta e é
   desfeito quando você desativa a opção. O Explorador de Arquivos que você inicia por conta própria
   (Win+E, a barra de tarefas, o menu Iniciar) continua sendo o Explorador de Arquivos, a menos que
-  você também ative "Win+E e o ícone do Explorador de Arquivos também abrem o Arke".
+  você também ative "Win+E e o ícone do Explorador de Arquivos também abrem o Arke-CE".
 - Suporte a leitores de tela, versões x64 e ARM64 (ambas testadas em hardware real), lista de
   atalhos da barra de tarefas, ejeção segura de USB, bandeja do sistema, backup das configurações.
   Inglês, chinês simplificado e tradicional, japonês, alemão, espanhol e português do Brasil (os
@@ -188,13 +188,13 @@ bem-vindos.
 
 ## Desempenho
 
-<p align="center"><img src=".github/assets/responsive.gif" alt="Arke abrindo uma pasta com 100.000 arquivos, rolando, reordenando e filtrando ao mesmo tempo, e depois informando um servidor offline em menos de um segundo enquanto a navegação continua (tempo real)"></p>
+<p align="center"><img src=".github/assets/responsive.gif" alt="Arke-CE abrindo uma pasta com 100.000 arquivos, rolando, reordenando e filtrando ao mesmo tempo, e depois informando um servidor offline em menos de um segundo enquanto a navegação continua (tempo real)"></p>
 
-<p align="center"><img src=".github/assets/search-compare.gif" alt="Pesquisando um arquivo em todo o C: no Explorador de Arquivos, no Files e no Arke (velocidade 3×; o cronômetro mostra segundos reais)"></p>
+<p align="center"><img src=".github/assets/search-compare.gif" alt="Pesquisando um arquivo em todo o C: no Explorador de Arquivos, no Files e no Arke-CE (velocidade 3×; o cronômetro mostra segundos reais)"></p>
 
-<p align="center"><img src=".github/assets/delete-compare.gif" alt="Enviando a mesma pasta de 20.000 arquivos (2,48 GB) para a Lixeira: Arke em 0,2 s, Explorador de Arquivos em 47,3 s, e depois restaurando-a da Lixeira (velocidade 5×; os cronômetros mostram segundos reais)"></p>
+<p align="center"><img src=".github/assets/delete-compare.gif" alt="Enviando a mesma pasta de 20.000 arquivos (2,48 GB) para a Lixeira: Arke-CE em 0,2 s, Explorador de Arquivos em 47,3 s, e depois restaurando-a da Lixeira (velocidade 5×; os cronômetros mostram segundos reais)"></p>
 
-| | Arke | Para comparação |
+| | Arke-CE | Para comparação |
 | --- | --- | --- |
 | Montar do zero o índice do disco inteiro (cerca de 4 milhões de arquivos) | cerca de 10 s, cerca de 130 MB de memória depois | Everything 1.4.1: 21 s, cerca de 400 MB |
 | Encontrar um arquivo em qualquer lugar do C: | os resultados aparecem enquanto você digita | Files 4.3: cerca de 26 s · Explorador de Arquivos: nenhum resultado após 30 s* |
@@ -211,9 +211,9 @@ Um PC: Intel i9-13900, 64 GB de RAM, Samsung 990 PRO NVMe, Windows 11 (build 262
 antivírus em tempo real ativado, o que deixa todos os programas mais lentos. Os caches do sistema
 de arquivos estavam aquecidos.
 
-- **Índice**: o serviço de pesquisa do Arke lendo a tabela mestra de arquivos do NTFS, em um perfil
+- **Índice**: o serviço de pesquisa do Arke-CE lendo a tabela mestra de arquivos do NTFS, em um perfil
   novo; Everything 1.4.1 Lite com o seu serviço, com tamanho do arquivo e data de modificação
-  indexados (os padrões), depois de apagar o seu banco de dados. Os números do Arke vêm de
+  indexados (os padrões), depois de apagar o seu banco de dados. Os números do Arke-CE vêm de
   `arke --bench index`, os do Everything do seu log de depuração; a memória é o working set após o
   fim da indexação.
 - **Pesquisa**: cada programa iniciado em `C:\` e pesquisando o mesmo nome de arquivo; o cronômetro
@@ -224,11 +224,11 @@ de arquivos estavam aquecidos.
   aquecimento, cronometrada até a janela parar de mudar. O File Pilot (beta gratuito) só aparece
   neste teste: ele ainda não tem pesquisa em todo o disco.
 - **Lixeira**: a mesma pasta (20.000 arquivos em 20 pastas, 2,48 GB) enviada para a Lixeira de cada
-  programa em uma única tomada, cronometrada de Excluir até a pasta sair da lista. O Arke usa sua
+  programa em uma única tomada, cronometrada de Excluir até a pasta sair da lista. O Arke-CE usa sua
   Lixeira rápida (ativada por padrão para unidades locais); ambos restauram a partir da Lixeira do
   Windows normalmente.
 
-Os seus números serão diferentes. O Arke registra seus próprios tempos em `%LOCALAPPDATA%\Arke\arke.log`.
+Os seus números serão diferentes. O Arke-CE registra seus próprios tempos em `%LOCALAPPDATA%\Arke-CE\arke.log`.
 
 Execute `arke --bench index` para medir o índice no seu computador.
 
@@ -236,13 +236,13 @@ Execute `arke --bench index` para medir o índice no seu computador.
 
 ## Instalação
 
-Baixe em [Releases](https://github.com/Koimsurai/Arke/releases). Os dois downloads são o mesmo
-Arke, com os mesmos recursos e atualizações, e ambos guardam as configurações em `%APPDATA%\Arke`:
+Baixe em [Releases](https://github.com/youringer/Arke-CE/releases). Os dois downloads são o mesmo
+Arke-CE, com os mesmos recursos e atualizações, e ambos guardam as configurações em `%APPDATA%\Arke-CE`:
 
 - **Portátil**, `arke-<version>.exe`: um único exe, sem runtime, que roda de qualquer pasta. Nada é
   instalado, então ele não aparece no menu Iniciar nem em Configurações › Aplicativos;
-  Configurações › Sobre › **Remover o Arke deste computador** o remove.
-- **Instalador**, `arke-<version>-setup.exe`: instala o Arke para a sua conta sem aprovação de
+  Configurações › Sobre › **Remover o Arke-CE deste computador** o remove.
+- **Instalador**, `arke-<version>-setup.exe`: instala o Arke-CE para a sua conta sem aprovação de
   administrador, ou para todos os usuários em Arquivos de Programas, e o adiciona ao menu Iniciar e
   a Configurações › Aplicativos, onde você pode desinstalá-lo.
 
@@ -256,13 +256,13 @@ scoop bucket add arke https://github.com/Koimsurai/scoop-bucket
 scoop install arke/arke
 ```
 
-O Scoop passa a mantê-lo atualizado (`scoop update arke`), e o Arke deixa as atualizações com ele.
+O Scoop passa a mantê-lo atualizado (`scoop update arke`), e o Arke-CE deixa as atualizações com ele.
 
 As versões ainda não têm assinatura de código, então o SmartScreen pode pedir confirmação na
 primeira vez. A assinatura pela SignPath Foundation está em andamento, veja a
 [política de assinatura de código](#política-de-assinatura-de-código).
 
-O Arke consulta o GitHub por uma nova versão no máximo uma vez por dia e só instala uma quando você
+O Arke-CE consulta o GitHub por uma nova versão no máximo uma vez por dia e só instala uma quando você
 mandar (Configurações › Sobre).
 
 <details>
@@ -330,7 +330,7 @@ limpe em Configurações › Pesquisa.
 
 ## Acessibilidade
 
-O Arke funciona com os leitores de tela do Windows por meio do UI Automation, a interface usada pelo
+O Arke-CE funciona com os leitores de tela do Windows por meio do UI Automation, a interface usada pelo
 Narrator e pelo NVDA; o JAWS também deve funcionar. Até agora foi verificado com ferramentas de UI
 Automation, ainda não por pessoas que usam leitor de tela no dia a dia, então ajuda nos testes é
 bem-vinda.
@@ -341,15 +341,15 @@ ferramentas ainda não são alcançados com Tab (use F6 e os atalhos) e alguns d
 verificados.
 
 O [guia de teclado](docs/keyboard.md) (em inglês) lista todos os atalhos por área. Se algo não puder
-ser alcançado ou não for anunciado, [abra uma issue](https://github.com/Koimsurai/Arke/issues) e
+ser alcançado ou não for anunciado, [abra uma issue](https://github.com/youringer/Arke-CE/issues) e
 informe seu leitor de tela e a versão.
 
 ## Perguntas frequentes
 
 <details>
-<summary><b>A AGPL me afeta se eu apenas usar o Arke, em casa ou no trabalho?</b></summary>
+<summary><b>A AGPL me afeta se eu apenas usar o Arke-CE, em casa ou no trabalho?</b></summary>
 
-Não. A licença só acrescenta obrigações quando você distribui um Arke modificado (ou o oferece por
+Não. A licença só acrescenta obrigações quando você distribui um Arke-CE modificado (ou o oferece por
 uma rede); usá-lo, inclusive dentro de uma empresa, não traz nenhuma.
 
 </details>
@@ -360,21 +360,21 @@ uma rede); usá-lo, inclusive dentro de uma empresa, não traz nenhuma.
 Nada, a menos que você peça. Instalar o serviço de pesquisa opcional (com a sua aprovação) o
 registra no Windows, que mantém os serviços em
 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ArkeIndex`. Fora isso, a única alteração no
-registro é a configuração opcional "Abrir pastas no Arke", que registra o Arke como o manipulador de pastas da sua conta do Windows, somente em
+registro é a configuração opcional "Abrir pastas no Arke-CE", que registra o Arke-CE como o manipulador de pastas da sua conta do Windows, somente em
 `HKEY_CURRENT_USER\Software\Classes`: os verbos `open` e `explore` de `Folder` (de modo que toda
-pasta que o shell abre, inclusive "Mostrar na pasta" de navegadores e editores, inicia o Arke em
-vez do Explorador de Arquivos; o que o Arke não consegue mostrar, como o Painel de Controle, é
+pasta que o shell abre, inclusive "Mostrar na pasta" de navegadores e editores, inicia o Arke-CE em
+vez do Explorador de Arquivos; o que o Arke-CE não consegue mostrar, como o Painel de Controle, é
 repassado direto ao Explorer) e, somente com "Win+E e o ícone do Explorador de Arquivos também
-abrem o Arke", o manipulador de Win+E. O que existia antes é salvo em
-`%APPDATA%\Arke\folder-handler-backup.json` e restaurado exatamente quando você desativa a
-configuração ou executa `arke --restore-explorer`. O Arke também continua observando novas janelas
+abrem o Arke-CE", o manipulador de Win+E. O que existia antes é salvo em
+`%APPDATA%\Arke-CE\folder-handler-backup.json` e restaurado exatamente quando você desativa a
+configuração ou executa `arke --restore-explorer`. O Arke-CE também continua observando novas janelas
 do Explorer para os casos que o registro não alcança, como `explorer.exe /select,...`. Em PCs em
 que o Windows envia Win+E direto ao Explorador de Arquivos sem consultar o registro (uma mudança
-que o Windows vem implantando desde o fim de 2026), o Arke assume o Win+E com um hook de teclado
+que o Windows vem implantando desde o fim de 2026), o Arke-CE assume o Win+E com um hook de teclado
 enquanto roda em segundo plano: ele só reage ao E enquanto uma tecla Windows está pressionada e não
-grava nada. As configurações ficam em `%APPDATA%\Arke`, o índice de pesquisa, o log e as
-atualizações baixadas em `%LOCALAPPDATA%\Arke`. "Iniciar quando eu entrar no Windows" é um atalho na
-sua pasta Inicializar, e "Mostrar o Arke no menu Iniciar" um na sua pasta do menu Iniciar. As senhas
+grava nada. As configurações ficam em `%APPDATA%\Arke-CE`, o índice de pesquisa, o log e as
+atualizações baixadas em `%LOCALAPPDATA%\Arke-CE`. "Iniciar quando eu entrar no Windows" é um atalho na
+sua pasta Inicializar, e "Mostrar o Arke-CE no menu Iniciar" um na sua pasta do menu Iniciar. As senhas
 de locais SFTP e WebDAV vão para o Gerenciador de Credenciais do Windows, e somente quando você
 marca "Lembrar". O serviço de pesquisa opcional é a única parte que precisa de aprovação de
 administrador. O instalador, se você o usar, adiciona a entrada de desinstalação que o Windows lista
@@ -386,18 +386,18 @@ pede aprovação apenas para uma instalação para todos os usuários.
 <details>
 <summary><b>Como removo tudo completamente?</b></summary>
 
-Configurações › Sobre › **Remover o Arke deste computador**. Ele remove o serviço de pesquisa se
+Configurações › Sobre › **Remover o Arke-CE deste computador**. Ele remove o serviço de pesquisa se
 você o instalou (o Windows pede aprovação de administrador para essa parte), os atalhos do menu
 Iniciar e de "Iniciar quando eu entrar no Windows", as senhas SFTP e WebDAV salvas, a lista de
-atalhos, `%LOCALAPPDATA%\Arke`, `%APPDATA%\Arke` (a menos que você marque "Manter minhas
+atalhos, `%LOCALAPPDATA%\Arke-CE`, `%APPDATA%\Arke-CE` (a menos que você marque "Manter minhas
 configurações") e, por fim, o próprio exe, e então mostra o que removeu.
 
 Em um terminal ou script: `arke --uninstall`, com `--keep-settings`, `--quiet` (sem diálogos,
 apenas o pedido de administrador para o serviço) ou `--dry-run` (apenas lista o que removeria).
-Instalou com Scoop ou winget (quando o Arke estiver disponível no winget)? `arke --uninstall` deixa o exe para o gerenciador de pacotes; remova-o
-com `scoop uninstall arke` ou `winget uninstall Koimsurai.Arke`.
+Instalou com Scoop ou winget (quando o Arke-CE estiver disponível no winget)? `arke --uninstall` deixa o exe para o gerenciador de pacotes; remova-o
+com `scoop uninstall arke` ou `winget uninstall Koimsurai.Arke-CE`.
 
-Ele também desativa "Abrir pastas no Arke" e restaura o manipulador de pastas anterior. Vai remover o Arke manualmente? Desative essa configuração (ou execute `arke --restore-explorer`) **antes** de apagar o exe, para que as pastas continuem abrindo no Explorador de Arquivos.
+Ele também desativa "Abrir pastas no Arke-CE" e restaura o manipulador de pastas anterior. Vai remover o Arke-CE manualmente? Desative essa configuração (ou execute `arke --restore-explorer`) **antes** de apagar o exe, para que as pastas continuem abrindo no Explorador de Arquivos.
 
 </details>
 
@@ -408,10 +408,10 @@ As versões ainda não têm assinatura de código, e um exe novo sem assinatura 
 SmartScreen. Cada versão traz nas suas notas uma soma de verificação SHA-256 e uma análise do
 VirusTotal dos exes, e você sempre pode compilá-lo a partir do código-fonte por conta própria. Para
 versões posteriores à 0.1.0,
-`gh attestation verify arke-<version>.exe -R Koimsurai/Arke` confirma que um exe foi compilado pelo fluxo de trabalho de versões deste repositório.
+`gh attestation verify arke-<version>.exe -R Koimsurai/Arke-CE` confirma que um exe foi compilado pelo fluxo de trabalho de versões deste repositório.
 
 Alguns antivírus bloqueiam cada nova versão até que você a permita. Se ele impedir a nova versão
-quando o Arke reiniciar após uma atualização, o Arke restaura a versão que você tinha e avisa;
+quando o Arke-CE reiniciar após uma atualização, o Arke-CE restaura a versão que você tinha e avisa;
 permita o `arke.exe` no seu antivírus e atualize de novo.
 
 </details>
@@ -420,20 +420,20 @@ permita o `arke.exe` no seu antivírus e atualize de novo.
 <summary><b>Haverá uma versão para Linux ou macOS?</b></summary>
 
 Ainda não. O `crates/core` é em grande parte independente de plataforma, mas as partes que tornam o
-Arke rápido no Windows (o índice MFT, a integração com o shell) são específicas do Windows. Conte
+Arke-CE rápido no Windows (o índice MFT, a integração com o shell) são específicas do Windows. Conte
 em uma issue o que você precisaria.
 
 </details>
 
 ## Relatar um problema
 
-O jeito mais fácil é pelo Arke: **Configurações › Sobre › Relatar um problema › Abrir uma issue no GitHub**.
-Ele preenche as versões do Arke e do Windows, as principais configurações e as últimas linhas do
+O jeito mais fácil é pelo Arke-CE: **Configurações › Sobre › Relatar um problema › Abrir uma issue no GitHub**.
+Ele preenche as versões do Arke-CE e do Windows, as principais configurações e as últimas linhas do
 log, com os nomes de conta, computador, servidor e arquivos removidos. Você também pode copiar o
 relatório ou salvá-lo como arquivo e enviá-lo de outra forma, e **Mostrar arquivo de log** abre o
 próprio log.
 
-Se o Arke não iniciar, o log está em `%LOCALAPPDATA%\Arke\arke.log`.
+Se o Arke-CE não iniciar, o log está em `%LOCALAPPDATA%\Arke-CE\arke.log`.
 
 ## Compilar a partir do código-fonte
 
@@ -454,19 +454,19 @@ cargo lint                     # clippy, as strict as CI
 | `crates/indexd` | O serviço opcional em segundo plano (MFT e journal USN) |
 | `tools/xtask` | Ferramentas de lançamento: changesets, versionamento, empacotamento, publicação |
 
-Por enquanto, o Arke não aceita pull requests, mas relatos de bugs e ideias são muito bem-vindos
-como [issues](https://github.com/Koimsurai/Arke/issues). Veja [CONTRIBUTING.md](CONTRIBUTING.md)
+Por enquanto, o Arke-CE não aceita pull requests, mas relatos de bugs e ideias são muito bem-vindos
+como [issues](https://github.com/youringer/Arke-CE/issues). Veja [CONTRIBUTING.md](CONTRIBUTING.md)
 para as convenções e o processo de lançamento.
 
 ## Agradecimentos
 
-O Arke é construído sobre o [GPUI](https://github.com/zed-industries/zed/tree/main/crates/gpui), o
+O Arke-CE é construído sobre o [GPUI](https://github.com/zed-industries/zed/tree/main/crates/gpui), o
 framework de interface do editor Zed, e sobre os crates de código aberto listados em
 [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md). A sintaxe de pesquisa segue o
 [Everything](https://www.voidtools.com/), o visual deve muito ao aplicativo
 [Files](https://files.community/), e a barra lateral de guias é uma homenagem ao navegador Arc.
 
-O nome vem da mitologia grega: Arke é a irmã gêmea de Íris, ambas mensageiras aladas.
+O nome vem da mitologia grega: Arke-CE é a irmã gêmea de Íris, ambas mensageiras aladas.
 
 ## Política de assinatura de código
 
@@ -482,17 +482,17 @@ partir de um commit com tag, e cada versão é aprovada manualmente antes de ser
 
 ## Privacidade
 
-O Arke não coleta nem envia nenhum dado sobre você ou seus arquivos. Ele só se conecta à internet
+O Arke-CE não coleta nem envia nenhum dado sobre você ou seus arquivos. Ele só se conecta à internet
 para consultar o GitHub por uma nova versão (no máximo uma vez por dia, pode ser desativado em
 Configurações › Sobre), para baixar uma quando você escolhe instalá-la e para acessar os
 compartilhamentos de rede e os locais SFTP e WebDAV que você mesmo abre.
 
 Se o GitHub estiver lento ou bloqueado onde você está, Configurações › Sobre › Atualizações › Rota de
 download envia a busca e o download de atualizações por um espelho (um endereço `https://` colocado antes
-do endereço do GitHub) ou um proxy HTTP (`host:porta`) que você escolher. O Arke não inclui nenhum e só
-usa um se você digitar. Quem o opera vê seu endereço IP e qual versão do Arke você consulta ou baixa;
-nada mais passa por ele. Se falhar, o Arke consulta o GitHub diretamente e mostra isso abaixo da
-configuração. O Arke só instala downloads assinados com a própria chave, então um espelho ou proxy não
+do endereço do GitHub) ou um proxy HTTP (`host:porta`) que você escolher. O Arke-CE não inclui nenhum e só
+usa um se você digitar. Quem o opera vê seu endereço IP e qual versão do Arke-CE você consulta ou baixa;
+nada mais passa por ele. Se falhar, o Arke-CE consulta o GitHub diretamente e mostra isso abaixo da
+configuração. O Arke-CE só instala downloads assinados com a própria chave, então um espelho ou proxy não
 consegue empurrar uma versão alterada ou mais antiga.
 
 ## Licença

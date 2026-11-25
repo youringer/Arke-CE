@@ -37,17 +37,17 @@
 
 [Setup]
 AppId={{3593FF9D-559F-4CAF-98F5-21A310C846D4}
-AppName=Arke
+AppName=Arke-CE
 AppVersion={#AppVersion}
-AppVerName=Arke {#AppVersion}
-AppPublisher=Arke contributors
-AppPublisherURL=https://github.com/Koimsurai/Arke
-AppSupportURL=https://github.com/Koimsurai/Arke/issues
-AppUpdatesURL=https://github.com/Koimsurai/Arke/releases
+AppVerName=Arke-CE {#AppVersion}
+AppPublisher=Arke-CE contributors
+AppPublisherURL=https://github.com/youringer/Arke-CE
+AppSupportURL=https://github.com/youringer/Arke-CE/issues
+AppUpdatesURL=https://github.com/youringer/Arke-CE/releases
 VersionInfoVersion={#Copy(AppVersion, 1, Pos("-", AppVersion + "-") - 1)}
-VersionInfoProductName=Arke
-VersionInfoDescription=Arke setup
-DefaultDirName={autopf}\Arke
+VersionInfoProductName=Arke-CE
+VersionInfoDescription=Arke-CE setup
+DefaultDirName={autopf}\Arke-CE
 DisableProgramGroupPage=yes
 DisableReadyPage=yes
 PrivilegesRequired=lowest
@@ -58,7 +58,7 @@ MinVersion=10.0.17763
 OutputBaseFilename=arke-{#AppVersion}{#ArchSuffix}-setup
 SetupIconFile=..\crates\app\assets\brand\arke.ico
 UninstallDisplayIcon={app}\arke.exe
-UninstallDisplayName=Arke
+UninstallDisplayName=Arke-CE
 WizardStyle=modern {#WizardMode}
 WizardSizePercent=100
 WizardImageFile=wizard-100.bmp,wizard-125.bmp,wizard-150.bmp,wizard-175.bmp,wizard-200.bmp
@@ -111,11 +111,11 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "{#SourceExe}"; DestDir: "{app}"; DestName: "arke.exe"; Flags: ignoreversion
 
 [Icons]
-Name: "{autoprograms}\Arke"; Filename: "{app}\arke.exe"
-Name: "{autodesktop}\Arke"; Filename: "{app}\arke.exe"; Tasks: desktopicon
+Name: "{autoprograms}\Arke-CE"; Filename: "{app}\arke.exe"
+Name: "{autodesktop}\Arke-CE"; Filename: "{app}\arke.exe"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\arke.exe"; Description: "{cm:LaunchProgram,Arke}"; Flags: nowait postinstall skipifsilent runasoriginaluser
+Filename: "{app}\arke.exe"; Description: "{cm:LaunchProgram,Arke-CE}"; Flags: nowait postinstall skipifsilent runasoriginaluser
 ; After an update Arke reopens the tabs that were open (`--after-update`; 0: the old process is
 ; already gone, there is nothing to wait for).
 Filename: "{app}\arke.exe"; Parameters: "--after-update 0"; Check: LaunchAfterUpdate; Flags: nowait runasoriginaluser

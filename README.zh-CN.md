@@ -1,27 +1,27 @@
-<p align="center"><img src="crates/app/assets/brand/arke.svg" width="96" alt="Arke 标志"></p>
+<p align="center"><img src="crates/app/assets/brand/arke.svg" width="96" alt="Arke-CE 标志"></p>
 
-<h1 align="center">Arke</h1>
+<h1 align="center">Arke-CE</h1>
 
 <p align="center"><b>永远不卡的 Windows 文件管理器。</b><br>
 GPU 渲染，用 Rust 写成，只有一个小小的 exe。</p>
 
 <p align="center">
-  <a href="https://github.com/Koimsurai/Arke/releases"><img src="https://img.shields.io/github/v/release/Koimsurai/Arke?label=download" alt="最新版本"></a>
-  <a href="https://github.com/Koimsurai/Arke/actions/workflows/ci.yml"><img src="https://github.com/Koimsurai/Arke/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/youringer/Arke-CE/releases"><img src="https://img.shields.io/github/v/release/Koimsurai/Arke-CE?label=download" alt="最新版本"></a>
+  <a href="https://github.com/youringer/Arke-CE/actions/workflows/ci.yml"><img src="https://github.com/youringer/Arke-CE/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4" alt="Windows 10 和 11">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0-blue" alt="AGPL-3.0"></a>
 </p>
 
 <p align="center"><a href="README.md">English</a> · <b>简体中文</b> · <a href="README.zh-TW.md">繁體中文</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español</a> · <a href="README.pt-BR.md">Português (Brasil)</a></p>
 
-<p align="center"><img src=".github/assets/preview.png" alt="Arke 打开预览窗格的文件夹"></p>
+<p align="center"><img src=".github/assets/preview.png" alt="Arke-CE 打开预览窗格的文件夹"></p>
 
-## 为什么用 Arke
+## 为什么用 Arke-CE
 
 **不会卡。** 列目录、排序、缩略图、文件夹大小、搜索、文件操作全都在后台进行。连不上的网络位置、
 十万个文件的文件夹，都不会让你滚动、打字或切换标签页时停住。
 
-**什么都找得到，而且马上。** Arke 为本地磁盘维护一份文件名索引。装上可选的后台服务后，它直接读取
+**什么都找得到，而且马上。** Arke-CE 为本地磁盘维护一份文件名索引。装上可选的后台服务后，它直接读取
 NTFS 的主文件表，几秒就能为几百万个文件建好索引，并持续跟随更改日志，打开时索引就是最新的。
 
 **文件操作不用等。** 两万个文件的文件夹删到回收站只要 0.2 秒，文件资源管理器要 47 秒，还原也照常。
@@ -30,34 +30,34 @@ NTFS 的主文件表，几秒就能为几百万个文件建好索引，并持续
 **同时开很多文件夹也顺手。** 标签页放在竖排侧边栏里，可以固定，也能整组存成工作区。任何标签页都能
 分成左右两个窗格，同步浏览或比较两边的内容；把文件拖到标签页、收藏的文件夹或路径栏的某一层，就直接放进那里。
 
-**不乱动你的系统。** Arke 没有遥测。除了安装可选的搜索服务时由 Windows 注册这个服务，只有在你开启
-“用 Arke 打开文件夹”时才会写注册表：它会把自己注册为你这个 Windows 账户的文件夹打开程序（只改 `HKEY_CURRENT_USER\Software\Classes`），关掉设置就全部还原。
-其他程序加进右键菜单的扩展在独立进程里运行，出问题的扩展不会让 Arke 崩溃。
+**不乱动你的系统。** Arke-CE 没有遥测。除了安装可选的搜索服务时由 Windows 注册这个服务，只有在你开启
+“用 Arke-CE 打开文件夹”时才会写注册表：它会把自己注册为你这个 Windows 账户的文件夹打开程序（只改 `HKEY_CURRENT_USER\Software\Classes`），关掉设置就全部还原。
+其他程序加进右键菜单的扩展在独立进程里运行，出问题的扩展不会让 Arke-CE 崩溃。
 
-如果 Arke 对你有帮助，在 GitHub 点个 ⭐，能让更多人找到它。
+如果 Arke-CE 对你有帮助，在 GitHub 点个 ⭐，能让更多人找到它。
 
-Arke 登上了[阮一峰《科技爱好者周刊》第 420 期](https://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html)，也收录在 [awesome-rust](https://github.com/rust-unofficial/awesome-rust)、[awesome-gpui](https://github.com/zed-industries/awesome-gpui) 和 AlternativeTo。
+Arke-CE 登上了[阮一峰《科技爱好者周刊》第 420 期](https://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html)，也收录在 [awesome-rust](https://github.com/rust-unofficial/awesome-rust)、[awesome-gpui](https://github.com/zed-industries/awesome-gpui) 和 AlternativeTo。
 
-<p><a href="https://alternativeto.net/software/arke/about/?utm_source=badge&utm_medium=referral"><img src="https://alternativeto.net/static/badges/badge-compact-color.svg" alt="Arke 在 AlternativeTo" height="40"></a></p>
+<p><a href="https://alternativeto.net/software/arke/about/?utm_source=badge&utm_medium=referral"><img src="https://alternativeto.net/static/badges/badge-compact-color.svg" alt="Arke-CE 在 AlternativeTo" height="40"></a></p>
 
 ## 功能
 
 <table>
   <tr>
     <td width="50%"><img src=".github/assets/split-view.png" alt="分成左右两个窗格的标签页，左边详细信息、右边图标"></td>
-    <td width="50%"><img src=".github/assets/context-menu.png" alt="Arke 的右键菜单"></td>
+    <td width="50%"><img src=".github/assets/context-menu.png" alt="Arke-CE 的右键菜单"></td>
   </tr>
   <tr>
     <td>任何标签页都能分成左右两个窗格，同步浏览或比较两边的内容。</td>
-    <td>Arke 自己的右键菜单，弹出很快；完整的 Windows 菜单也只差一步。</td>
+    <td>Arke-CE 自己的右键菜单，弹出很快；完整的 Windows 菜单也只差一步。</td>
   </tr>
   <tr>
     <td width="50%"><img src=".github/assets/quick-look.png" alt="快速预览 Markdown 文件"></td>
-    <td width="50%"><img src=".github/assets/properties.png" alt="Arke 的文件夹属性窗口"></td>
+    <td width="50%"><img src=".github/assets/properties.png" alt="Arke-CE 的文件夹属性窗口"></td>
   </tr>
   <tr>
     <td>快速预览（空格键）像 GitHub 一样显示 Markdown，也能看图片、PDF、Office 文件和代码。</td>
-    <td>Arke 自己的属性窗口（Alt+Enter），看得到文件夹的空间都用在哪里。</td>
+    <td>Arke-CE 自己的属性窗口（Alt+Enter），看得到文件夹的空间都用在哪里。</td>
   </tr>
   <tr>
     <td width="50%"><img src=".github/assets/icons-light.png" alt="浅色主题的图标视图"></td>
@@ -111,7 +111,7 @@ Arke 登上了[阮一峰《科技爱好者周刊》第 420 期](https://www.ruan
 
 **位置**
 - 网络位置：服务器离线时马上告诉你、显示上次看到的内容；`\\服务器` 会列出它的共享文件夹。
-  也能连接 SFTP 和 WebDAV（实验性；纯 http 要先对那个位置允许）。映射的网络驱动器和网络位置可以另起名称，只保存在 Arke 里。
+  也能连接 SFTP 和 WebDAV（实验性；纯 http 要先对那个位置允许）。映射的网络驱动器和网络位置可以另起名称，只保存在 Arke-CE 里。
 - OneDrive 和其他云文件夹显示同步状态，预览不会下载只在云端的文件。
 - 压缩包：预览和解压 zip 和 7z（包括有密码的）、tar（.gz、.xz、.bz2、.zst）和 RAR，压缩成 zip。RAR 和
   xz／bzip2／zstd 的 tar 使用 Windows 内置的 libarchive（Windows 11 23H2 及以上最完整）。
@@ -120,18 +120,18 @@ Arke 登上了[阮一峰《科技爱好者周刊》第 420 期](https://www.ruan
 - 在本机磁盘上，大文件夹直接进回收站：两万个文件约 0.25 秒，不必等 Windows 先逐一检查每个文件（原来约
   40 秒）。还原方式不变；没把握的情况（网络磁盘、OneDrive、被占用的文件、组策略）照样交给 Windows。
   可以在设置关闭。零散文件每个要几毫秒，仍比 Windows 快二到六倍。
-- 更新在后台悄悄下载，下次 Arke 重新启动时安装；复制文件时不会安装，按流量计费的网络也不会下载。
-- 菜单打开在自己的窗口里，和 Windows 的菜单一样，靠近边缘时可以超出 Arke 的窗口，不会被挤扁。从“更多选项”
+- 更新在后台悄悄下载，下次 Arke-CE 重新启动时安装；复制文件时不会安装，按流量计费的网络也不会下载。
+- 菜单打开在自己的窗口里，和 Windows 的菜单一样，靠近边缘时可以超出 Arke-CE 的窗口，不会被挤扁。从“更多选项”
   固定的 Windows 命令（Git Bash、Windows Terminal、VS Code、7-Zip、NanaZip…）菜单一打开就出现；按住 Shift
   右键会多出扩展命令，和文件资源管理器一样。
-- 启动器和脚本（Listary、ALTRun、AutoHotkey、PowerShell）可以通过一个 JSON 接口读取 Arke 的窗口、标签页和
+- 启动器和脚本（Listary、ALTRun、AutoHotkey、PowerShell）可以通过一个 JSON 接口读取 Arke-CE 的窗口、标签页和
   选中的项目，也能打开文件夹（[docs/integration.md](docs/integration.md)）。
 - 闲置时很安静：画面没变就不重绘，最小化时也一样。文件夹大小、索引和搜索服务以低优先级、Windows 的效率
-  模式运行；只剩系统托盘图标时，Arke 会释放缓存。
-- 可以选择（实验性）让文件夹改用 Arke 打开，代替文件资源管理器（其他程序打开的文件夹也算），连浏览器的
-  “在文件夹中显示”、其他程序的“打开文件所在的位置”都会接过来。它会把 Arke 注册为你账户的文件夹打开
+  模式运行；只剩系统托盘图标时，Arke-CE 会释放缓存。
+- 可以选择（实验性）让文件夹改用 Arke-CE 打开，代替文件资源管理器（其他程序打开的文件夹也算），连浏览器的
+  “在文件夹中显示”、其他程序的“打开文件所在的位置”都会接过来。它会把 Arke-CE 注册为你账户的文件夹打开
   程序，关掉设置就还原。自己打开的文件资源管理器（Win+E、任务栏、开始菜单）仍是文件资源管理器，除非另外
-  打开“Win+E 和文件资源管理器图标也打开 Arke”。
+  打开“Win+E 和文件资源管理器图标也打开 Arke-CE”。
 - 支持屏幕阅读器，提供 x64 和 ARM64 版本（都在真机上测试过）；任务栏的跳转列表、
   安全弹出 U 盘、通知区域图标、设置备份。界面有英文、简体中文、繁体中文、日语、德语、西班牙语和巴西葡萄牙语（后四种是 0.8 新增，翻译用词
   欢迎在 issue 里指正）。
@@ -141,13 +141,13 @@ Arke 登上了[阮一峰《科技爱好者周刊》第 420 期](https://www.ruan
 
 ## 性能
 
-<p align="center"><img src=".github/assets/responsive.gif" alt="Arke 打开十万个文件的文件夹，立刻滚动、重新排序、筛选；接着打开离线的服务器，一秒内就提示，同时照常浏览（真实速度）"></p>
+<p align="center"><img src=".github/assets/responsive.gif" alt="Arke-CE 打开十万个文件的文件夹，立刻滚动、重新排序、筛选；接着打开离线的服务器，一秒内就提示，同时照常浏览（真实速度）"></p>
 
-<p align="center"><img src=".github/assets/search-compare.gif" alt="在文件资源管理器、Files、Arke 中搜索整个 C 盘里的一个文件（3 倍速，计时器是真实秒数）"></p>
+<p align="center"><img src=".github/assets/search-compare.gif" alt="在文件资源管理器、Files、Arke-CE 中搜索整个 C 盘里的一个文件（3 倍速，计时器是真实秒数）"></p>
 
-<p align="center"><img src=".github/assets/delete-compare.gif" alt="把同一个 2 万个文件（2.48 GB）的文件夹删除到回收站：Arke 0.2 秒，文件资源管理器 47.3 秒，最后再从回收站还原（5 倍速，计时器是真实秒数）"></p>
+<p align="center"><img src=".github/assets/delete-compare.gif" alt="把同一个 2 万个文件（2.48 GB）的文件夹删除到回收站：Arke-CE 0.2 秒，文件资源管理器 47.3 秒，最后再从回收站还原（5 倍速，计时器是真实秒数）"></p>
 
-| | Arke | 对照 |
+| | Arke-CE | 对照 |
 | --- | --- | --- |
 | 从零建好全盘索引（约 400 万个文件） | 约 10 秒，建完后约占 130 MB 内存 | Everything 1.4.1：21 秒，约 400 MB |
 | 在整个 C 盘找一个文件 | 边打字边出结果 | Files 4.3：约 26 秒 · 文件资源管理器：30 秒后仍没有结果* |
@@ -162,18 +162,18 @@ Arke 登上了[阮一峰《科技爱好者周刊》第 420 期](https://www.ruan
 同一台电脑：Intel i9-13900、64 GB 内存、Samsung 990 PRO NVMe、Windows 11（build 26200），
 开着实时扫描的杀毒软件，所有程序都会被拖慢。文件系统缓存是热的。
 
-- **索引**：Arke 的搜索服务读取 NTFS 主文件表，使用全新的配置；Everything 1.4.1 Lite 搭配它的服务，
-  索引文件大小和修改日期（默认值），先删掉它的数据库再重建。Arke 的数字来自 `arke --bench index`，
+- **索引**：Arke-CE 的搜索服务读取 NTFS 主文件表，使用全新的配置；Everything 1.4.1 Lite 搭配它的服务，
+  索引文件大小和修改日期（默认值），先删掉它的数据库再重建。Arke-CE 的数字来自 `arke --bench index`，
   Everything 的来自它的调试日志；内存是建完索引后的工作集。
 - **搜索**：每个程序都从 `C:\` 开始搜索同一个文件名，计时从开始打字算起。文件资源管理器和 Files
   在有索引的文件夹里用 Windows Search，其他地方则要扫描磁盘。
 - **文件夹**：用 `cargo run -p genfiles -- 100000` 生成 10 万个文件，每个程序都从冷启动打开；预热一次
   后测三次取中位数，计到窗口画面不再变化为止。File Pilot（免费测试版）只参加这一项，因为它还没有全盘搜索。
 - **回收站**：同一个文件夹（20 个文件夹共 2 万个文件，2.48 GB）分别从两个程序删除到回收站，一次拍完，
-  从按下删除计到文件夹从列表消失。Arke 用的是它的快速回收站（本地磁盘默认开启）；两者都能照常从
+  从按下删除计到文件夹从列表消失。Arke-CE 用的是它的快速回收站（本地磁盘默认开启）；两者都能照常从
   Windows 回收站还原。
 
-你的数字会不一样。Arke 会把自己的计时写在 `%LOCALAPPDATA%\Arke\arke.log`。
+你的数字会不一样。Arke-CE 会把自己的计时写在 `%LOCALAPPDATA%\Arke-CE\arke.log`。
 
 运行 `arke --bench index` 可以在你的电脑上测索引。
 
@@ -181,11 +181,11 @@ Arke 登上了[阮一峰《科技爱好者周刊》第 420 期](https://www.ruan
 
 ## 安装
 
-到 [Releases](https://github.com/Koimsurai/Arke/releases) 下载。两种下载是同一个 Arke，功能和更新方式都一样，设置也都保存在 `%APPDATA%\Arke`：
+到 [Releases](https://github.com/youringer/Arke-CE/releases) 下载。两种下载是同一个 Arke-CE，功能和更新方式都一样，设置也都保存在 `%APPDATA%\Arke-CE`：
 
 - **免安装版** `arke-<版本>.exe`：只有一个 exe，不需要装运行库，放在哪个文件夹都能运行。
   它不会安装任何东西，所以不在开始菜单，也不在“设置 › 应用”中；要删除就用 设置 › 关于 ›
-  **从这台电脑卸载 Arke**。
+  **从这台电脑卸载 Arke-CE**。
 - **安装版** `arke-<版本>-setup.exe`：为你的账户安装，不需要管理员权限；也可以选择为所有用户
   安装（Program Files）。它会加到开始菜单和“设置 › 应用”中，可以从那里卸载。
 
@@ -198,12 +198,12 @@ scoop bucket add arke https://github.com/Koimsurai/scoop-bucket
 scoop install arke/arke
 ```
 
-之后由 Scoop 负责更新（`scoop update arke`），Arke 不会自己更新。
+之后由 Scoop 负责更新（`scoop update arke`），Arke-CE 不会自己更新。
 
 目前还没有代码签名，第一次运行时 SmartScreen 可能会让你确认。通过 SignPath Foundation 的签名
 正在申请中，见[代码签名政策](#代码签名政策)。
 
-Arke 一天最多向 GitHub 检查一次新版本，你同意后才会安装（设置 › 关于）。
+Arke-CE 一天最多向 GitHub 检查一次新版本，你同意后才会安装（设置 › 关于）。
 
 <details>
 <summary><b>可选的后台服务</b></summary>
@@ -265,21 +265,21 @@ Arke 一天最多向 GitHub 检查一次新版本，你同意后才会安装（�
 
 ## 无障碍
 
-Arke 通过 UI Automation 支持 Windows 的屏幕阅读器（Narrator 和 NVDA 使用的接口），JAWS 应该也能用。
+Arke-CE 通过 UI Automation 支持 Windows 的屏幕阅读器（Narrator 和 NVDA 使用的接口），JAWS 应该也能用。
 目前只用 UI Automation 工具检查过，还没有每天使用屏幕阅读器的人实际测试，欢迎协助测试。
 
 可用的部分：文件列表、侧边栏、标签页、路径栏、搜索、设置、菜单和属性窗口。尚未完成的部分：
 工具栏按钮还不能用 Tab 到达（请改用 F6 和快捷键），部分对话框也还没检查。
 
 [键盘指南](docs/keyboard.md)（英文）按区域列出所有快捷键。如果有地方无法操作或没有被读出来，
-请[提交 issue](https://github.com/Koimsurai/Arke/issues)，并注明使用的屏幕阅读器及其版本。
+请[提交 issue](https://github.com/youringer/Arke-CE/issues)，并注明使用的屏幕阅读器及其版本。
 
 ## 常见问题
 
 <details>
 <summary><b>AGPL 对我有影响吗？我只是在家里或公司里用。</b></summary>
 
-没有。许可证只在你分发修改过的 Arke（或通过网络提供它）时才有义务；单纯使用，包括在公司内部使用，
+没有。许可证只在你分发修改过的 Arke-CE（或通过网络提供它）时才有义务；单纯使用，包括在公司内部使用，
 都没有任何义务。
 
 </details>
@@ -289,15 +289,15 @@ Arke 通过 UI Automation 支持 Windows 的屏幕阅读器（Narrator 和 NVDA 
 
 你不要求就不会。安装可选的搜索服务时（需要你同意），Windows 会把它注册在
 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ArkeIndex`。除此之外，唯一会改注册表的是可选的
-“用 Arke 打开文件夹”：它把 Arke 注册为你这个 Windows 账户的文件夹打开程序，只写 `HKEY_CURRENT_USER\Software\Classes` 下面：`Folder` 的 `open` 和 `explore` 操作
-（shell 打开任何文件夹都会启动 Arke，包括浏览器、编辑器的“在文件夹中显示”；Arke 不能显示的，例如控制面板，
-会直接交给文件资源管理器），以及打开“Win+E 和文件资源管理器图标也打开 Arke”时的 Win+E 处理程序。原来的内容会备份到
-`%APPDATA%\Arke\folder-handler-backup.json`，你关掉设置或运行 `arke --restore-explorer` 时原样放回去。
-对注册表覆盖不到的情况（例如 `explorer.exe /select,...`），Arke 仍会在运行时留意新打开的资源管理器窗口。
+“用 Arke-CE 打开文件夹”：它把 Arke-CE 注册为你这个 Windows 账户的文件夹打开程序，只写 `HKEY_CURRENT_USER\Software\Classes` 下面：`Folder` 的 `open` 和 `explore` 操作
+（shell 打开任何文件夹都会启动 Arke-CE，包括浏览器、编辑器的“在文件夹中显示”；Arke-CE 不能显示的，例如控制面板，
+会直接交给文件资源管理器），以及打开“Win+E 和文件资源管理器图标也打开 Arke-CE”时的 Win+E 处理程序。原来的内容会备份到
+`%APPDATA%\Arke-CE\folder-handler-backup.json`，你关掉设置或运行 `arke --restore-explorer` 时原样放回去。
+对注册表覆盖不到的情况（例如 `explorer.exe /select,...`），Arke-CE 仍会在运行时留意新打开的资源管理器窗口。
 有些电脑的 Windows 会把 Win+E 直接交给文件资源管理器、不经过注册表（Windows 从 2026 年底开始陆续推送这项改动），
-在这些电脑上，Arke 在后台运行时会用键盘 hook 接管 Win+E：只在按住 Windows 键时看 E 这一个键，不记录任何内容。
-设置保存在 `%APPDATA%\Arke`，搜索索引、日志和下载的
-更新在 `%LOCALAPPDATA%\Arke`。“登录 Windows 时启动”是在“启动”文件夹里放一个快捷方式，“在开始菜单显示 Arke”则是在开始菜单文件夹里放一个快捷方式。SFTP 和 WebDAV 位置的密码只有
+在这些电脑上，Arke-CE 在后台运行时会用键盘 hook 接管 Win+E：只在按住 Windows 键时看 E 这一个键，不记录任何内容。
+设置保存在 `%APPDATA%\Arke-CE`，搜索索引、日志和下载的
+更新在 `%LOCALAPPDATA%\Arke-CE`。“登录 Windows 时启动”是在“启动”文件夹里放一个快捷方式，“在开始菜单显示 Arke-CE”则是在开始菜单文件夹里放一个快捷方式。SFTP 和 WebDAV 位置的密码只有
 在你勾选“记住”时才会存进 Windows 凭据管理器。只有可选的搜索服务需要管理员同意。
 如果你用安装程序安装，它会添加 Windows 在“设置 › 应用”中列出的卸载条目（写在你的账户下，
 为所有用户安装时则写在全机），只有为所有用户安装时才需要管理员同意。
@@ -307,15 +307,15 @@ Arke 通过 UI Automation 支持 Windows 的屏幕阅读器（Narrator 和 NVDA 
 <details>
 <summary><b>怎么完整卸载？</b></summary>
 
-到 设置 › 关于 › **从这台电脑卸载 Arke**。装过搜索服务的话会一并卸载（这部分 Windows 会请求管理员批准），
-还会删除开始菜单和“登录 Windows 时启动”的快捷方式、记住的 SFTP 和 WebDAV 密码、任务栏的跳转列表、`%LOCALAPPDATA%\Arke`、
-`%APPDATA%\Arke`（勾选“保留我的设置”则保留），最后删除 exe 本身，并列出删除了哪些内容。
+到 设置 › 关于 › **从这台电脑卸载 Arke-CE**。装过搜索服务的话会一并卸载（这部分 Windows 会请求管理员批准），
+还会删除开始菜单和“登录 Windows 时启动”的快捷方式、记住的 SFTP 和 WebDAV 密码、任务栏的跳转列表、`%LOCALAPPDATA%\Arke-CE`、
+`%APPDATA%\Arke-CE`（勾选“保留我的设置”则保留），最后删除 exe 本身，并列出删除了哪些内容。
 
 在终端或脚本里：`arke --uninstall`，可加 `--keep-settings`、`--quiet`（不弹对话框，只剩搜索服务的管理员
-提示）或 `--dry-run`（只列出会删除什么）。用 Scoop 或 winget 安装的话（winget 等 Arke 上架之后），`arke --uninstall` 会把 exe 留给包
-管理器，再用 `scoop uninstall arke` 或 `winget uninstall Koimsurai.Arke` 卸载。
+提示）或 `--dry-run`（只列出会删除什么）。用 Scoop 或 winget 安装的话（winget 等 Arke-CE 上架之后），`arke --uninstall` 会把 exe 留给包
+管理器，再用 `scoop uninstall arke` 或 `winget uninstall Koimsurai.Arke-CE` 卸载。
 
-它也会关闭“用 Arke 打开文件夹”，把原来的文件夹打开程序还原。要自己手动卸载的话，删除可执行文件**之前**先关闭这个设置（或运行 `arke --restore-explorer`），文件夹才会继续用文件资源管理器打开。
+它也会关闭“用 Arke-CE 打开文件夹”，把原来的文件夹打开程序还原。要自己手动卸载的话，删除可执行文件**之前**先关闭这个设置（或运行 `arke --restore-explorer`），文件夹才会继续用文件资源管理器打开。
 
 </details>
 
@@ -324,9 +324,9 @@ Arke 通过 UI Automation 支持 Windows 的屏幕阅读器（Narrator 和 NVDA 
 
 目前还没有代码签名，新的未签名 exe 在 SmartScreen 那里没有信誉。每个版本都附 SHA-256 校验值，
 发布说明里也有 exe 的 VirusTotal 扫描结果，你也随时可以从源代码自己编译。0.1.0 之后的版本可以用
-`gh attestation verify arke-<版本>.exe -R Koimsurai/Arke` 确认 exe 是由这个仓库的发布流程构建的。
+`gh attestation verify arke-<版本>.exe -R Koimsurai/Arke-CE` 确认 exe 是由这个仓库的发布流程构建的。
 
-有些杀毒软件会拦截每个新版本，直到你允许为止。如果更新后重新启动时新版本被拦截，Arke 会换回你原来的版本
+有些杀毒软件会拦截每个新版本，直到你允许为止。如果更新后重新启动时新版本被拦截，Arke-CE 会换回你原来的版本
 并告诉你；在杀毒软件中允许 `arke.exe` 后再更新一次即可。
 
 </details>
@@ -334,18 +334,18 @@ Arke 通过 UI Automation 支持 Windows 的屏幕阅读器（Narrator 和 NVDA 
 <details>
 <summary><b>会有 Linux 或 macOS 版吗？</b></summary>
 
-暂时没有。`crates/core` 大部分和平台无关，但让 Arke 在 Windows 上这么快的部分（主文件表索引、
+暂时没有。`crates/core` 大部分和平台无关，但让 Arke-CE 在 Windows 上这么快的部分（主文件表索引、
 Shell 集成）都是 Windows 专用的。有需要的话欢迎开 issue 说说你想要什么。
 
 </details>
 
 ## 反馈问题
 
-最方便的是从 Arke 里反馈：**设置 › 关于 › 反馈问题 › 在 GitHub 上反馈**。它会填好 Arke 和 Windows
+最方便的是从 Arke-CE 里反馈：**设置 › 关于 › 反馈问题 › 在 GitHub 上反馈**。它会填好 Arke-CE 和 Windows
 版本、主要设置和最近的日志，账户、计算机、服务器和文件名都会先遮掉。也可以复制反馈内容或保存为文本文件，用其他
 方式发送；「显示日志文件」会直接打开日志文件。
 
-如果 Arke 打不开，日志文件在 `%LOCALAPPDATA%\Arke\arke.log`。
+如果 Arke-CE 打不开，日志文件在 `%LOCALAPPDATA%\Arke-CE\arke.log`。
 
 ## 从源代码编译
 
@@ -365,17 +365,17 @@ cargo lint                     # clippy，和 CI 一样严格
 | `crates/indexd` | 可选的后台服务（主文件表和 USN 更改日志） |
 | `tools/xtask` | 发版工具：changeset、升版、打包、发布 |
 
-Arke 暂时不接受 PR，但非常欢迎用 [issue](https://github.com/Koimsurai/Arke/issues) 报告问题或提建议。
+Arke-CE 暂时不接受 PR，但非常欢迎用 [issue](https://github.com/youringer/Arke-CE/issues) 报告问题或提建议。
 开发约定和发版流程见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 ## 致谢
 
-Arke 基于 Zed 编辑器的界面框架 [GPUI](https://github.com/zed-industries/zed/tree/main/crates/gpui)
+Arke-CE 基于 Zed 编辑器的界面框架 [GPUI](https://github.com/zed-industries/zed/tree/main/crates/gpui)
 和 [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) 列出的开源软件包。搜索语法参考了
 [Everything](https://www.voidtools.com/)，外观深受 [Files](https://files.community/) 影响，
 侧边栏标签页则致敬了 Arc 浏览器。
 
-名字来自希腊神话：Arke 是 Iris 的双胞胎姐妹，两人都是长着翅膀的信使。
+名字来自希腊神话：Arke-CE 是 Iris 的双胞胎姐妹，两人都是长着翅膀的信使。
 
 ## 代码签名政策
 
@@ -390,14 +390,14 @@ SignPath Foundation 颁发）。
 
 ## 隐私
 
-Arke 不会收集或发送任何关于你或你的文件的数据。它只会在这些时候联网：到 GitHub 检查新版本
+Arke-CE 不会收集或发送任何关于你或你的文件的数据。它只会在这些时候联网：到 GitHub 检查新版本
 （一天最多一次，可在 设置 › 关于 关闭）、在你选择安装时下载新版，以及连接到你自己打开的网络共享、
 SFTP 和 WebDAV 位置。
 
 如果你所在的地方 GitHub 很慢或连不上，可以在 设置 › 关于 › 更新 › 下载线路 填入你自己选择的镜像
 （加在 GitHub 网址前面的 `https://` 网址）或 HTTP 代理（`主机:端口`），检查和下载更新就会经由它。
-Arke 不内置任何线路，只有你填了才会使用。线路的运营者会看到你的 IP 地址，以及你检查或下载的是哪个
-Arke 版本，其他内容都不会经过它。线路失败时 Arke 会改为直接连接 GitHub，并在设置下方写明。Arke 只安装
+Arke-CE 不内置任何线路，只有你填了才会使用。线路的运营者会看到你的 IP 地址，以及你检查或下载的是哪个
+Arke-CE 版本，其他内容都不会经过它。线路失败时 Arke-CE 会改为直接连接 GitHub，并在设置下方写明。Arke-CE 只安装
 用自己密钥签名过的文件，所以镜像或代理无法换成被改过或更旧的版本。
 
 ## 许可证

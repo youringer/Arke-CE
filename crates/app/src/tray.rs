@@ -97,7 +97,7 @@ pub(crate) fn set_visible(visible: bool) -> bool {
         let created = CreateWindowExW(
             WINDOW_EX_STYLE(0),
             w!("ArkeTray"),
-            w!("Arke"),
+            w!("Arke-CE"),
             WINDOW_STYLE(0),
             0,
             0,
@@ -180,7 +180,7 @@ fn add_icon(hwnd: HWND) -> bool {
             })
             .unwrap_or_default()
     };
-    for (slot, unit) in data.szTip.iter_mut().zip("Arke".encode_utf16()) {
+    for (slot, unit) in data.szTip.iter_mut().zip("Arke-CE".encode_utf16()) {
         *slot = unit;
     }
     // SAFETY: data's fields are valid for the call.

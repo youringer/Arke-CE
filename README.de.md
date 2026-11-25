@@ -1,29 +1,29 @@
-<p align="center"><img src="crates/app/assets/brand/arke.svg" width="96" alt="Arke-Logo"></p>
+<p align="center"><img src="crates/app/assets/brand/arke.svg" width="96" alt="Arke-CE-Logo"></p>
 
-<h1 align="center">Arke</h1>
+<h1 align="center">Arke-CE</h1>
 
 <p align="center"><b>Ein Dateimanager für Windows, der nie hängt.</b><br>
 GPU-gerendert, in Rust geschrieben, eine kleine exe.</p>
 
 <p align="center">
-  <a href="https://github.com/Koimsurai/Arke/releases"><img src="https://img.shields.io/github/v/release/Koimsurai/Arke?label=download" alt="Neueste Version"></a>
-  <a href="https://github.com/Koimsurai/Arke/actions/workflows/ci.yml"><img src="https://github.com/Koimsurai/Arke/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/youringer/Arke-CE/releases"><img src="https://img.shields.io/github/v/release/Koimsurai/Arke-CE?label=download" alt="Neueste Version"></a>
+  <a href="https://github.com/youringer/Arke-CE/actions/workflows/ci.yml"><img src="https://github.com/youringer/Arke-CE/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4" alt="Windows 10 und 11">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0-blue" alt="AGPL-3.0"></a>
 </p>
 
 <p align="center"><a href="README.md">English</a> · <a href="README.zh-CN.md">简体中文</a> · <a href="README.zh-TW.md">繁體中文</a> · <a href="README.ja.md">日本語</a> · <b>Deutsch</b> · <a href="README.es.md">Español</a> · <a href="README.pt-BR.md">Português (Brasil)</a></p>
 
-<p align="center"><img src=".github/assets/preview.png" alt="Arke zeigt einen Ordner bei geöffnetem Vorschaubereich"></p>
+<p align="center"><img src=".github/assets/preview.png" alt="Arke-CE zeigt einen Ordner bei geöffnetem Vorschaubereich"></p>
 
-## Warum Arke
+## Warum Arke-CE
 
 **Es bleibt reaktionsfähig.** Auflisten, Sortieren, Miniaturansichten, Ordnergrößen, Suche und
 Dateivorgänge laufen alle außerhalb des UI-Threads. Eine nicht erreichbare Netzwerkfreigabe oder ein
 Ordner mit 100.000 Dateien hindert Sie nicht daran, zu scrollen, zu tippen oder zwischen
 Registerkarten zu wechseln.
 
-**Es findet alles, sofort.** Arke führt einen Dateinamen-Index Ihrer lokalen Laufwerke. Mit dem
+**Es findet alles, sofort.** Arke-CE führt einen Dateinamen-Index Ihrer lokalen Laufwerke. Mit dem
 optionalen Hintergrunddienst liest es die NTFS-Masterdateitabelle direkt, indiziert Millionen von
 Dateien in Sekunden und folgt dem Änderungsjournal, sodass der Index beim Öffnen schon aktuell ist.
 
@@ -38,25 +38,25 @@ Registerkarte lässt sich in zwei Bereiche teilen, die synchron navigieren oder 
 vergleichen, und eine Datei, die Sie auf eine Registerkarte, einen Favoriten oder ein Pfadsegment
 ziehen, wird direkt dort abgelegt.
 
-**Es geht sorgsam mit Ihrem System um.** Arke hat keine Telemetrie. Abgesehen vom optionalen
-Suchdienst, den Windows bei der Installation registriert, schreibt Arke nur dann in die Registrierung,
-wenn Sie „Ordner in Arke öffnen“ einschalten: Dann registriert es sich als Ordner-Handler für Ihr
+**Es geht sorgsam mit Ihrem System um.** Arke-CE hat keine Telemetrie. Abgesehen vom optionalen
+Suchdienst, den Windows bei der Installation registriert, schreibt Arke-CE nur dann in die Registrierung,
+wenn Sie „Ordner in Arke-CE öffnen“ einschalten: Dann registriert es sich als Ordner-Handler für Ihr
 Windows-Konto (ausschließlich unter `HKEY_CURRENT_USER\Software\Classes`), und beim Ausschalten wird
 alles zurückgesetzt. Shell-Erweiterungen anderer Programme laufen in einem separaten Prozess, sodass
-eine fehlerhafte Erweiterung Arke nicht zum Absturz bringen kann.
+eine fehlerhafte Erweiterung Arke-CE nicht zum Absturz bringen kann.
 
-Wenn Arke Ihnen nützt, hilft ein ⭐ auf GitHub anderen, es zu finden.
+Wenn Arke-CE Ihnen nützt, hilft ein ⭐ auf GitHub anderen, es zu finden.
 
-Arke wurde in [Ruan Yifengs Tech-Wochenrückblick #420](https://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html) vorgestellt und ist in [awesome-rust](https://github.com/rust-unofficial/awesome-rust), [awesome-gpui](https://github.com/zed-industries/awesome-gpui) und bei AlternativeTo gelistet.
+Arke-CE wurde in [Ruan Yifengs Tech-Wochenrückblick #420](https://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html) vorgestellt und ist in [awesome-rust](https://github.com/rust-unofficial/awesome-rust), [awesome-gpui](https://github.com/zed-industries/awesome-gpui) und bei AlternativeTo gelistet.
 
-<p><a href="https://alternativeto.net/software/arke/about/?utm_source=badge&utm_medium=referral"><img src="https://alternativeto.net/static/badges/badge-compact-color.svg" alt="Arke bei AlternativeTo" height="40"></a></p>
+<p><a href="https://alternativeto.net/software/arke/about/?utm_source=badge&utm_medium=referral"><img src="https://alternativeto.net/static/badges/badge-compact-color.svg" alt="Arke-CE bei AlternativeTo" height="40"></a></p>
 
 ## Funktionen
 
 <table>
   <tr>
     <td width="50%"><img src=".github/assets/split-view.png" alt="Eine in zwei Bereiche geteilte Registerkarte, links Details, rechts Symbole"></td>
-    <td width="50%"><img src=".github/assets/context-menu.png" alt="Das Kontextmenü von Arke"></td>
+    <td width="50%"><img src=".github/assets/context-menu.png" alt="Das Kontextmenü von Arke-CE"></td>
   </tr>
   <tr>
     <td>Teilen Sie jede Registerkarte in zwei Bereiche, die synchron navigieren oder ihren Inhalt vergleichen.</td>
@@ -64,7 +64,7 @@ Arke wurde in [Ruan Yifengs Tech-Wochenrückblick #420](https://www.ruanyifeng.c
   </tr>
   <tr>
     <td width="50%"><img src=".github/assets/quick-look.png" alt="Die Schnellansicht zeigt eine Markdown-Datei"></td>
-    <td width="50%"><img src=".github/assets/properties.png" alt="Das Eigenschaften-Fenster von Arke für einen Ordner"></td>
+    <td width="50%"><img src=".github/assets/properties.png" alt="Das Eigenschaften-Fenster von Arke-CE für einen Ordner"></td>
   </tr>
   <tr>
     <td>Die Schnellansicht (Leertaste) zeigt Markdown so wie GitHub sowie Bilder, PDF, Office-Dateien und Code.</td>
@@ -101,10 +101,10 @@ Arke wurde in [Ruan Yifengs Tech-Wochenrückblick #420](https://www.ruanyifeng.c
   heraus, um sie zu entfernen, und benennen Sie sie um, ohne den Ordner umzubenennen. Ordner, die im
   Datei-Explorer an den Schnellzugriff angeheftet sind, erscheinen ebenfalls.
 - Standardmäßig ein einziges Fenster (seit 0.7): Ordner aus anderen Apps, Win+E und ein erneuter
-  Start von Arke fügen dem zuletzt verwendeten Fenster eine Registerkarte hinzu. Schalten Sie
+  Start von Arke-CE fügen dem zuletzt verwendeten Fenster eine Registerkarte hinzu. Schalten Sie
   „Einzelnes Fenster“ in den Einstellungen aus, um jeweils ein eigenes Fenster zu erhalten.
 - Mit „Neue Fenster öffnen: Zuletzt geöffnete Registerkarten“ kommen die Fenster, die beim Beenden
-  von Arke (oder beim Herunterfahren von Windows) offen sind, mit ihren Registerkarten zurück. Ein
+  von Arke-CE (oder beim Herunterfahren von Windows) offen sind, mit ihren Registerkarten zurück. Ein
   Fenster, das Sie schließen, während andere geöffnet bleiben, wird nicht gespeichert.
 - Ordner, die sich beim Darüberziehen öffnen, eine Ablage zum Sammeln von Dateien aus
   verschiedenen Ordnern und eine Startseite mit Ihren Favoriten, zuletzt verwendeten Dateien,
@@ -150,7 +150,7 @@ Arke wurde in [Ruan Yifengs Tech-Wochenrückblick #420](https://www.ruanyifeng.c
 - Netzwerkfreigaben, die schnell fehlschlagen, wenn ein Server offline ist, und den zuletzt bekannten
   Inhalt zeigen; `\\server` listet seine Freigaben auf. SFTP- und WebDAV-Orte (experimentell; reines
   http erst, nachdem Sie es für den jeweiligen Ort erlaubt haben). Zugeordnete Laufwerke und
-  Netzwerkorte können eigene Namen erhalten, die nur in Arke gespeichert werden.
+  Netzwerkorte können eigene Namen erhalten, die nur in Arke-CE gespeichert werden.
 - OneDrive und andere Cloud-Ordner mit Synchronisierungsstatus. Vorschauen laden nie Dateien herunter,
   die nur online verfügbar sind.
 - Archive: zip und 7z (auch kennwortgeschützte), tar (.gz, .xz, .bz2, .zst) und RAR in der Vorschau anzeigen und extrahieren, als
@@ -160,29 +160,29 @@ Arke wurde in [Ruan Yifengs Tech-Wochenrückblick #420](https://www.ruanyifeng.c
 **Windows**
 - Große Ordner landen auf lokalen Laufwerken sofort im Papierkorb: 20.000 Dateien in etwa einer
   Viertelsekunde statt in 40 s, da Windows nicht zuerst jede Datei prüft. Das Wiederherstellen
-  funktioniert wie gewohnt, und alles, wofür Arke nicht einstehen kann (Netzlaufwerke, OneDrive,
+  funktioniert wie gewohnt, und alles, wofür Arke-CE nicht einstehen kann (Netzlaufwerke, OneDrive,
   Dateien in Verwendung, Richtlinien), überlässt es Windows. In den Einstellungen lässt sich das
   ausschalten. Einzelne Dateien brauchen wenige Millisekunden, immer noch zwei- bis sechsmal schneller
   als Windows.
-- Updates werden leise im Hintergrund heruntergeladen und beim nächsten Neustart von Arke installiert,
+- Updates werden leise im Hintergrund heruntergeladen und beim nächsten Neustart von Arke-CE installiert,
   nie während Dateien kopiert werden und nie über eine getaktete Verbindung.
 - Menüs öffnen sich wie die Menüs von Windows in eigenen Fenstern und ragen daher am Rand über das
-  Arke-Fenster hinaus, statt gequetscht zu werden. Windows-Befehle, die Sie über „Weitere Optionen“
+  Arke-CE-Fenster hinaus, statt gequetscht zu werden. Windows-Befehle, die Sie über „Weitere Optionen“
   anheften (Git Bash, Windows Terminal, VS Code, 7-Zip, NanaZip ...), erscheinen sofort, wenn sich das
   Menü öffnet, und Umschalt+Rechtsklick fügt wie im Datei-Explorer die erweiterten hinzu.
 - Launcher und Skripte (Listary, ALTRun, AutoHotkey, PowerShell) können die Fenster, Registerkarten
-  und Auswahl von Arke lesen und über eine einzige JSON-Schnittstelle Ordner öffnen
+  und Auswahl von Arke-CE lesen und über eine einzige JSON-Schnittstelle Ordner öffnen
   ([docs/integration.md](docs/integration.md)).
 - Ruhig im Leerlauf: Ändert sich auf dem Bildschirm nichts, wird nichts neu gezeichnet, auch im
   minimierten Zustand. Ordnergrößen, Indizierung und der Suchdienst laufen mit niedriger Priorität im
-  Effizienzmodus von Windows, und wenn nur noch das Symbol im Infobereich übrig ist, gibt Arke seine
+  Effizienzmodus von Windows, und wenn nur noch das Symbol im Infobereich übrig ist, gibt Arke-CE seine
   Caches frei.
-- Optional (experimentell) Ordner in Arke statt im Datei-Explorer öffnen (auch Ordner, die aus
+- Optional (experimentell) Ordner in Arke-CE statt im Datei-Explorer öffnen (auch Ordner, die aus
   anderen Apps geöffnet werden), ebenso „Im Ordner anzeigen“ aus Browsern und „Dateispeicherort
-  öffnen“ aus anderen Apps. Dabei wird Arke als Ordner-Handler für Ihr Konto registriert, und beim
+  öffnen“ aus anderen Apps. Dabei wird Arke-CE als Ordner-Handler für Ihr Konto registriert, und beim
   Ausschalten wird das rückgängig gemacht. Ein Datei-Explorer, den Sie selbst starten (Win+E, die
   Taskleiste, Start), bleibt der Datei-Explorer, solange Sie nicht auch „Win+E und das
-  Datei-Explorer-Symbol öffnen ebenfalls Arke“ einschalten.
+  Datei-Explorer-Symbol öffnen ebenfalls Arke-CE“ einschalten.
 - Unterstützung für Sprachausgaben, Builds für x64 und ARM64 (beide auf echter Hardware getestet),
   Sprungliste der Taskleiste, sicheres Auswerfen von USB-Geräten, Infobereich, Sicherung der
   Einstellungen. Englisch, Vereinfachtes und Traditionelles Chinesisch, Japanisch, Deutsch, Spanisch
@@ -195,13 +195,13 @@ Rückmeldungen in Issues sind willkommen.
 
 ## Leistung
 
-<p align="center"><img src=".github/assets/responsive.gif" alt="Arke öffnet einen Ordner mit 100.000 Dateien, scrollt, sortiert neu und filtert ihn gleichzeitig und meldet dann innerhalb einer Sekunde einen Server als offline, während das Navigieren weitergeht (Echtzeit)"></p>
+<p align="center"><img src=".github/assets/responsive.gif" alt="Arke-CE öffnet einen Ordner mit 100.000 Dateien, scrollt, sortiert neu und filtert ihn gleichzeitig und meldet dann innerhalb einer Sekunde einen Server als offline, während das Navigieren weitergeht (Echtzeit)"></p>
 
-<p align="center"><img src=".github/assets/search-compare.gif" alt="Suche nach einer Datei auf dem gesamten Laufwerk C: im Datei-Explorer, in Files und in Arke (3-fache Geschwindigkeit; der Timer zeigt echte Sekunden)"></p>
+<p align="center"><img src=".github/assets/search-compare.gif" alt="Suche nach einer Datei auf dem gesamten Laufwerk C: im Datei-Explorer, in Files und in Arke-CE (3-fache Geschwindigkeit; der Timer zeigt echte Sekunden)"></p>
 
-<p align="center"><img src=".github/assets/delete-compare.gif" alt="Derselbe Ordner mit 20.000 Dateien (2,48 GB) wird in den Papierkorb verschoben: Arke in 0,2 s, der Datei-Explorer in 47,3 s, danach das Wiederherstellen aus dem Papierkorb (5-fache Geschwindigkeit; die Timer zeigen echte Sekunden)"></p>
+<p align="center"><img src=".github/assets/delete-compare.gif" alt="Derselbe Ordner mit 20.000 Dateien (2,48 GB) wird in den Papierkorb verschoben: Arke-CE in 0,2 s, der Datei-Explorer in 47,3 s, danach das Wiederherstellen aus dem Papierkorb (5-fache Geschwindigkeit; die Timer zeigen echte Sekunden)"></p>
 
-| | Arke | Zum Vergleich |
+| | Arke-CE | Zum Vergleich |
 | --- | --- | --- |
 | Den Index des gesamten Datenträgers von Grund auf aufbauen (etwa 4 Millionen Dateien) | etwa 10 s, danach etwa 130 MB Arbeitsspeicher | Everything 1.4.1: 21 s, etwa 400 MB |
 | Eine Datei irgendwo auf C: finden | Ergebnisse erscheinen während der Eingabe | Files 4.3: etwa 26 s · Datei-Explorer: kein Ergebnis nach 30 s* |
@@ -217,9 +217,9 @@ Datei-Explorer Dateien deutlich schneller.
 Ein PC: Intel i9-13900, 64 GB RAM, Samsung 990 PRO NVMe, Windows 11 (Build 26200), mit
 eingeschaltetem Echtzeit-Virenscan, der jedes Programm ausbremst. Die Dateisystem-Caches waren warm.
 
-- **Index**: Der Suchdienst von Arke liest die NTFS-Masterdateitabelle, in einem frischen Profil;
+- **Index**: Der Suchdienst von Arke-CE liest die NTFS-Masterdateitabelle, in einem frischen Profil;
   Everything 1.4.1 Lite mit seinem Dienst, mit indizierter Dateigröße und Änderungsdatum (den
-  Standardwerten), nachdem seine Datenbank gelöscht wurde. Die Zahlen von Arke stammen aus
+  Standardwerten), nachdem seine Datenbank gelöscht wurde. Die Zahlen von Arke-CE stammen aus
   `arke --bench index`, die von Everything aus seinem Debug-Protokoll; der Arbeitsspeicher ist der
   Arbeitssatz nach Abschluss der Indizierung.
 - **Suche**: Jedes Programm wurde in `C:\` gestartet und suchte nach demselben Dateinamen; der Timer
@@ -231,10 +231,10 @@ eingeschaltetem Echtzeit-Virenscan, der jedes Programm ausbremst. Die Dateisyste
   vor: Es hat noch keine Suche über den gesamten Datenträger.
 - **Papierkorb**: Derselbe Ordner (20.000 Dateien in 20 Ordnern, 2,48 GB) wurde aus jedem Programm in
   einem Zug in den Papierkorb verschoben, gemessen von Entf bis zum Verschwinden des Ordners aus der
-  Liste. Arke nutzt seinen schnellen Papierkorb (für lokale Laufwerke standardmäßig an); beide lassen
+  Liste. Arke-CE nutzt seinen schnellen Papierkorb (für lokale Laufwerke standardmäßig an); beide lassen
   sich wie gewohnt aus dem Windows-Papierkorb wiederherstellen.
 
-Ihre Werte werden abweichen. Arke protokolliert seine eigenen Zeiten in `%LOCALAPPDATA%\Arke\arke.log`.
+Ihre Werte werden abweichen. Arke-CE protokolliert seine eigenen Zeiten in `%LOCALAPPDATA%\Arke-CE\arke.log`.
 
 Führen Sie `arke --bench index` aus, um den Index auf Ihrem Rechner zu messen.
 
@@ -242,14 +242,14 @@ Führen Sie `arke --bench index` aus, um den Index auf Ihrem Rechner zu messen.
 
 ## Installation
 
-Laden Sie Arke von den [Releases](https://github.com/Koimsurai/Arke/releases) herunter. Beide
-Downloads sind dasselbe Arke, mit denselben Funktionen und Updates, und beide speichern ihre
-Einstellungen in `%APPDATA%\Arke`:
+Laden Sie Arke-CE von den [Releases](https://github.com/youringer/Arke-CE/releases) herunter. Beide
+Downloads sind dasselbe Arke-CE, mit denselben Funktionen und Updates, und beide speichern ihre
+Einstellungen in `%APPDATA%\Arke-CE`:
 
 - **Portable**, `arke-<version>.exe`: eine einzelne exe ohne Laufzeitumgebung, die aus jedem Ordner
   läuft. Es wird nichts installiert, daher erscheint es weder im Startmenü noch unter
-  Einstellungen › Apps; Einstellungen › Info › **Arke von diesem PC entfernen** entfernt es.
-- **Installer**, `arke-<version>-setup.exe`: installiert Arke für Ihr Konto ohne
+  Einstellungen › Apps; Einstellungen › Info › **Arke-CE von diesem PC entfernen** entfernt es.
+- **Installer**, `arke-<version>-setup.exe`: installiert Arke-CE für Ihr Konto ohne
   Administratorgenehmigung oder für alle Benutzer unter Programme, und fügt es dem Startmenü und
   Einstellungen › Apps hinzu, wo Sie es deinstallieren können.
 
@@ -263,13 +263,13 @@ scoop bucket add arke https://github.com/Koimsurai/scoop-bucket
 scoop install arke/arke
 ```
 
-Scoop hält es danach aktuell (`scoop update arke`), und Arke überlässt ihm das Aktualisieren.
+Scoop hält es danach aktuell (`scoop update arke`), und Arke-CE überlässt ihm das Aktualisieren.
 
 Die Builds sind noch nicht codesigniert, daher fragt SmartScreen beim ersten Mal möglicherweise nach
 einer Bestätigung. Die Signierung über die SignPath Foundation ist beantragt, siehe
 [Code-Signing-Richtlinie](#code-signing-richtlinie).
 
-Arke prüft höchstens einmal am Tag auf GitHub auf eine neue Version und installiert eine nur, wenn
+Arke-CE prüft höchstens einmal am Tag auf GitHub auf eine neue Version und installiert eine nur, wenn
 Sie es sagen (Einstellungen › Info).
 
 <details>
@@ -338,7 +338,7 @@ ausschalten oder zurücksetzen.
 
 ## Barrierefreiheit
 
-Arke arbeitet über UI Automation mit Windows-Screenreadern zusammen, der Schnittstelle von Narrator
+Arke-CE arbeitet über UI Automation mit Windows-Screenreadern zusammen, der Schnittstelle von Narrator
 und NVDA; JAWS sollte ebenfalls funktionieren. Bisher wurde es mit UI-Automation-Werkzeugen geprüft,
 noch nicht von Menschen, die täglich einen Screenreader nutzen. Hilfe beim Testen ist willkommen.
 
@@ -349,14 +349,14 @@ wurden noch nicht geprüft.
 
 Die [Tastaturanleitung](docs/keyboard.md) (auf Englisch) listet alle Tastenkombinationen nach Bereich.
 Wenn etwas nicht erreichbar ist oder nicht vorgelesen wird, [eröffnen Sie bitte ein
-Issue](https://github.com/Koimsurai/Arke/issues) und nennen Sie Ihren Screenreader samt Version.
+Issue](https://github.com/youringer/Arke-CE/issues) und nennen Sie Ihren Screenreader samt Version.
 
 ## FAQ
 
 <details>
 <summary><b>Betrifft mich die AGPL, wenn ich es nur verwende, privat oder bei der Arbeit?</b></summary>
 
-Nein. Die Lizenz begründet nur dann Pflichten, wenn Sie ein verändertes Arke weitergeben (oder über
+Nein. Die Lizenz begründet nur dann Pflichten, wenn Sie ein verändertes Arke-CE weitergeben (oder über
 ein Netzwerk anbieten); die Nutzung, auch in einem Unternehmen, bringt keine mit sich.
 
 </details>
@@ -367,22 +367,22 @@ ein Netzwerk anbieten); die Nutzung, auch in einem Unternehmen, bringt keine mit
 Nichts, solange Sie es nicht verlangen. Die Installation des optionalen Suchdienstes (mit Ihrer
 Genehmigung) registriert ihn bei Windows, das Dienste unter
 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ArkeIndex` ablegt. Darüber hinaus ist die einzige
-Änderung an der Registrierung die optionale Einstellung „Ordner in Arke öffnen“, die Arke als
+Änderung an der Registrierung die optionale Einstellung „Ordner in Arke-CE öffnen“, die Arke-CE als
 Ordner-Handler für Ihr Windows-Konto registriert, ausschließlich unter
 `HKEY_CURRENT_USER\Software\Classes`: die Verben `open` und `explore` von `Folder` (sodass jeder
-Ordner, den die Shell öffnet, auch „Im Ordner anzeigen“ von Browsern und Editoren, Arke statt den
-Datei-Explorer startet; was Arke nicht anzeigen kann, etwa die Systemsteuerung, wird direkt an den
-Explorer weitergereicht) und, nur mit „Win+E und das Datei-Explorer-Symbol öffnen ebenfalls Arke“,
-der Handler für Win+E. Was zuvor dort stand, wird in `%APPDATA%\Arke\folder-handler-backup.json`
+Ordner, den die Shell öffnet, auch „Im Ordner anzeigen“ von Browsern und Editoren, Arke-CE statt den
+Datei-Explorer startet; was Arke-CE nicht anzeigen kann, etwa die Systemsteuerung, wird direkt an den
+Explorer weitergereicht) und, nur mit „Win+E und das Datei-Explorer-Symbol öffnen ebenfalls Arke-CE“,
+der Handler für Win+E. Was zuvor dort stand, wird in `%APPDATA%\Arke-CE\folder-handler-backup.json`
 gesichert und genau so wiederhergestellt, wenn Sie die Einstellung ausschalten oder
-`arke --restore-explorer` ausführen. Arke beobachtet außerdem neue Explorer-Fenster für die Fälle,
+`arke --restore-explorer` ausführen. Arke-CE beobachtet außerdem neue Explorer-Fenster für die Fälle,
 die die Registrierung nicht erreicht, etwa `explorer.exe /select,...`. Auf PCs, auf denen Windows
 Win+E direkt an den Datei-Explorer schickt, ohne die Registrierung zu befragen (eine Änderung, die
-Windows seit Ende 2026 ausrollt), übernimmt Arke Win+E mit einem Tastatur-Hook, solange es im
+Windows seit Ende 2026 ausrollt), übernimmt Arke-CE Win+E mit einem Tastatur-Hook, solange es im
 Hintergrund läuft: Er reagiert nur auf E, während eine Windows-Taste gehalten wird, und zeichnet
-nichts auf. Einstellungen liegen in `%APPDATA%\Arke`, der Suchindex, das Protokoll und heruntergeladene
-Updates in `%LOCALAPPDATA%\Arke`. „Beim Anmelden an Windows starten“ ist eine Verknüpfung in Ihrem
-Autostart-Ordner und „Arke im Startmenü anzeigen“ eine in Ihrem Startmenüordner. Kennwörter für
+nichts auf. Einstellungen liegen in `%APPDATA%\Arke-CE`, der Suchindex, das Protokoll und heruntergeladene
+Updates in `%LOCALAPPDATA%\Arke-CE`. „Beim Anmelden an Windows starten“ ist eine Verknüpfung in Ihrem
+Autostart-Ordner und „Arke-CE im Startmenü anzeigen“ eine in Ihrem Startmenüordner. Kennwörter für
 SFTP- und WebDAV-Orte gehen an die Windows-Anmeldeinformationsverwaltung, und nur, wenn Sie
 „Merken“ ankreuzen. Der optionale Suchdienst ist der einzige Teil, der eine Administratorgenehmigung
 braucht. Der Installer fügt, falls Sie ihn verwenden, den Deinstallationseintrag hinzu, den Windows
@@ -394,20 +394,20 @@ installieren), und fragt nur bei einer Installation für alle Benutzer nach eine
 <details>
 <summary><b>Wie entferne ich es vollständig?</b></summary>
 
-Einstellungen › Info › **Arke von diesem PC entfernen**. Das entfernt den Suchdienst, falls Sie ihn
+Einstellungen › Info › **Arke-CE von diesem PC entfernen**. Das entfernt den Suchdienst, falls Sie ihn
 installiert haben (Windows verlangt dafür eine Administratorgenehmigung), die Verknüpfungen im
 Startmenü und für „Beim Anmelden an Windows starten“, gespeicherte SFTP- und WebDAV-Kennwörter, die
-Sprungliste, `%LOCALAPPDATA%\Arke`, `%APPDATA%\Arke` (außer Sie kreuzen „Meine Einstellungen
+Sprungliste, `%LOCALAPPDATA%\Arke-CE`, `%APPDATA%\Arke-CE` (außer Sie kreuzen „Meine Einstellungen
 behalten“ an) und schließlich die exe selbst, und zeigt dann, was es entfernt hat.
 
 Über ein Terminal oder ein Skript: `arke --uninstall`, mit `--keep-settings`, `--quiet` (keine
 Dialoge, nur die Administratorabfrage für den Dienst) oder `--dry-run` (listet nur auf, was es
-entfernen würde). Mit Scoop oder winget installiert (sobald Arke auf winget verfügbar ist)?
+entfernen würde). Mit Scoop oder winget installiert (sobald Arke-CE auf winget verfügbar ist)?
 `arke --uninstall` überlässt die exe dem Paketmanager; entfernen Sie sie mit `scoop uninstall arke`
-oder `winget uninstall Koimsurai.Arke`.
+oder `winget uninstall Koimsurai.Arke-CE`.
 
-Es schaltet auch „Ordner in Arke öffnen“ aus und stellt den vorherigen Ordner-Handler wieder her.
-Entfernen Sie Arke stattdessen von Hand? Schalten Sie diese Einstellung aus (oder führen Sie
+Es schaltet auch „Ordner in Arke-CE öffnen“ aus und stellt den vorherigen Ordner-Handler wieder her.
+Entfernen Sie Arke-CE stattdessen von Hand? Schalten Sie diese Einstellung aus (oder führen Sie
 `arke --restore-explorer` aus), **bevor** Sie die exe löschen, damit Ordner weiterhin im
 Datei-Explorer geöffnet werden.
 
@@ -419,11 +419,11 @@ Datei-Explorer geöffnet werden.
 Die Builds sind noch nicht codesigniert, und eine neue unsignierte exe hat bei SmartScreen keinen
 Ruf. Jede Version bringt in ihren Hinweisen eine SHA-256-Prüfsumme und einen VirusTotal-Scan der exe-
 Dateien mit, und Sie können es jederzeit selbst aus dem Quellcode bauen. Für Versionen nach 0.1.0
-bestätigt `gh attestation verify arke-<version>.exe -R Koimsurai/Arke`, dass eine exe vom
+bestätigt `gh attestation verify arke-<version>.exe -R Koimsurai/Arke-CE`, dass eine exe vom
 Release-Workflow dieses Repositorys gebaut wurde.
 
 Manche Virenscanner blockieren jede neue Version, bis Sie sie erlauben. Wenn einer die neue Version
-stoppt, während Arke nach einem Update neu startet, stellt Arke die zuvor genutzte Version wieder her
+stoppt, während Arke-CE nach einem Update neu startet, stellt Arke-CE die zuvor genutzte Version wieder her
 und sagt es Ihnen; erlauben Sie `arke.exe` in Ihrem Virenscanner und aktualisieren Sie erneut.
 
 </details>
@@ -431,7 +431,7 @@ und sagt es Ihnen; erlauben Sie `arke.exe` in Ihrem Virenscanner und aktualisier
 <details>
 <summary><b>Wird es eine Linux- oder macOS-Version geben?</b></summary>
 
-Noch nicht. `crates/core` ist größtenteils plattformunabhängig, aber die Teile, die Arke unter
+Noch nicht. `crates/core` ist größtenteils plattformunabhängig, aber die Teile, die Arke-CE unter
 Windows schnell machen (der MFT-Index, die Shell-Integration), sind Windows-spezifisch. Sagen Sie uns
 in einem Issue, was Sie bräuchten.
 
@@ -439,13 +439,13 @@ in einem Issue, was Sie bräuchten.
 
 ## Ein Problem melden
 
-Am einfachsten geht es aus Arke heraus: **Einstellungen › Info › Problem melden › Issue auf GitHub
-öffnen**. Es trägt Ihre Arke- und Windows-Version, die wichtigsten Einstellungen und die letzten
+Am einfachsten geht es aus Arke-CE heraus: **Einstellungen › Info › Problem melden › Issue auf GitHub
+öffnen**. Es trägt Ihre Arke-CE- und Windows-Version, die wichtigsten Einstellungen und die letzten
 Protokollzeilen ein, wobei Ihr Konto sowie Computer-, Server- und Dateinamen entfernt werden. Sie
 können den Bericht auch kopieren oder als Datei speichern und auf anderem Weg senden, und
 **Protokolldatei anzeigen** öffnet das Protokoll selbst.
 
-Wenn Arke nicht startet, finden Sie das Protokoll unter `%LOCALAPPDATA%\Arke\arke.log`.
+Wenn Arke-CE nicht startet, finden Sie das Protokoll unter `%LOCALAPPDATA%\Arke-CE\arke.log`.
 
 ## Aus dem Quellcode bauen
 
@@ -466,20 +466,20 @@ cargo lint                     # clippy, as strict as CI
 | `crates/indexd` | Der optionale Hintergrunddienst (MFT und USN-Journal) |
 | `tools/xtask` | Release-Werkzeuge: Changesets, Versionierung, Paketierung, Veröffentlichung |
 
-Arke nimmt vorerst keine Pull Requests an, aber Fehlerberichte und Ideen sind als
-[Issues](https://github.com/Koimsurai/Arke/issues) sehr willkommen. Konventionen und den
+Arke-CE nimmt vorerst keine Pull Requests an, aber Fehlerberichte und Ideen sind als
+[Issues](https://github.com/youringer/Arke-CE/issues) sehr willkommen. Konventionen und den
 Release-Prozess finden Sie in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Danksagung
 
-Arke baut auf [GPUI](https://github.com/zed-industries/zed/tree/main/crates/gpui) auf, dem
+Arke-CE baut auf [GPUI](https://github.com/zed-industries/zed/tree/main/crates/gpui) auf, dem
 UI-Framework des Zed-Editors, und auf den Open-Source-Crates, die in
 [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) aufgeführt sind. Die Suchsyntax folgt
 [Everything](https://www.voidtools.com/), das Aussehen verdankt der App
 [Files](https://files.community/) sehr viel, und die Registerkarten-Seitenleiste ist eine Verbeugung
 vor dem Arc-Browser.
 
-Der Name stammt aus der griechischen Mythologie: Arke ist die Zwillingsschwester der Iris, beide sind
+Der Name stammt aus der griechischen Mythologie: Arke-CE ist die Zwillingsschwester der Iris, beide sind
 geflügelte Götterboten.
 
 ## Code-Signing-Richtlinie
@@ -496,17 +496,17 @@ einem getaggten Commit baut, und jede Version wird vor dem Signieren von Hand fr
 
 ## Datenschutz
 
-Arke erhebt oder sendet keine Daten über Sie oder Ihre Dateien. Es geht nur online, um auf GitHub
+Arke-CE erhebt oder sendet keine Daten über Sie oder Ihre Dateien. Es geht nur online, um auf GitHub
 nach einer neuen Version zu suchen (höchstens einmal am Tag, unter Einstellungen › Info abschaltbar),
 um eine herunterzuladen, wenn Sie sich für die Installation entscheiden, und um die
 Netzwerkfreigaben sowie SFTP- und WebDAV-Orte zu erreichen, die Sie selbst öffnen.
 
 Ist GitHub bei Ihnen langsam oder gesperrt, leitet Einstellungen › Info › Updates › Download-Weg
 die Suche nach Updates und ihre Downloads über einen Mirror (eine `https://`-Adresse vor der von
-GitHub) oder einen HTTP-Proxy (`Host:Port`) Ihrer Wahl. Arke bringt keinen eigenen mit und nutzt
-einen nur, wenn Sie ihn eintragen. Wer ihn betreibt, sieht Ihre IP-Adresse und welche Arke-Version
-Sie suchen oder herunterladen; sonst geht nichts darüber. Schlägt er fehl, fragt Arke GitHub direkt
-und zeigt das unter der Einstellung an. Arke installiert nur Downloads, die mit seinem eigenen
+GitHub) oder einen HTTP-Proxy (`Host:Port`) Ihrer Wahl. Arke-CE bringt keinen eigenen mit und nutzt
+einen nur, wenn Sie ihn eintragen. Wer ihn betreibt, sieht Ihre IP-Adresse und welche Arke-CE-Version
+Sie suchen oder herunterladen; sonst geht nichts darüber. Schlägt er fehl, fragt Arke-CE GitHub direkt
+und zeigt das unter der Einstellung an. Arke-CE installiert nur Downloads, die mit seinem eigenen
 Schlüssel signiert sind, sodass ein Mirror oder Proxy keine veränderte oder ältere Version
 unterschieben kann.
 

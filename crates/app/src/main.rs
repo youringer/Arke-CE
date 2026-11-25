@@ -1734,7 +1734,7 @@ fn api_cli_reply(json: &str) -> Vec<u8> {
 fn api_unavailable() -> Vec<u8> {
     api::error_reply(&api::ApiError::new(
         api::ErrorCode::Unavailable,
-        "Arke did not answer in time",
+        "Arke-CE did not answer in time",
     ))
 }
 
@@ -2089,7 +2089,7 @@ fn open_workspace_window(
             // The title bar is drawn by us (the frame's top bar); the system keeps only the border
             // and snap layouts.
             titlebar: Some(TitlebarOptions {
-                title: Some("Arke".into()),
+                title: Some("Arke-CE".into()),
                 appears_transparent: true,
                 ..Default::default()
             }),

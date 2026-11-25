@@ -22,7 +22,7 @@ gpui-pre) and at <https://www.apache.org/licenses/LICENSE-2.0>
 - Source: <https://github.com/helix-editor/nucleo>
 
 Used unmodified from crates.io for fuzzy matching. MPL-2.0 is a file-level copyleft and is
-compatible with Arke's AGPL-3.0 license. Source is available at the link above or on crates.io.
+compatible with Arke-CE's AGPL-3.0 license. Source is available at the link above or on crates.io.
 
 ## Other dependencies
 

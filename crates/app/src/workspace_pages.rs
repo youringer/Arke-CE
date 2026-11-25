@@ -269,12 +269,12 @@ impl Workspace {
             })
             .map(|(title, _)| title);
         if let Some(page) = page {
-            return format!("{page} - Arke");
+            return format!("{page} - Arke-CE");
         }
         let explorer = view.read(cx);
         match explorer.display_path() {
-            Some(_) => format!("{} - Arke", explorer.tab_title()),
-            None => "Arke".into(),
+            Some(_) => format!("{} - Arke-CE", explorer.tab_title()),
+            None => "Arke-CE".into(),
         }
     }
 

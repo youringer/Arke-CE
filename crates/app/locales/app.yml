@@ -1373,13 +1373,13 @@ material.solid:
   pt-BR: Sólido
   ja: 単色
 accent.arke:
-  en: Arke orange
-  zh-TW: Arke 橘
-  zh-CN: Arke 橙
-  de: Arke-Orange
-  es: Naranja Arke
-  pt-BR: Laranja Arke
-  ja: Arke オレンジ
+  en: Arke-CE orange
+  zh-TW: Arke-CE 橘
+  zh-CN: Arke-CE 橙
+  de: Arke-CE-Orange
+  es: Naranja Arke-CE
+  pt-BR: Laranja Arke-CE
+  ja: Arke-CE オレンジ
 accent.blue:
   en: Blue
   zh-TW: "藍色"
@@ -1461,13 +1461,13 @@ settings.font:
   pt-BR: Fonte
   ja: フォント
 settings.font_sample:
-  en: "Arke File Explorer Aa 123"
-  zh-TW: "Arke 檔案總管 Aa 123"
-  zh-CN: "Arke 文件管理器 Aa 123"
-  de: Arke Datei-Explorer Aa 123
-  es: Arke Explorador de archivos Aa 123
-  pt-BR: Arke Explorador de Arquivos Aa 123
-  ja: Arke エクスプローラー Aa 123
+  en: "Arke-CE File Explorer Aa 123"
+  zh-TW: "Arke-CE 檔案總管 Aa 123"
+  zh-CN: "Arke-CE 文件管理器 Aa 123"
+  de: Arke-CE Datei-Explorer Aa 123
+  es: Arke-CE Explorador de archivos Aa 123
+  pt-BR: Arke-CE Explorador de Arquivos Aa 123
+  ja: Arke-CE エクスプローラー Aa 123
 settings.font_default:
   en: Default
   zh-TW: 預設
@@ -1565,29 +1565,29 @@ settings.background_preview:
   pt-BR: "Visualização à esquerda: a lista de arquivos sobre a imagem com esta opacidade"
   ja: "左のプレビュー: この不透明度で画像の上に重ねたファイル一覧"
 settings.background_hint:
-  en: "You can also right-click an image › Set as Arke background"
-  zh-TW: "也可以在圖片上按右鍵 →「設為 Arke 背景」"
-  zh-CN: "也可以右键单击图片 →“设为 Arke 背景”"
-  de: Sie können auch ein Bild mit der rechten Maustaste anklicken › Als Arke-Hintergrund festlegen
-  es: También puede hacer clic derecho en una imagen › Establecer como fondo de Arke
-  pt-BR: Você também pode clicar com o botão direito em uma imagem › Definir como plano de fundo do Arke
-  ja: 画像を右クリック › Arke の背景に設定 でも設定できます
+  en: "You can also right-click an image › Set as Arke-CE background"
+  zh-TW: "也可以在圖片上按右鍵 →「設為 Arke-CE 背景」"
+  zh-CN: "也可以右键单击图片 →“设为 Arke-CE 背景”"
+  de: Sie können auch ein Bild mit der rechten Maustaste anklicken › Als Arke-CE-Hintergrund festlegen
+  es: También puede hacer clic derecho en una imagen › Establecer como fondo de Arke-CE
+  pt-BR: Você também pode clicar com o botão direito em uma imagem › Definir como plano de fundo do Arke-CE
+  ja: 画像を右クリック › Arke-CE の背景に設定 でも設定できます
 menu.set_background:
-  en: Set as Arke background
-  zh-TW: "設為 Arke 背景"
-  zh-CN: 设为 Arke 背景
-  de: Als Arke-Hintergrund festlegen
-  es: Establecer como fondo de Arke
-  pt-BR: Definir como plano de fundo do Arke
-  ja: Arke の背景に設定
+  en: Set as Arke-CE background
+  zh-TW: "設為 Arke-CE 背景"
+  zh-CN: 设为 Arke-CE 背景
+  de: Als Arke-CE-Hintergrund festlegen
+  es: Establecer como fondo de Arke-CE
+  pt-BR: Definir como plano de fundo do Arke-CE
+  ja: Arke-CE の背景に設定
 menu.import_settings:
-  en: Import as Arke settings
-  zh-TW: 匯入 Arke 設定
-  zh-CN: 导入 Arke 设置
-  de: Als Arke-Einstellungen importieren
-  es: Importar como configuración de Arke
-  pt-BR: Importar como configurações do Arke
-  ja: Arke の設定としてインポート
+  en: Import as Arke-CE settings
+  zh-TW: 匯入 Arke-CE 設定
+  zh-CN: 导入 Arke-CE 设置
+  de: Als Arke-CE-Einstellungen importieren
+  es: Importar como configuración de Arke-CE
+  pt-BR: Importar como configurações do Arke-CE
+  ja: Arke-CE の設定としてインポート
 settings.checkboxes:
   en: Item check boxes
   zh-TW: 顯示核取方塊
@@ -2077,13 +2077,13 @@ report.saved:
   pt-BR: "Salvo: %{path}"
   ja: "保存しました: %{path}"
 report.file_stem:
-  en: Arke problem report
-  zh-TW: Arke 問題回報
-  zh-CN: Arke 问题反馈
-  de: Arke-Problembericht
-  es: Informe de problema de Arke
-  pt-BR: Relatório de problema do Arke
-  ja: Arke 問題レポート
+  en: Arke-CE problem report
+  zh-TW: Arke-CE 問題回報
+  zh-CN: Arke-CE 问题反馈
+  de: Arke-CE-Problembericht
+  es: Informe de problema de Arke-CE
+  pt-BR: Relatório de problema do Arke-CE
+  ja: Arke-CE 問題レポート
 report.environment:
   en: Environment
   zh-TW: 環境
@@ -2101,13 +2101,13 @@ report.settings:
   pt-BR: Configurações
   ja: 設定
 report.shell:
-  en: "Open folders in Arke and Win+E"
-  zh-TW: "用 Arke 開啟資料夾與 Win+E"
-  zh-CN: "用 Arke 打开文件夹与 Win+E"
-  de: Ordner in Arke öffnen und Win+E
-  es: Abrir carpetas en Arke y Win+E
-  pt-BR: Abrir pastas no Arke e Win+E
-  ja: Arke でフォルダーを開く / Win+E
+  en: "Open folders in Arke-CE and Win+E"
+  zh-TW: "用 Arke-CE 開啟資料夾與 Win+E"
+  zh-CN: "用 Arke-CE 打开文件夹与 Win+E"
+  de: Ordner in Arke-CE öffnen und Win+E
+  es: Abrir carpetas en Arke-CE y Win+E
+  pt-BR: Abrir pastas no Arke-CE e Win+E
+  ja: Arke-CE でフォルダーを開く / Win+E
 report.log:
   en: Recent log
   zh-TW: 最近的記錄
@@ -2149,13 +2149,13 @@ update.desc_short:
   pt-BR: Canal de versões, verificações automáticas e instalação de novas versões
   ja: リリース チャネル、自動チェック、新しいバージョンのインストール
 update.desc:
-  en: "Current version: Arke %{version}"
-  zh-TW: "目前版本：Arke %{version}"
-  zh-CN: "当前版本：Arke %{version}"
-  de: "Aktuelle Version: Arke %{version}"
-  es: "Versión actual: Arke %{version}"
-  pt-BR: "Versão atual: Arke %{version}"
-  ja: "現在のバージョン: Arke %{version}"
+  en: "Current version: Arke-CE %{version}"
+  zh-TW: "目前版本：Arke-CE %{version}"
+  zh-CN: "当前版本：Arke-CE %{version}"
+  de: "Aktuelle Version: Arke-CE %{version}"
+  es: "Versión actual: Arke-CE %{version}"
+  pt-BR: "Versão atual: Arke-CE %{version}"
+  ja: "現在のバージョン: Arke-CE %{version}"
 update.channel:
   en: Channel
   zh-TW: "更新通道"
@@ -2181,13 +2181,13 @@ update.auto:
   pt-BR: Atualizar automaticamente
   ja: 自動的に更新
 update.auto_desc:
-  en: "Checks once a day and downloads in the background; installs the next time Arke restarts"
-  zh-TW: "一天檢查一次並在背景下載，下次 Arke 重新啟動時安裝"
-  zh-CN: "每天检查一次并在后台下载，下次 Arke 重启时安装"
-  de: Sucht einmal täglich und lädt im Hintergrund herunter; installiert beim nächsten Neustart von Arke
-  es: Comprueba una vez al día y descarga en segundo plano; se instala al reiniciar Arke
-  pt-BR: Verifica uma vez por dia e baixa em segundo plano; instala na próxima vez que o Arke reiniciar
-  ja: 1 日 1 回確認してバックグラウンドでダウンロードし、次回 Arke の再起動時にインストールします
+  en: "Checks once a day and downloads in the background; installs the next time Arke-CE restarts"
+  zh-TW: "一天檢查一次並在背景下載，下次 Arke-CE 重新啟動時安裝"
+  zh-CN: "每天检查一次并在后台下载，下次 Arke-CE 重启时安装"
+  de: Sucht einmal täglich und lädt im Hintergrund herunter; installiert beim nächsten Neustart von Arke-CE
+  es: Comprueba una vez al día y descarga en segundo plano; se instala al reiniciar Arke-CE
+  pt-BR: Verifica uma vez por dia e baixa em segundo plano; instala na próxima vez que o Arke-CE reiniciar
+  ja: 1 日 1 回確認してバックグラウンドでダウンロードし、次回 Arke-CE の再起動時にインストールします
 update.check:
   en: Check now
   zh-TW: "立即檢查"
@@ -2221,13 +2221,13 @@ update.up_to_date:
   pt-BR: Você está atualizado
   ja: 最新の状態です
 update.available:
-  en: "Arke %{version} is available"
-  zh-TW: 有新版：Arke %{version}
-  zh-CN: 有新版本：Arke %{version}
-  de: Arke %{version} ist verfügbar
-  es: Arke %{version} está disponible
-  pt-BR: O Arke %{version} está disponível
-  ja: Arke %{version} が利用できます
+  en: "Arke-CE %{version} is available"
+  zh-TW: 有新版：Arke-CE %{version}
+  zh-CN: 有新版本：Arke-CE %{version}
+  de: Arke-CE %{version} ist verfügbar
+  es: Arke-CE %{version} está disponible
+  pt-BR: O Arke-CE %{version} está disponível
+  ja: Arke-CE %{version} が利用できます
 update.notes:
   en: What's new
   zh-TW: "查看更新內容"
@@ -2261,13 +2261,13 @@ update.downloading_short:
   pt-BR: Baixando…
   ja: ダウンロード中…
 update.ready:
-  en: "%{version} downloaded; restart Arke to update"
-  zh-TW: "%{version} 已下載，重新啟動 Arke 後套用"
-  zh-CN: "%{version} 已下载，重启 Arke 后生效"
-  de: "%{version} heruntergeladen; Arke neu starten, um zu aktualisieren"
-  es: "%{version} descargada; reinicie Arke para actualizar"
-  pt-BR: "%{version} baixada; reinicie o Arke para atualizar"
-  ja: "%{version} をダウンロードしました。更新するには Arke を再起動してください"
+  en: "%{version} downloaded; restart Arke-CE to update"
+  zh-TW: "%{version} 已下載，重新啟動 Arke-CE 後套用"
+  zh-CN: "%{version} 已下载，重启 Arke-CE 后生效"
+  de: "%{version} heruntergeladen; Arke-CE neu starten, um zu aktualisieren"
+  es: "%{version} descargada; reinicie Arke-CE para actualizar"
+  pt-BR: "%{version} baixada; reinicie o Arke-CE para atualizar"
+  ja: "%{version} をダウンロードしました。更新するには Arke-CE を再起動してください"
 update.ready_short:
   en: Restart to update
   zh-TW: "重新啟動以更新"
@@ -2301,21 +2301,21 @@ update.failed:
   pt-BR: "Não foi possível atualizar: %{error}"
   ja: "更新できませんでした: %{error}"
 update.rolled_back:
-  en: "the new version couldn't start (antivirus software may have blocked it), so Arke stays on this version. Allow arke.exe in your antivirus and update again. (%{error})"
-  zh-TW: 新版本無法啟動（可能被防毒軟體擋下），Arke 維持在目前版本。請在防毒軟體中允許 arke.exe 後再更新一次。（%{error}）
-  zh-CN: 新版本无法启动（可能被杀毒软件拦截），Arke 保持在当前版本。请在杀毒软件中允许 arke.exe 后再更新一次。（%{error}）
-  de: Die neue Version konnte nicht gestartet werden (möglicherweise von Antivirensoftware blockiert); Arke bleibt auf dieser Version. Erlauben Sie arke.exe in Ihrer Antivirensoftware und aktualisieren Sie erneut. (%{error})
-  es: la nueva versión no pudo iniciarse (puede que el antivirus la haya bloqueado), por lo que Arke se queda en esta versión. Permita arke.exe en su antivirus y actualice de nuevo. (%{error})
-  pt-BR: a nova versão não pôde iniciar (um antivírus pode tê-la bloqueado), então o Arke permanece nesta versão. Permita o arke.exe no seu antivírus e atualize novamente. (%{error})
-  ja: 新しいバージョンを起動できませんでした（ウイルス対策ソフトがブロックした可能性があります）。Arke はこのバージョンのままです。ウイルス対策ソフトで arke.exe を許可してから、もう一度更新してください。(%{error})
+  en: "the new version couldn't start (antivirus software may have blocked it), so Arke-CE stays on this version. Allow arke.exe in your antivirus and update again. (%{error})"
+  zh-TW: 新版本無法啟動（可能被防毒軟體擋下），Arke-CE 維持在目前版本。請在防毒軟體中允許 arke.exe 後再更新一次。（%{error}）
+  zh-CN: 新版本无法启动（可能被杀毒软件拦截），Arke-CE 保持在当前版本。请在杀毒软件中允许 arke.exe 后再更新一次。（%{error}）
+  de: Die neue Version konnte nicht gestartet werden (möglicherweise von Antivirensoftware blockiert); Arke-CE bleibt auf dieser Version. Erlauben Sie arke.exe in Ihrer Antivirensoftware und aktualisieren Sie erneut. (%{error})
+  es: la nueva versión no pudo iniciarse (puede que el antivirus la haya bloqueado), por lo que Arke-CE se queda en esta versión. Permita arke.exe en su antivirus y actualice de nuevo. (%{error})
+  pt-BR: a nova versão não pôde iniciar (um antivírus pode tê-la bloqueado), então o Arke-CE permanece nesta versão. Permita o arke.exe no seu antivírus e atualize novamente. (%{error})
+  ja: 新しいバージョンを起動できませんでした（ウイルス対策ソフトがブロックした可能性があります）。Arke-CE はこのバージョンのままです。ウイルス対策ソフトで arke.exe を許可してから、もう一度更新してください。(%{error})
 update.setup_canceled:
-  en: "the installer stopped before installing (for example, the Windows approval prompt was declined), so Arke stays on this version. Update again to retry."
-  zh-TW: 安裝程式在安裝前就結束了（例如在 Windows 的權限確認視窗按了「否」），Arke 維持在目前版本。再更新一次即可重試。
-  zh-CN: 安装程序在安装前就退出了（例如在 Windows 的权限确认窗口点了“否”），Arke 保持在当前版本。再更新一次即可重试。
-  de: Das Installationsprogramm wurde vor der Installation beendet (z. B. weil die Windows-Bestätigung abgelehnt wurde); Arke bleibt auf dieser Version. Aktualisieren Sie erneut, um es noch einmal zu versuchen.
-  es: el instalador se detuvo antes de instalar (por ejemplo, se rechazó el aviso de aprobación de Windows), por lo que Arke se queda en esta versión. Actualice de nuevo para reintentar.
-  pt-BR: o instalador parou antes de instalar (por exemplo, a solicitação de aprovação do Windows foi recusada), então o Arke permanece nesta versão. Atualize novamente para tentar de novo.
-  ja: インストールの前にインストーラーが停止しました（Windows の承認画面が拒否された場合など）。Arke はこのバージョンのままです。もう一度更新してください。
+  en: "the installer stopped before installing (for example, the Windows approval prompt was declined), so Arke-CE stays on this version. Update again to retry."
+  zh-TW: 安裝程式在安裝前就結束了（例如在 Windows 的權限確認視窗按了「否」），Arke-CE 維持在目前版本。再更新一次即可重試。
+  zh-CN: 安装程序在安装前就退出了（例如在 Windows 的权限确认窗口点了“否”），Arke-CE 保持在当前版本。再更新一次即可重试。
+  de: Das Installationsprogramm wurde vor der Installation beendet (z. B. weil die Windows-Bestätigung abgelehnt wurde); Arke-CE bleibt auf dieser Version. Aktualisieren Sie erneut, um es noch einmal zu versuchen.
+  es: el instalador se detuvo antes de instalar (por ejemplo, se rechazó el aviso de aprobación de Windows), por lo que Arke-CE se queda en esta versión. Actualice de nuevo para reintentar.
+  pt-BR: o instalador parou antes de instalar (por exemplo, a solicitação de aprovação do Windows foi recusada), então o Arke-CE permanece nesta versão. Atualize novamente para tentar de novo.
+  ja: インストールの前にインストーラーが停止しました（Windows の承認画面が拒否された場合など）。Arke-CE はこのバージョンのままです。もう一度更新してください。
 update.canceled_short:
   en: Not updated
   zh-TW: 未更新
@@ -2325,13 +2325,13 @@ update.canceled_short:
   pt-BR: Não atualizado
   ja: 未更新
 update.canceled:
-  en: "%{version} wasn't installed: the installer stopped before installing (for example, the Windows approval prompt was declined). Arke stays on this version."
-  zh-TW: 沒有安裝 %{version}：安裝程式在安裝前就結束了（例如在 Windows 的權限確認視窗按了「否」）。Arke 維持在目前版本。
-  zh-CN: 没有安装 %{version}：安装程序在安装前就退出了（例如在 Windows 的权限确认窗口点了“否”）。Arke 保持在当前版本。
-  de: "%{version} wurde nicht installiert: Das Installationsprogramm wurde vor der Installation beendet (z. B. weil die Windows-Bestätigung abgelehnt wurde). Arke bleibt auf dieser Version."
-  es: "%{version} no se instaló: el instalador se detuvo antes de instalar (por ejemplo, se rechazó el aviso de aprobación de Windows). Arke se queda en esta versión."
-  pt-BR: "%{version} não foi instalada: o instalador parou antes de instalar (por exemplo, a solicitação de aprovação do Windows foi recusada). O Arke permanece nesta versão."
-  ja: "%{version} はインストールされませんでした。インストールの前にインストーラーが停止しました（Windows の承認画面が拒否された場合など）。Arke はこのバージョンのままです。"
+  en: "%{version} wasn't installed: the installer stopped before installing (for example, the Windows approval prompt was declined). Arke-CE stays on this version."
+  zh-TW: 沒有安裝 %{version}：安裝程式在安裝前就結束了（例如在 Windows 的權限確認視窗按了「否」）。Arke-CE 維持在目前版本。
+  zh-CN: 没有安装 %{version}：安装程序在安装前就退出了（例如在 Windows 的权限确认窗口点了“否”）。Arke-CE 保持在当前版本。
+  de: "%{version} wurde nicht installiert: Das Installationsprogramm wurde vor der Installation beendet (z. B. weil die Windows-Bestätigung abgelehnt wurde). Arke-CE bleibt auf dieser Version."
+  es: "%{version} no se instaló: el instalador se detuvo antes de instalar (por ejemplo, se rechazó el aviso de aprobación de Windows). Arke-CE se queda en esta versión."
+  pt-BR: "%{version} não foi instalada: o instalador parou antes de instalar (por exemplo, a solicitação de aprovação do Windows foi recusada). O Arke-CE permanece nesta versão."
+  ja: "%{version} はインストールされませんでした。インストールの前にインストーラーが停止しました（Windows の承認画面が拒否された場合など）。Arke-CE はこのバージョンのままです。"
 update.retry:
   en: Try again
   zh-TW: 再試一次
@@ -2373,13 +2373,13 @@ update.bad_hash:
   pt-BR: o download não corresponde à soma de verificação
   ja: ダウンロードしたファイルがチェックサムと一致しません
 update.bad_signature:
-  en: the download isn't signed by Arke, so it wasn't installed
-  zh-TW: "下載的檔案沒有 Arke 的簽章，所以沒有安裝"
-  zh-CN: 下载的文件没有 Arke 的签名，所以没有安装
-  de: Der Download ist nicht von Arke signiert und wurde daher nicht installiert
-  es: la descarga no está firmada por Arke, así que no se instaló
-  pt-BR: o download não está assinado pelo Arke, por isso não foi instalado
-  ja: ダウンロードしたファイルに Arke の署名がないため、インストールしませんでした
+  en: the download isn't signed by Arke-CE, so it wasn't installed
+  zh-TW: "下載的檔案沒有 Arke-CE 的簽章，所以沒有安裝"
+  zh-CN: 下载的文件没有 Arke-CE 的签名，所以没有安装
+  de: Der Download ist nicht von Arke-CE signiert und wurde daher nicht installiert
+  es: la descarga no está firmada por Arke-CE, así que no se instaló
+  pt-BR: o download não está assinado pelo Arke-CE, por isso não foi instalado
+  ja: ダウンロードしたファイルに Arke-CE の署名がないため、インストールしませんでした
 update.route:
   en: Download route
   zh-TW: "下載線路"
@@ -2461,13 +2461,13 @@ update.badge:
   pt-BR: Atualizar
   ja: 更新
 update.notice_body:
-  en: "Nothing changes until you choose to update; the new version starts when Arke restarts"
-  zh-TW: "按下更新之前不會有任何變動；Arke 重新啟動後才會換成新版本"
-  zh-CN: "点击更新之前不会有任何变化；Arke 重启后才会换成新版本"
-  de: Es ändert sich nichts, bis Sie aktualisieren; die neue Version startet beim Neustart von Arke
-  es: No cambia nada hasta que decida actualizar; la nueva versión se inicia al reiniciar Arke
-  pt-BR: Nada muda até você escolher atualizar; a nova versão inicia quando o Arke reiniciar
-  ja: 更新を選ぶまで何も変わりません。新しいバージョンは Arke の再起動時に開始されます
+  en: "Nothing changes until you choose to update; the new version starts when Arke-CE restarts"
+  zh-TW: "按下更新之前不會有任何變動；Arke-CE 重新啟動後才會換成新版本"
+  zh-CN: "点击更新之前不会有任何变化；Arke-CE 重启后才会换成新版本"
+  de: Es ändert sich nichts, bis Sie aktualisieren; die neue Version startet beim Neustart von Arke-CE
+  es: No cambia nada hasta que decida actualizar; la nueva versión se inicia al reiniciar Arke-CE
+  pt-BR: Nada muda até você escolher atualizar; a nova versão inicia quando o Arke-CE reiniciar
+  ja: 更新を選ぶまで何も変わりません。新しいバージョンは Arke-CE の再起動時に開始されます
 whats_new.title:
   en: "What's new"
   zh-TW: "新功能"
@@ -2501,21 +2501,21 @@ whats_new.auto:
   pt-BR: Mostrar novidades após atualizar
   ja: 更新後に新機能を表示
 whats_new.auto_desc:
-  en: "Opens a tab once, the first time Arke runs after an update"
+  en: "Opens a tab once, the first time Arke-CE runs after an update"
   zh-TW: "更新後第一次啟動時開一個分頁，只開一次"
   zh-CN: "更新后第一次启动时打开一个标签页，只打开一次"
-  de: Öffnet einmalig eine Registerkarte, wenn Arke nach einem Update zum ersten Mal läuft
-  es: Abre una pestaña una sola vez, la primera vez que se ejecuta Arke tras una actualización
-  pt-BR: Abre uma guia uma vez, na primeira execução do Arke após uma atualização
+  de: Öffnet einmalig eine Registerkarte, wenn Arke-CE nach einem Update zum ersten Mal läuft
+  es: Abre una pestaña una sola vez, la primera vez que se ejecuta Arke-CE tras una actualización
+  pt-BR: Abre uma guia uma vez, na primeira execução do Arke-CE após uma atualização
   ja: 更新後の初回起動時に、タブを一度だけ開きます
 whats_new.updated:
-  en: "Arke is now %{version}"
-  zh-TW: "Arke 已更新到 %{version}"
-  zh-CN: "Arke 已更新到 %{version}"
-  de: Arke ist jetzt %{version}
-  es: Arke ahora es %{version}
-  pt-BR: O Arke agora é %{version}
-  ja: Arke は %{version} になりました
+  en: "Arke-CE is now %{version}"
+  zh-TW: "Arke-CE 已更新到 %{version}"
+  zh-CN: "Arke-CE 已更新到 %{version}"
+  de: Arke-CE ist jetzt %{version}
+  es: Arke-CE ahora es %{version}
+  pt-BR: O Arke-CE agora é %{version}
+  ja: Arke-CE は %{version} になりました
 whats_new.since:
   en: "What changed since %{version}"
   zh-TW: "自 %{version} 以來的改動"
@@ -2573,13 +2573,13 @@ whats_new.changelog:
   pt-BR: Histórico de alterações completo
   ja: 変更履歴の全文
 channel.stable:
-  en: Stable
-  zh-TW: 正式版
-  zh-CN: 正式版
-  de: Stable
-  es: Estable
-  pt-BR: Estável
-  ja: Stable
+  en: CE
+  zh-TW: CE
+  zh-CN: CE
+  de: CE
+  es: CE
+  pt-BR: CE
+  ja: CE
 channel.rc:
   en: RC
   zh-TW: RC
@@ -2661,29 +2661,29 @@ backup.import_title:
   pt-BR: Importar
   ja: インポート
 backup.import_desc:
-  en: "Browse for a .json file or paste its path and press Enter. You can also right-click the file › Import as Arke settings"
-  zh-TW: "瀏覽選擇 .json 檔，或貼上路徑後按 Enter；也可以在檔案上按右鍵 →「匯入 Arke 設定」"
-  zh-CN: "浏览选择 .json 文件，或粘贴路径后按 Enter；也可以右键单击该文件 →“导入 Arke 设置”"
-  de: Wählen Sie eine .json-Datei aus oder fügen Sie ihren Pfad ein und drücken Sie die Eingabetaste. Sie können auch mit der rechten Maustaste auf die Datei klicken › Als Arke-Einstellungen importieren
-  es: Busque un archivo .json o pegue su ruta y presione Intro. También puede hacer clic derecho en el archivo › Importar como configuración de Arke
-  pt-BR: Procure um arquivo .json ou cole o caminho e pressione Enter. Você também pode clicar com o botão direito no arquivo › Importar como configurações do Arke
-  ja: ".json ファイルを参照するか、パスを貼り付けて Enter を押してください。ファイルを右クリック › Arke の設定としてインポート でも可能です"
+  en: "Browse for a .json file or paste its path and press Enter. You can also right-click the file › Import as Arke-CE settings"
+  zh-TW: "瀏覽選擇 .json 檔，或貼上路徑後按 Enter；也可以在檔案上按右鍵 →「匯入 Arke-CE 設定」"
+  zh-CN: "浏览选择 .json 文件，或粘贴路径后按 Enter；也可以右键单击该文件 →“导入 Arke-CE 设置”"
+  de: Wählen Sie eine .json-Datei aus oder fügen Sie ihren Pfad ein und drücken Sie die Eingabetaste. Sie können auch mit der rechten Maustaste auf die Datei klicken › Als Arke-CE-Einstellungen importieren
+  es: Busque un archivo .json o pegue su ruta y presione Intro. También puede hacer clic derecho en el archivo › Importar como configuración de Arke-CE
+  pt-BR: Procure um arquivo .json ou cole o caminho e pressione Enter. Você também pode clicar com o botão direito no arquivo › Importar como configurações do Arke-CE
+  ja: ".json ファイルを参照するか、パスを貼り付けて Enter を押してください。ファイルを右クリック › Arke-CE の設定としてインポート でも可能です"
 backup.pick_title:
-  en: Choose an Arke settings file
-  zh-TW: 選擇 Arke 設定檔
-  zh-CN: 选择 Arke 设置文件
-  de: Arke-Einstellungsdatei auswählen
-  es: Elegir un archivo de configuración de Arke
-  pt-BR: Escolher um arquivo de configurações do Arke
-  ja: Arke の設定ファイルを選択
+  en: Choose an Arke-CE settings file
+  zh-TW: 選擇 Arke-CE 設定檔
+  zh-CN: 选择 Arke-CE 设置文件
+  de: Arke-CE-Einstellungsdatei auswählen
+  es: Elegir un archivo de configuración de Arke-CE
+  pt-BR: Escolher um arquivo de configurações do Arke-CE
+  ja: Arke-CE の設定ファイルを選択
 backup.filter:
-  en: Arke settings (JSON)
-  zh-TW: Arke 設定（JSON）
-  zh-CN: Arke 设置（JSON）
-  de: Arke-Einstellungen (JSON)
-  es: Configuración de Arke (JSON)
-  pt-BR: Configurações do Arke (JSON)
-  ja: Arke の設定 (JSON)
+  en: Arke-CE settings (JSON)
+  zh-TW: Arke-CE 設定（JSON）
+  zh-CN: Arke-CE 设置（JSON）
+  de: Arke-CE-Einstellungen (JSON)
+  es: Configuración de Arke-CE (JSON)
+  pt-BR: Configurações do Arke-CE (JSON)
+  ja: Arke-CE の設定 (JSON)
 backup.import_placeholder:
   en: Path to the .json file
   zh-TW: .json 檔的路徑
@@ -2693,21 +2693,21 @@ backup.import_placeholder:
   pt-BR: Caminho do arquivo .json
   ja: ".json ファイルのパス"
 backup.file_stem:
-  en: Arke settings
-  zh-TW: Arke 設定
-  zh-CN: Arke 设置
-  de: Arke-Einstellungen
-  es: Configuración de Arke
-  pt-BR: Configurações do Arke
-  ja: Arke の設定
+  en: Arke-CE settings
+  zh-TW: Arke-CE 設定
+  zh-CN: Arke-CE 设置
+  de: Arke-CE-Einstellungen
+  es: Configuración de Arke-CE
+  pt-BR: Configurações do Arke-CE
+  ja: Arke-CE の設定
 backup.file_stem_dated:
-  en: Arke settings %{date}
-  zh-TW: Arke 設定 %{date}
-  zh-CN: Arke 设置 %{date}
-  de: Arke-Einstellungen %{date}
-  es: Configuración de Arke %{date}
-  pt-BR: Configurações do Arke %{date}
-  ja: Arke の設定 %{date}
+  en: Arke-CE settings %{date}
+  zh-TW: Arke-CE 設定 %{date}
+  zh-CN: Arke-CE 设置 %{date}
+  de: Arke-CE-Einstellungen %{date}
+  es: Configuración de Arke-CE %{date}
+  pt-BR: Configurações do Arke-CE %{date}
+  ja: Arke-CE の設定 %{date}
 backup.exported:
   en: "Exported: %{path}"
   zh-TW: 已匯出：%{path}
@@ -2717,13 +2717,13 @@ backup.exported:
   pt-BR: "Exportado: %{path}"
   ja: "エクスポートしました: %{path}"
 backup.reveal:
-  en: Show in Arke
-  zh-TW: 在 Arke 裡顯示
-  zh-CN: 在 Arke 中显示
-  de: In Arke anzeigen
-  es: Mostrar en Arke
-  pt-BR: Mostrar no Arke
-  ja: Arke で表示
+  en: Show in Arke-CE
+  zh-TW: 在 Arke-CE 裡顯示
+  zh-CN: 在 Arke-CE 中显示
+  de: In Arke-CE anzeigen
+  es: Mostrar en Arke-CE
+  pt-BR: Mostrar no Arke-CE
+  ja: Arke-CE で表示
 backup.imported:
   en: Imported settings from “%{name}”
   zh-TW: 已從「%{name}」匯入設定
@@ -2789,13 +2789,13 @@ backup.not_json:
   pt-BR: isto não é um arquivo JSON
   ja: JSON ファイルではありません
 backup.not_arke:
-  en: this isn't an Arke settings backup
-  zh-TW: 這不是 Arke 的設定備份
-  zh-CN: 这不是 Arke 的设置备份
-  de: Dies ist keine Arke-Einstellungssicherung
-  es: no es una copia de seguridad de la configuración de Arke
-  pt-BR: isto não é um backup de configurações do Arke
-  ja: Arke の設定バックアップではありません
+  en: this isn't an Arke-CE settings backup
+  zh-TW: 這不是 Arke-CE 的設定備份
+  zh-CN: 这不是 Arke-CE 的设置备份
+  de: Dies ist keine Arke-CE-Einstellungssicherung
+  es: no es una copia de seguridad de la configuración de Arke-CE
+  pt-BR: isto não é um backup de configurações do Arke-CE
+  ja: Arke-CE の設定バックアップではありません
 backup.broken:
   en: "the backup is damaged (%{error})"
   zh-TW: 備份的內容有問題（%{error}）
@@ -3037,21 +3037,21 @@ settings.space_quicklook:
   pt-BR: Espaço abre o QuickLook
   ja: スペース キーで QuickLook を開く
 settings.space_quicklook_tip:
-  en: "Space opens QuickLook (found at %{path}) instead of Arke's quick look"
-  zh-TW: "空白鍵改用 QuickLook（位於 %{path}）預覽，而不是 Arke 的快速預覽"
-  zh-CN: "空格键改用 QuickLook（位于 %{path}）预览，而不是 Arke 的快速预览"
-  de: Die Leertaste öffnet QuickLook (gefunden unter %{path}) statt der Schnellansicht von Arke
-  es: Espacio abre QuickLook (encontrado en %{path}) en lugar de la vista rápida de Arke
-  pt-BR: Espaço abre o QuickLook (encontrado em %{path}) em vez da visualização rápida do Arke
-  ja: スペース キーで Arke のクイック表示ではなく QuickLook (%{path}) を開きます
+  en: "Space opens QuickLook (found at %{path}) instead of Arke-CE's quick look"
+  zh-TW: "空白鍵改用 QuickLook（位於 %{path}）預覽，而不是 Arke-CE 的快速預覽"
+  zh-CN: "空格键改用 QuickLook（位于 %{path}）预览，而不是 Arke-CE 的快速预览"
+  de: Die Leertaste öffnet QuickLook (gefunden unter %{path}) statt der Schnellansicht von Arke-CE
+  es: Espacio abre QuickLook (encontrado en %{path}) en lugar de la vista rápida de Arke-CE
+  pt-BR: Espaço abre o QuickLook (encontrado em %{path}) em vez da visualização rápida do Arke-CE
+  ja: スペース キーで Arke-CE のクイック表示ではなく QuickLook (%{path}) を開きます
 settings.space_quicklook_tip_running:
-  en: "Space opens the running QuickLook instead of Arke's quick look"
-  zh-TW: "空白鍵改用執行中的 QuickLook 預覽，而不是 Arke 的快速預覽"
-  zh-CN: "空格键改用正在运行的 QuickLook 预览，而不是 Arke 的快速预览"
-  de: Die Leertaste öffnet das laufende QuickLook statt der Schnellansicht von Arke
-  es: Espacio abre el QuickLook en ejecución en lugar de la vista rápida de Arke
-  pt-BR: Espaço abre o QuickLook em execução em vez da visualização rápida do Arke
-  ja: スペース キーで Arke のクイック表示ではなく、実行中の QuickLook を開きます
+  en: "Space opens the running QuickLook instead of Arke-CE's quick look"
+  zh-TW: "空白鍵改用執行中的 QuickLook 預覽，而不是 Arke-CE 的快速預覽"
+  zh-CN: "空格键改用正在运行的 QuickLook 预览，而不是 Arke-CE 的快速预览"
+  de: Die Leertaste öffnet das laufende QuickLook statt der Schnellansicht von Arke-CE
+  es: Espacio abre el QuickLook en ejecución en lugar de la vista rápida de Arke-CE
+  pt-BR: Espaço abre o QuickLook em execução em vez da visualização rápida do Arke-CE
+  ja: スペース キーで Arke-CE のクイック表示ではなく、実行中の QuickLook を開きます
 settings.startup:
   en: Startup
   zh-TW: 啟動
@@ -3485,21 +3485,21 @@ settings.keep_running_desc:
   pt-BR: Abre mais rápido na próxima vez
   ja: 次回の起動が速くなります
 settings.takeover:
-  en: "Open folders in Arke"
-  zh-TW: "用 Arke 開啟資料夾"
-  zh-CN: "用 Arke 打开文件夹"
-  de: Ordner in Arke öffnen
-  es: Abrir carpetas en Arke
-  pt-BR: Abrir pastas no Arke
-  ja: フォルダーを Arke で開く
+  en: "Open folders in Arke-CE"
+  zh-TW: "用 Arke-CE 開啟資料夾"
+  zh-CN: "用 Arke-CE 打开文件夹"
+  de: Ordner in Arke-CE öffnen
+  es: Abrir carpetas en Arke-CE
+  pt-BR: Abrir pastas no Arke-CE
+  ja: フォルダーを Arke-CE で開く
 settings.takeover_desc:
-  en: "Registers Arke as the folder handler for this Windows account, so \"Show in folder\" in other apps opens Arke too. Turn it off to undo it"
-  zh-TW: "將 Arke 登錄為這個 Windows 帳戶的資料夾開啟程式，其他程式的「在資料夾中顯示」也會開 Arke，關閉即還原"
-  zh-CN: "将 Arke 注册为这个 Windows 账户的文件夹打开程序，其他程序的“在文件夹中显示”也会打开 Arke，关闭即还原"
-  de: Registriert Arke als Ordner-Handler für dieses Windows-Konto, sodass „Im Ordner anzeigen“ in anderen Apps ebenfalls Arke öffnet. Zum Rückgängigmachen ausschalten
-  es: Registra Arke como controlador de carpetas de esta cuenta de Windows, de modo que «Mostrar en carpeta» en otras aplicaciones también abra Arke. Desactívelo para deshacerlo
-  pt-BR: "Registra o Arke como manipulador de pastas desta conta do Windows, para que \"Mostrar na pasta\" em outros aplicativos também abra o Arke. Desative para desfazer"
-  ja: この Windows アカウントのフォルダー ハンドラーとして Arke を登録し、他のアプリの「フォルダーを開く」でも Arke を開きます。オフにすると元に戻ります
+  en: "Registers Arke-CE as the folder handler for this Windows account, so \"Show in folder\" in other apps opens Arke-CE too. Turn it off to undo it"
+  zh-TW: "將 Arke-CE 登錄為這個 Windows 帳戶的資料夾開啟程式，其他程式的「在資料夾中顯示」也會開 Arke-CE，關閉即還原"
+  zh-CN: "将 Arke-CE 注册为这个 Windows 账户的文件夹打开程序，其他程序的“在文件夹中显示”也会打开 Arke-CE，关闭即还原"
+  de: Registriert Arke-CE als Ordner-Handler für dieses Windows-Konto, sodass „Im Ordner anzeigen“ in anderen Apps ebenfalls Arke-CE öffnet. Zum Rückgängigmachen ausschalten
+  es: Registra Arke-CE como controlador de carpetas de esta cuenta de Windows, de modo que «Mostrar en carpeta» en otras aplicaciones también abra Arke-CE. Desactívelo para deshacerlo
+  pt-BR: "Registra o Arke-CE como manipulador de pastas desta conta do Windows, para que \"Mostrar na pasta\" em outros aplicativos também abra o Arke-CE. Desative para desfazer"
+  ja: この Windows アカウントのフォルダー ハンドラーとして Arke-CE を登録し、他のアプリの「フォルダーを開く」でも Arke-CE を開きます。オフにすると元に戻ります
 settings.single_window:
   en: "Single window"
   zh-TW: "單一視窗"
@@ -3509,21 +3509,21 @@ settings.single_window:
   pt-BR: Janela única
   ja: シングル ウィンドウ
 settings.single_window_desc:
-  en: "Folders from other apps, Win+E and starting Arke again add a tab to the window you used last. Off: each gets a new window"
-  zh-TW: "從其他程式開啟的資料夾、Win+E 和再次啟動 Arke 都加成最近使用視窗的分頁。關閉則每次都開新視窗"
-  zh-CN: "从其他程序打开的文件夹、Win+E 和再次启动 Arke 都加为最近使用窗口的标签页。关闭则每次都开新窗口"
-  de: "Ordner aus anderen Apps, Win+E und ein erneuter Start von Arke fügen dem zuletzt verwendeten Fenster eine Registerkarte hinzu. Aus: Jeweils ein neues Fenster"
-  es: "Las carpetas de otras aplicaciones, Win+E y volver a iniciar Arke añaden una pestaña a la última ventana usada. Desactivado: cada una abre una ventana nueva"
-  pt-BR: "Pastas de outros aplicativos, Win+E e iniciar o Arke novamente adicionam uma guia à última janela usada. Desativado: cada um abre uma nova janela"
-  ja: "他のアプリからのフォルダー、Win+E、Arke の再起動は、最後に使ったウィンドウにタブとして追加されます。オフ: それぞれ新しいウィンドウで開きます"
+  en: "Folders from other apps, Win+E and starting Arke-CE again add a tab to the window you used last. Off: each gets a new window"
+  zh-TW: "從其他程式開啟的資料夾、Win+E 和再次啟動 Arke-CE 都加成最近使用視窗的分頁。關閉則每次都開新視窗"
+  zh-CN: "从其他程序打开的文件夹、Win+E 和再次启动 Arke-CE 都加为最近使用窗口的标签页。关闭则每次都开新窗口"
+  de: "Ordner aus anderen Apps, Win+E und ein erneuter Start von Arke-CE fügen dem zuletzt verwendeten Fenster eine Registerkarte hinzu. Aus: Jeweils ein neues Fenster"
+  es: "Las carpetas de otras aplicaciones, Win+E y volver a iniciar Arke-CE añaden una pestaña a la última ventana usada. Desactivado: cada una abre una ventana nueva"
+  pt-BR: "Pastas de outros aplicativos, Win+E e iniciar o Arke-CE novamente adicionam uma guia à última janela usada. Desativado: cada um abre uma nova janela"
+  ja: "他のアプリからのフォルダー、Win+E、Arke-CE の再起動は、最後に使ったウィンドウにタブとして追加されます。オフ: それぞれ新しいウィンドウで開きます"
 settings.win_e:
-  en: "Win+E and the File Explorer icon open Arke too"
-  zh-TW: "Win+E 和檔案總管圖示也開 Arke"
-  zh-CN: "Win+E 和文件资源管理器图标也打开 Arke"
-  de: Win+E und das Datei-Explorer-Symbol öffnen ebenfalls Arke
-  es: Win+E y el icono del Explorador de archivos también abren Arke
-  pt-BR: Win+E e o ícone do Explorador de Arquivos também abrem o Arke
-  ja: Win+E とエクスプローラーのアイコンでも Arke を開く
+  en: "Win+E and the File Explorer icon open Arke-CE too"
+  zh-TW: "Win+E 和檔案總管圖示也開 Arke-CE"
+  zh-CN: "Win+E 和文件资源管理器图标也打开 Arke-CE"
+  de: Win+E und das Datei-Explorer-Symbol öffnen ebenfalls Arke-CE
+  es: Win+E y el icono del Explorador de archivos también abren Arke-CE
+  pt-BR: Win+E e o ícone do Explorador de Arquivos também abrem o Arke-CE
+  ja: Win+E とエクスプローラーのアイコンでも Arke-CE を開く
 settings.win_e_desc:
   en: "Off: File Explorer you start yourself stays File Explorer"
   zh-TW: "關閉時，自己開的檔案總管仍是檔案總管"
@@ -3837,13 +3837,13 @@ settings.version_line:
   pt-BR: Versão %{version}
   ja: バージョン %{version}
 settings.about_legal:
-  en: "Arke is free software under the AGPL-3.0 and comes with no warranty."
-  zh-TW: "Arke 是採用 AGPL-3.0 授權的自由軟體，不提供任何擔保。"
-  zh-CN: "Arke 是采用 AGPL-3.0 许可证的自由软件，不提供任何担保。"
-  de: Arke ist freie Software unter der AGPL-3.0 und wird ohne Gewährleistung bereitgestellt.
-  es: Arke es software libre bajo la AGPL-3.0 y se ofrece sin garantía.
-  pt-BR: O Arke é software livre sob a AGPL-3.0 e não oferece nenhuma garantia.
-  ja: Arke は AGPL-3.0 に基づくフリーソフトウェアで、無保証です。
+  en: "Arke-CE is free software under the AGPL-3.0 and comes with no warranty."
+  zh-TW: "Arke-CE 是採用 AGPL-3.0 授權的自由軟體，不提供任何擔保。"
+  zh-CN: "Arke-CE 是采用 AGPL-3.0 许可证的自由软件，不提供任何担保。"
+  de: Arke-CE ist freie Software unter der AGPL-3.0 und wird ohne Gewährleistung bereitgestellt.
+  es: Arke-CE es software libre bajo la AGPL-3.0 y se ofrece sin garantía.
+  pt-BR: O Arke-CE é software livre sob a AGPL-3.0 e não oferece nenhuma garantia.
+  ja: Arke-CE は AGPL-3.0 に基づくフリーソフトウェアで、無保証です。
 settings.source_code:
   en: "Source code"
   zh-TW: "原始碼"
@@ -3869,13 +3869,13 @@ settings.settings_file:
   pt-BR: Arquivo de configurações
   ja: 設定ファイル
 settings.version:
-  en: "Arke %{version}"
-  zh-TW: "Arke %{version}"
-  zh-CN: "Arke %{version}"
-  de: Arke %{version}
-  es: Arke %{version}
-  pt-BR: Arke %{version}
-  ja: Arke %{version}
+  en: "Arke-CE %{version}"
+  zh-TW: "Arke-CE %{version}"
+  zh-CN: "Arke-CE %{version}"
+  de: Arke-CE %{version}
+  es: Arke-CE %{version}
+  pt-BR: Arke-CE %{version}
+  ja: Arke-CE %{version}
 settings.open_folder:
   en: Show settings file
   zh-TW: 開啟設定檔位置
@@ -4715,21 +4715,21 @@ settings.service:
   pt-BR: Atualizações em tempo real (serviço em segundo plano)
   ja: ライブ更新 (バックグラウンド サービス)
 settings.service_desc:
-  en: Catches up on changes made while Arke is closed and builds the index faster. Needs administrator approval.
-  zh-TW: Arke 關閉期間的變更也能補上，建索引也更快。需要系統管理員同意。
-  zh-CN: Arke 关闭期间的更改也能补上，建立索引也更快。需要管理员批准。
-  de: Holt Änderungen nach, die bei geschlossenem Arke erfolgten, und erstellt den Index schneller. Erfordert Administratorgenehmigung.
-  es: Se pone al día con los cambios hechos mientras Arke está cerrado y crea el índice más rápido. Requiere aprobación de administrador.
-  pt-BR: Recupera as alterações feitas enquanto o Arke está fechado e cria o índice mais rápido. Requer aprovação de administrador.
-  ja: Arke を閉じている間の変更を反映し、インデックスをより速く作成します。管理者の承認が必要です。
+  en: Catches up on changes made while Arke-CE is closed and builds the index faster. Needs administrator approval.
+  zh-TW: Arke-CE 關閉期間的變更也能補上，建索引也更快。需要系統管理員同意。
+  zh-CN: Arke-CE 关闭期间的更改也能补上，建立索引也更快。需要管理员批准。
+  de: Holt Änderungen nach, die bei geschlossenem Arke-CE erfolgten, und erstellt den Index schneller. Erfordert Administratorgenehmigung.
+  es: Se pone al día con los cambios hechos mientras Arke-CE está cerrado y crea el índice más rápido. Requiere aprobación de administrador.
+  pt-BR: Recupera as alterações feitas enquanto o Arke-CE está fechado e cria o índice mais rápido. Requer aprovação de administrador.
+  ja: Arke-CE を閉じている間の変更を反映し、インデックスをより速く作成します。管理者の承認が必要です。
 settings.service_outdated:
-  en: "Installed with another version of Arke, so it misses this version's improvements. Update it to match; needs administrator approval."
-  zh-TW: "是用另一個版本的 Arke 安裝的，沒有這個版本的改進。請更新成相同版本；需要系統管理員同意。"
-  zh-CN: "是用另一个版本的 Arke 安装的，没有这个版本的改进。请更新成相同版本；需要管理员批准。"
-  de: Mit einer anderen Arke-Version installiert und deshalb ohne die Verbesserungen dieser Version. Aktualisieren Sie ihn; erfordert Administratorgenehmigung.
-  es: Instalado con otra versión de Arke, por lo que no tiene las mejoras de esta versión. Actualícelo para que coincida; requiere aprobación de administrador.
-  pt-BR: Instalado com outra versão do Arke, por isso não tem as melhorias desta versão. Atualize para corresponder; requer aprovação de administrador.
-  ja: 別のバージョンの Arke でインストールされているため、このバージョンの改善が反映されません。更新して合わせてください。管理者の承認が必要です。
+  en: "Installed with another version of Arke-CE, so it misses this version's improvements. Update it to match; needs administrator approval."
+  zh-TW: "是用另一個版本的 Arke-CE 安裝的，沒有這個版本的改進。請更新成相同版本；需要系統管理員同意。"
+  zh-CN: "是用另一个版本的 Arke-CE 安装的，没有这个版本的改进。请更新成相同版本；需要管理员批准。"
+  de: Mit einer anderen Arke-CE-Version installiert und deshalb ohne die Verbesserungen dieser Version. Aktualisieren Sie ihn; erfordert Administratorgenehmigung.
+  es: Instalado con otra versión de Arke-CE, por lo que no tiene las mejoras de esta versión. Actualícelo para que coincida; requiere aprobación de administrador.
+  pt-BR: Instalado com outra versão do Arke-CE, por isso não tem as melhorias desta versão. Atualize para corresponder; requer aprovação de administrador.
+  ja: 別のバージョンの Arke-CE でインストールされているため、このバージョンの改善が反映されません。更新して合わせてください。管理者の承認が必要です。
 settings.service_update:
   en: Update
   zh-TW: 更新
@@ -5395,13 +5395,13 @@ net.key_changed_title:
   pt-BR: "Aviso: a chave do servidor mudou"
   ja: "警告: サーバーのキーが変更されました"
 net.key_changed_body:
-  en: "%{host} no longer has the key Arke saw before. Someone may be intercepting the connection. Only continue if you know the server was reinstalled or its key replaced."
-  zh-TW: "%{host} 的金鑰和 Arke 先前看到的不同，可能有人在攔截連線。只有確定伺服器重灌或換過金鑰時才繼續。"
-  zh-CN: "%{host} 的密钥与 Arke 之前看到的不同，可能有人在拦截连接。只有确定服务器重装或更换过密钥时才继续。"
-  de: "%{host} hat nicht mehr den Schlüssel, den Arke zuvor gesehen hat. Möglicherweise fängt jemand die Verbindung ab. Fahren Sie nur fort, wenn Sie wissen, dass der Server neu installiert oder sein Schlüssel ersetzt wurde."
-  es: "%{host} ya no tiene la clave que Arke vio antes. Es posible que alguien esté interceptando la conexión. Continúe solo si sabe que el servidor se reinstaló o que su clave se reemplazó."
-  pt-BR: "%{host} não tem mais a chave que o Arke viu antes. Alguém pode estar interceptando a conexão. Continue somente se souber que o servidor foi reinstalado ou que a chave foi substituída."
-  ja: "%{host} は、Arke が以前確認したキーを使っていません。接続が傍受されている可能性があります。サーバーを再インストールした、またはキーを入れ替えたと分かっている場合のみ続行してください。"
+  en: "%{host} no longer has the key Arke-CE saw before. Someone may be intercepting the connection. Only continue if you know the server was reinstalled or its key replaced."
+  zh-TW: "%{host} 的金鑰和 Arke-CE 先前看到的不同，可能有人在攔截連線。只有確定伺服器重灌或換過金鑰時才繼續。"
+  zh-CN: "%{host} 的密钥与 Arke-CE 之前看到的不同，可能有人在拦截连接。只有确定服务器重装或更换过密钥时才继续。"
+  de: "%{host} hat nicht mehr den Schlüssel, den Arke-CE zuvor gesehen hat. Möglicherweise fängt jemand die Verbindung ab. Fahren Sie nur fort, wenn Sie wissen, dass der Server neu installiert oder sein Schlüssel ersetzt wurde."
+  es: "%{host} ya no tiene la clave que Arke-CE vio antes. Es posible que alguien esté interceptando la conexión. Continúe solo si sabe que el servidor se reinstaló o que su clave se reemplazó."
+  pt-BR: "%{host} não tem mais a chave que o Arke-CE viu antes. Alguém pode estar interceptando a conexão. Continue somente se souber que o servidor foi reinstalado ou que a chave foi substituída."
+  ja: "%{host} は、Arke-CE が以前確認したキーを使っていません。接続が傍受されている可能性があります。サーバーを再インストールした、またはキーを入れ替えたと分かっている場合のみ続行してください。"
 net.key_replace:
   en: Replace key and connect
   zh-TW: 取代金鑰並連線
@@ -5475,29 +5475,29 @@ tray.open:
   pt-BR: Nova janela
   ja: 新しいウィンドウ
 tray.takeover:
-  en: Open folders in Arke
-  zh-TW: 用 Arke 開啟資料夾
-  zh-CN: 用 Arke 打开文件夹
-  de: Ordner in Arke öffnen
-  es: Abrir carpetas en Arke
-  pt-BR: Abrir pastas no Arke
-  ja: フォルダーを Arke で開く
+  en: Open folders in Arke-CE
+  zh-TW: 用 Arke-CE 開啟資料夾
+  zh-CN: 用 Arke-CE 打开文件夹
+  de: Ordner in Arke-CE öffnen
+  es: Abrir carpetas en Arke-CE
+  pt-BR: Abrir pastas no Arke-CE
+  ja: フォルダーを Arke-CE で開く
 tray.quit:
-  en: Quit Arke
-  zh-TW: 結束 Arke
-  zh-CN: 退出 Arke
-  de: Arke beenden
-  es: Salir de Arke
-  pt-BR: Sair do Arke
-  ja: Arke を終了
+  en: Quit Arke-CE
+  zh-TW: 結束 Arke-CE
+  zh-CN: 退出 Arke-CE
+  de: Arke-CE beenden
+  es: Salir de Arke-CE
+  pt-BR: Sair do Arke-CE
+  ja: Arke-CE を終了
 tray.update:
-  en: "Update to Arke %{version}"
-  zh-TW: "更新到 Arke %{version}"
-  zh-CN: "更新到 Arke %{version}"
-  de: Auf Arke %{version} aktualisieren
-  es: Actualizar a Arke %{version}
-  pt-BR: Atualizar para o Arke %{version}
-  ja: Arke %{version} に更新
+  en: "Update to Arke-CE %{version}"
+  zh-TW: "更新到 Arke-CE %{version}"
+  zh-CN: "更新到 Arke-CE %{version}"
+  de: Auf Arke-CE %{version} aktualisieren
+  es: Actualizar a Arke-CE %{version}
+  pt-BR: Atualizar para o Arke-CE %{version}
+  ja: Arke-CE %{version} に更新
 menu.host_blocked:
   en: "The Windows menu was blocked (usually by antivirus)"
   zh-TW: "Windows 選單遭到封鎖（通常是防毒軟體）"
@@ -5845,13 +5845,13 @@ ops.virtual_failed:
   pt-BR: "Não foi possível obter “%{name}” do programa de origem: %{error}"
   ja: "取得元のプログラムから「%{name}」を取得できませんでした: %{error}"
 ops.crashed:
-  en: "Something went wrong inside Arke; nothing more was done"
-  zh-TW: "Arke 內部發生錯誤，已停止這項作業"
-  zh-CN: "Arke 内部出错，已停止此操作"
-  de: In Arke ist etwas schiefgelaufen; es wurde nichts weiter getan
-  es: Algo falló dentro de Arke; no se hizo nada más
-  pt-BR: Algo deu errado dentro do Arke; nada mais foi feito
-  ja: Arke 内部で問題が発生しました。それ以降の処理は行われていません
+  en: "Something went wrong inside Arke-CE; nothing more was done"
+  zh-TW: "Arke-CE 內部發生錯誤，已停止這項作業"
+  zh-CN: "Arke-CE 内部出错，已停止此操作"
+  de: In Arke-CE ist etwas schiefgelaufen; es wurde nichts weiter getan
+  es: Algo falló dentro de Arke-CE; no se hizo nada más
+  pt-BR: Algo deu errado dentro do Arke-CE; nada mais foi feito
+  ja: Arke-CE 内部で問題が発生しました。それ以降の処理は行われていません
 error.command_failed:
   en: "Couldn't run “%{name}”: %{error}"
   zh-TW: 無法執行「%{name}」：%{error}
@@ -7490,13 +7490,13 @@ search.index_live:
   pt-BR: "Este Computador: %{count} itens · em tempo real"
   ja: "PC: %{count} 個の項目 · ライブ"
 search.service_install:
-  en: "Live updates: install a background service so changes made while Arke is closed are picked up too (needs administrator approval)"
-  zh-TW: "即時更新：安裝背景服務，Arke 關閉期間的變更也能補上（需要系統管理員同意）"
-  zh-CN: "实时更新：安装后台服务，Arke 关闭期间的更改也能补上（需要管理员批准）"
-  de: "Live-Updates: Installieren Sie einen Hintergrunddienst, damit auch Änderungen bei geschlossenem Arke erfasst werden (erfordert Administratorgenehmigung)"
-  es: "Actualizaciones en vivo: instale un servicio en segundo plano para detectar también los cambios hechos con Arke cerrado (requiere aprobación de administrador)"
-  pt-BR: "Atualizações em tempo real: instale um serviço em segundo plano para captar também as alterações feitas com o Arke fechado (requer aprovação de administrador)"
-  ja: "ライブ更新: バックグラウンド サービスをインストールすると、Arke を閉じている間の変更も反映されます（管理者の承認が必要）"
+  en: "Live updates: install a background service so changes made while Arke-CE is closed are picked up too (needs administrator approval)"
+  zh-TW: "即時更新：安裝背景服務，Arke-CE 關閉期間的變更也能補上（需要系統管理員同意）"
+  zh-CN: "实时更新：安装后台服务，Arke-CE 关闭期间的更改也能补上（需要管理员批准）"
+  de: "Live-Updates: Installieren Sie einen Hintergrunddienst, damit auch Änderungen bei geschlossenem Arke-CE erfasst werden (erfordert Administratorgenehmigung)"
+  es: "Actualizaciones en vivo: instale un servicio en segundo plano para detectar también los cambios hechos con Arke-CE cerrado (requiere aprobación de administrador)"
+  pt-BR: "Atualizações em tempo real: instale um serviço em segundo plano para captar também as alterações feitas com o Arke-CE fechado (requer aprovação de administrador)"
+  ja: "ライブ更新: バックグラウンド サービスをインストールすると、Arke-CE を閉じている間の変更も反映されます（管理者の承認が必要）"
 search.service_live:
   en: "Updating live. Click to remove the background service."
   zh-TW: "即時更新中。按一下移除背景服務。"
@@ -8572,13 +8572,13 @@ settings.use_teracopy:
   pt-BR: Usar o TeraCopy para copiar e mover
   ja: コピーと移動に TeraCopy を使う
 settings.use_teracopy_desc:
-  en: "Found at %{path}. Arke can't undo jobs TeraCopy runs."
-  zh-TW: "位於 %{path}。交給 TeraCopy 的工作無法在 Arke 復原"
-  zh-CN: "位于 %{path}。交给 TeraCopy 的任务无法在 Arke 撤销"
-  de: Gefunden unter %{path}. Arke kann von TeraCopy ausgeführte Aufträge nicht rückgängig machen.
-  es: Encontrado en %{path}. Arke no puede deshacer los trabajos que ejecuta TeraCopy.
-  pt-BR: Encontrado em %{path}. O Arke não pode desfazer tarefas executadas pelo TeraCopy.
-  ja: "%{path} で検出。TeraCopy が実行したジョブは Arke では元に戻せません。"
+  en: "Found at %{path}. Arke-CE can't undo jobs TeraCopy runs."
+  zh-TW: "位於 %{path}。交給 TeraCopy 的工作無法在 Arke-CE 復原"
+  zh-CN: "位于 %{path}。交给 TeraCopy 的任务无法在 Arke-CE 撤销"
+  de: Gefunden unter %{path}. Arke-CE kann von TeraCopy ausgeführte Aufträge nicht rückgängig machen.
+  es: Encontrado en %{path}. Arke-CE no puede deshacer los trabajos que ejecuta TeraCopy.
+  pt-BR: Encontrado em %{path}. O Arke-CE não pode desfazer tarefas executadas pelo TeraCopy.
+  ja: "%{path} で検出。TeraCopy が実行したジョブは Arke-CE では元に戻せません。"
 
 # ─── Cloud file states (badge tooltips)
 cloud.online_only:
@@ -9184,37 +9184,37 @@ preview.sheets_n_other:
 
 # ─── Start menu (Settings > Startup, first-run card)
 settings.start_menu:
-  en: "Show Arke in the Start menu"
-  zh-TW: "在開始功能表顯示 Arke"
-  zh-CN: "在开始菜单中显示 Arke"
-  de: Arke im Startmenü anzeigen
-  es: Mostrar Arke en el menú Inicio
-  pt-BR: Mostrar o Arke no menu Iniciar
-  ja: スタート メニューに Arke を表示
+  en: "Show Arke-CE in the Start menu"
+  zh-TW: "在開始功能表顯示 Arke-CE"
+  zh-CN: "在开始菜单中显示 Arke-CE"
+  de: Arke-CE im Startmenü anzeigen
+  es: Mostrar Arke-CE en el menú Inicio
+  pt-BR: Mostrar o Arke-CE no menu Iniciar
+  ja: スタート メニューに Arke-CE を表示
 settings.start_menu_desc:
-  en: "A shortcut in your Start menu folder; follows Arke if you move it"
-  zh-TW: "在開始功能表資料夾放一個捷徑；搬動 Arke 時會跟著更新"
-  zh-CN: "在开始菜单文件夹放一个快捷方式；移动 Arke 后会自动更新"
-  de: Eine Verknüpfung in Ihrem Startmenüordner; folgt Arke, wenn Sie es verschieben
-  es: Un acceso directo en la carpeta del menú Inicio; sigue a Arke si lo mueve
-  pt-BR: Um atalho na pasta do menu Iniciar; acompanha o Arke se você o mover
-  ja: スタート メニュー フォルダーにショートカットを作成します。Arke を移動しても追従します
+  en: "A shortcut in your Start menu folder; follows Arke-CE if you move it"
+  zh-TW: "在開始功能表資料夾放一個捷徑；搬動 Arke-CE 時會跟著更新"
+  zh-CN: "在开始菜单文件夹放一个快捷方式；移动 Arke-CE 后会自动更新"
+  de: Eine Verknüpfung in Ihrem Startmenüordner; folgt Arke-CE, wenn Sie es verschieben
+  es: Un acceso directo en la carpeta del menú Inicio; sigue a Arke-CE si lo mueve
+  pt-BR: Um atalho na pasta do menu Iniciar; acompanha o Arke-CE se você o mover
+  ja: スタート メニュー フォルダーにショートカットを作成します。Arke-CE を移動しても追従します
 welcome.title:
-  en: "Add Arke to the Start menu?"
-  zh-TW: "要把 Arke 加到開始功能表嗎？"
-  zh-CN: "要把 Arke 添加到开始菜单吗？"
-  de: Arke zum Startmenü hinzufügen?
-  es: "¿Agregar Arke al menú Inicio?"
-  pt-BR: Adicionar o Arke ao menu Iniciar?
-  ja: Arke をスタート メニューに追加しますか?
+  en: "Add Arke-CE to the Start menu?"
+  zh-TW: "要把 Arke-CE 加到開始功能表嗎？"
+  zh-CN: "要把 Arke-CE 添加到开始菜单吗？"
+  de: Arke-CE zum Startmenü hinzufügen?
+  es: "¿Agregar Arke-CE al menú Inicio?"
+  pt-BR: Adicionar o Arke-CE ao menu Iniciar?
+  ja: Arke-CE をスタート メニューに追加しますか?
 welcome.body:
-  en: "Arke is a single program file. A Start menu shortcut makes it easy to find and pin."
-  zh-TW: "Arke 只是一個程式檔。加到開始功能表就容易找到，也能釘選。"
-  zh-CN: "Arke 只是一个程序文件。添加到开始菜单后更容易找到，也能固定。"
-  de: Arke ist eine einzelne Programmdatei. Eine Startmenü-Verknüpfung macht es leicht zu finden und anzuheften.
-  es: Arke es un único archivo de programa. Un acceso directo en el menú Inicio facilita encontrarlo y anclarlo.
-  pt-BR: O Arke é um único arquivo de programa. Um atalho no menu Iniciar facilita encontrá-lo e fixá-lo.
-  ja: Arke は単一のプログラム ファイルです。スタート メニューにショートカットがあると、見つけやすく、ピン留めもできます。
+  en: "Arke-CE is a single program file. A Start menu shortcut makes it easy to find and pin."
+  zh-TW: "Arke-CE 只是一個程式檔。加到開始功能表就容易找到，也能釘選。"
+  zh-CN: "Arke-CE 只是一个程序文件。添加到开始菜单后更容易找到，也能固定。"
+  de: Arke-CE ist eine einzelne Programmdatei. Eine Startmenü-Verknüpfung macht es leicht zu finden und anzuheften.
+  es: Arke-CE es un único archivo de programa. Un acceso directo en el menú Inicio facilita encontrarlo y anclarlo.
+  pt-BR: O Arke-CE é um único arquivo de programa. Um atalho no menu Iniciar facilita encontrá-lo e fixá-lo.
+  ja: Arke-CE は単一のプログラム ファイルです。スタート メニューにショートカットがあると、見つけやすく、ピン留めもできます。
 welcome.autostart:
   en: "Also start when I sign in to Windows"
   zh-TW: "也在登入 Windows 時啟動"
@@ -9250,13 +9250,13 @@ welcome.later_hint:
 
 # ─── Uninstall (Settings > About, arke --uninstall)
 uninstall.title:
-  en: "Remove Arke from this PC"
-  zh-TW: "從這台電腦移除 Arke"
-  zh-CN: "从这台电脑卸载 Arke"
-  de: Arke von diesem PC entfernen
-  es: Quitar Arke de este equipo
-  pt-BR: Remover o Arke deste computador
-  ja: この PC から Arke を削除
+  en: "Remove Arke-CE from this PC"
+  zh-TW: "從這台電腦移除 Arke-CE"
+  zh-CN: "从这台电脑卸载 Arke-CE"
+  de: Arke-CE von diesem PC entfernen
+  es: Quitar Arke-CE de este equipo
+  pt-BR: Remover o Arke-CE deste computador
+  ja: この PC から Arke-CE を削除
 uninstall.desc:
   en: "Removes the program, its shortcuts and everything it saved"
   zh-TW: "移除程式、捷徑和它存下的所有資料"
@@ -9274,13 +9274,13 @@ uninstall.button:
   pt-BR: Remover…
   ja: 削除…
 uninstall.confirm_title:
-  en: "Remove Arke from this PC?"
-  zh-TW: "要從這台電腦移除 Arke 嗎？"
-  zh-CN: "要从这台电脑卸载 Arke 吗？"
-  de: Arke von diesem PC entfernen?
-  es: "¿Quitar Arke de este equipo?"
-  pt-BR: Remover o Arke deste computador?
-  ja: この PC から Arke を削除しますか?
+  en: "Remove Arke-CE from this PC?"
+  zh-TW: "要從這台電腦移除 Arke-CE 嗎？"
+  zh-CN: "要从这台电脑卸载 Arke-CE 吗？"
+  de: Arke-CE von diesem PC entfernen?
+  es: "¿Quitar Arke-CE de este equipo?"
+  pt-BR: Remover o Arke-CE deste computador?
+  ja: この PC から Arke-CE を削除しますか?
 uninstall.intro:
   en: "This removes:"
   zh-TW: "會移除："
@@ -9314,21 +9314,21 @@ uninstall.uac_note:
   pt-BR: O Windows pedirá aprovação de administrador para remover o serviço de pesquisa.
   ja: 検索サービスを削除するため、Windows が管理者の承認を求めます。
 uninstall.closes_note:
-  en: "Arke closes now, finishes in the background and then shows what was removed."
-  zh-TW: "Arke 會先關閉，在背景完成後顯示移除了哪些項目。"
-  zh-CN: "Arke 会先关闭，在后台完成后显示删除了哪些内容。"
-  de: Arke wird jetzt geschlossen, beendet den Vorgang im Hintergrund und zeigt dann an, was entfernt wurde.
-  es: Arke se cierra ahora, termina en segundo plano y luego muestra lo que se quitó.
-  pt-BR: O Arke fecha agora, termina em segundo plano e depois mostra o que foi removido.
-  ja: Arke は今すぐ閉じ、バックグラウンドで処理を完了してから、削除した内容を表示します。
+  en: "Arke-CE closes now, finishes in the background and then shows what was removed."
+  zh-TW: "Arke-CE 會先關閉，在背景完成後顯示移除了哪些項目。"
+  zh-CN: "Arke-CE 会先关闭，在后台完成后显示删除了哪些内容。"
+  de: Arke-CE wird jetzt geschlossen, beendet den Vorgang im Hintergrund und zeigt dann an, was entfernt wurde.
+  es: Arke-CE se cierra ahora, termina en segundo plano y luego muestra lo que se quitó.
+  pt-BR: O Arke-CE fecha agora, termina em segundo plano e depois mostra o que foi removido.
+  ja: Arke-CE は今すぐ閉じ、バックグラウンドで処理を完了してから、削除した内容を表示します。
 uninstall.ok:
-  en: "Remove Arke"
-  zh-TW: "移除 Arke"
-  zh-CN: "卸载 Arke"
-  de: Arke entfernen
-  es: Quitar Arke
-  pt-BR: Remover o Arke
-  ja: Arke を削除
+  en: "Remove Arke-CE"
+  zh-TW: "移除 Arke-CE"
+  zh-CN: "卸载 Arke-CE"
+  de: Arke-CE entfernen
+  es: Quitar Arke-CE
+  pt-BR: Remover o Arke-CE
+  ja: Arke-CE を削除
 uninstall.start_failed:
   en: "Couldn't start the removal: %{error}"
   zh-TW: "無法開始移除：%{error}"
@@ -9338,13 +9338,13 @@ uninstall.start_failed:
   pt-BR: "Não foi possível iniciar a remoção: %{error}"
   ja: "削除を開始できませんでした: %{error}"
 uninstall.step_quit:
-  en: "Close Arke"
-  zh-TW: "關閉 Arke"
-  zh-CN: "关闭 Arke"
-  de: Arke schließen
-  es: Cerrar Arke
-  pt-BR: Fechar o Arke
-  ja: Arke を閉じる
+  en: "Close Arke-CE"
+  zh-TW: "關閉 Arke-CE"
+  zh-CN: "关闭 Arke-CE"
+  de: Arke-CE schließen
+  es: Cerrar Arke-CE
+  pt-BR: Fechar o Arke-CE
+  ja: Arke-CE を閉じる
 uninstall.step_service:
   en: "The search service"
   zh-TW: "搜尋服務"
@@ -9354,13 +9354,13 @@ uninstall.step_service:
   pt-BR: O serviço de pesquisa
   ja: 検索サービス
 uninstall.step_takeover:
-  en: "\"Open folders in Arke\" (folders open in File Explorer again)"
-  zh-TW: "「在 Arke 開啟資料夾」（資料夾改回由檔案總管開啟）"
-  zh-CN: "“在 Arke 中打开文件夹”（文件夹改回由文件资源管理器打开）"
-  de: "„Ordner in Arke öffnen“ (Ordner öffnen sich wieder im Datei-Explorer)"
-  es: "«Abrir carpetas en Arke» (las carpetas vuelven a abrirse en el Explorador de archivos)"
-  pt-BR: "\"Abrir pastas no Arke\" (as pastas voltam a abrir no Explorador de Arquivos)"
-  ja: "「フォルダーを Arke で開く」（フォルダーは再びエクスプローラーで開きます）"
+  en: "\"Open folders in Arke-CE\" (folders open in File Explorer again)"
+  zh-TW: "「在 Arke-CE 開啟資料夾」（資料夾改回由檔案總管開啟）"
+  zh-CN: "“在 Arke-CE 中打开文件夹”（文件夹改回由文件资源管理器打开）"
+  de: "„Ordner in Arke-CE öffnen“ (Ordner öffnen sich wieder im Datei-Explorer)"
+  es: "«Abrir carpetas en Arke-CE» (las carpetas vuelven a abrirse en el Explorador de archivos)"
+  pt-BR: "\"Abrir pastas no Arke-CE\" (as pastas voltam a abrir no Explorador de Arquivos)"
+  ja: "「フォルダーを Arke-CE で開く」（フォルダーは再びエクスプローラーで開きます）"
 uninstall.step_start_menu:
   en: "The Start menu shortcut"
   zh-TW: "開始功能表的捷徑"
@@ -9370,13 +9370,13 @@ uninstall.step_start_menu:
   pt-BR: O atalho do menu Iniciar
   ja: スタート メニューのショートカット
 uninstall.step_startup:
-  en: "The shortcut that starts Arke when you sign in"
-  zh-TW: "登入時啟動 Arke 的捷徑"
-  zh-CN: "登录时启动 Arke 的快捷方式"
-  de: Die Verknüpfung, die Arke bei der Anmeldung startet
-  es: El acceso directo que inicia Arke al iniciar sesión
-  pt-BR: O atalho que inicia o Arke ao entrar no Windows
-  ja: サインイン時に Arke を起動するショートカット
+  en: "The shortcut that starts Arke-CE when you sign in"
+  zh-TW: "登入時啟動 Arke-CE 的捷徑"
+  zh-CN: "登录时启动 Arke-CE 的快捷方式"
+  de: Die Verknüpfung, die Arke-CE bei der Anmeldung startet
+  es: El acceso directo que inicia Arke-CE al iniciar sesión
+  pt-BR: O atalho que inicia o Arke-CE ao entrar no Windows
+  ja: サインイン時に Arke-CE を起動するショートカット
 uninstall.step_passwords:
   en: "Saved SFTP and WebDAV passwords"
   zh-TW: "記住的 SFTP 與 WebDAV 密碼"
@@ -9450,29 +9450,29 @@ uninstall.step_keep_exe:
   pt-BR: "O programa permanece, pois foi instalado pelo %{manager}: remova-o com %{command}"
   ja: "%{manager} でインストールされたため、プログラムは残ります。%{command} で削除してください"
 uninstall.step_leave_to_setup:
-  en: "The program files, Start menu shortcut and entry in Settings › Apps go with Arke's uninstaller"
-  zh-TW: "程式檔案、開始功能表捷徑和「設定 › 應用程式」裡的項目，由 Arke 的解除安裝程式移除"
-  zh-CN: "程序文件、开始菜单快捷方式和“设置 › 应用”中的条目，由 Arke 的卸载程序移除"
-  de: Die Programmdateien, die Startmenü-Verknüpfung und der Eintrag unter Einstellungen › Apps werden vom Deinstallationsprogramm von Arke entfernt
-  es: Los archivos del programa, el acceso directo del menú Inicio y la entrada en Configuración › Aplicaciones se quitan con el desinstalador de Arke
-  pt-BR: Os arquivos do programa, o atalho do menu Iniciar e a entrada em Configurações › Aplicativos saem com o desinstalador do Arke
-  ja: プログラム ファイル、スタート メニューのショートカット、[設定] › [アプリ] の項目は、Arke のアンインストーラーで削除されます
+  en: "The program files, Start menu shortcut and entry in Settings › Apps go with Arke-CE's uninstaller"
+  zh-TW: "程式檔案、開始功能表捷徑和「設定 › 應用程式」裡的項目，由 Arke-CE 的解除安裝程式移除"
+  zh-CN: "程序文件、开始菜单快捷方式和“设置 › 应用”中的条目，由 Arke-CE 的卸载程序移除"
+  de: Die Programmdateien, die Startmenü-Verknüpfung und der Eintrag unter Einstellungen › Apps werden vom Deinstallationsprogramm von Arke-CE entfernt
+  es: Los archivos del programa, el acceso directo del menú Inicio y la entrada en Configuración › Aplicaciones se quitan con el desinstalador de Arke-CE
+  pt-BR: Os arquivos do programa, o atalho do menu Iniciar e a entrada em Configurações › Aplicativos saem com o desinstalador do Arke-CE
+  ja: プログラム ファイル、スタート メニューのショートカット、[設定] › [アプリ] の項目は、Arke-CE のアンインストーラーで削除されます
 uninstall.step_keep_shared:
-  en: "Another Arke stays at %{path}, so the search service, settings, saved passwords and index are kept for it"
-  zh-TW: "另一份 Arke 還在（%{path}），所以搜尋服務、設定、儲存的密碼和索引都留給它"
-  zh-CN: "另一份 Arke 还在（%{path}），所以搜索服务、设置、保存的密码和索引都留给它"
-  de: Ein anderes Arke bleibt unter %{path}, daher werden Suchdienst, Einstellungen, gespeicherte Kennwörter und Index dafür beibehalten
-  es: Otro Arke permanece en %{path}, por lo que se conservan para él el servicio de búsqueda, la configuración, las contraseñas guardadas y el índice
-  pt-BR: Outro Arke permanece em %{path}, então o serviço de pesquisa, as configurações, as senhas salvas e o índice são mantidos para ele
-  ja: 別の Arke が %{path} に残っているため、検索サービス、設定、保存したパスワード、インデックスはそちら用に残します
+  en: "Another Arke-CE stays at %{path}, so the search service, settings, saved passwords and index are kept for it"
+  zh-TW: "另一份 Arke-CE 還在（%{path}），所以搜尋服務、設定、儲存的密碼和索引都留給它"
+  zh-CN: "另一份 Arke-CE 还在（%{path}），所以搜索服务、设置、保存的密码和索引都留给它"
+  de: Ein anderes Arke-CE bleibt unter %{path}, daher werden Suchdienst, Einstellungen, gespeicherte Kennwörter und Index dafür beibehalten
+  es: Otro Arke-CE permanece en %{path}, por lo que se conservan para él el servicio de búsqueda, la configuración, las contraseñas guardadas y el índice
+  pt-BR: Outro Arke-CE permanece em %{path}, então o serviço de pesquisa, as configurações, as senhas salvas e o índice são mantidos para ele
+  ja: 別の Arke-CE が %{path} に残っているため、検索サービス、設定、保存したパスワード、インデックスはそちら用に残します
 uninstall.other_running:
-  en: "the Arke running now is another copy (%{path}), left open"
-  zh-TW: "正在執行的是另一份 Arke（%{path}），保持開著"
-  zh-CN: "正在运行的是另一份 Arke（%{path}），保持打开"
-  de: Das jetzt laufende Arke ist eine andere Kopie (%{path}) und bleibt geöffnet
-  es: el Arke en ejecución es otra copia (%{path}), se deja abierto
-  pt-BR: o Arke em execução agora é outra cópia (%{path}), deixada aberta
-  ja: 現在実行中の Arke は別のコピー (%{path}) のため、開いたままにします
+  en: "the Arke-CE running now is another copy (%{path}), left open"
+  zh-TW: "正在執行的是另一份 Arke-CE（%{path}），保持開著"
+  zh-CN: "正在运行的是另一份 Arke-CE（%{path}），保持打开"
+  de: Das jetzt laufende Arke-CE ist eine andere Kopie (%{path}) und bleibt geöffnet
+  es: el Arke-CE en ejecución es otra copia (%{path}), se deja abierto
+  pt-BR: o Arke-CE em execução agora é outra cópia (%{path}), deixada aberta
+  ja: 現在実行中の Arke-CE は別のコピー (%{path}) のため、開いたままにします
 uninstall.none:
   en: "nothing to remove"
   zh-TW: "沒有需要移除的"
@@ -9498,21 +9498,21 @@ uninstall.passwords_removed_other:
   pt-BR: "%{count} removidas"
   ja: "%{count} 件削除"
 uninstall.exe_later:
-  en: "deleted as soon as Arke has closed"
-  zh-TW: "Arke 關閉後就會刪除"
-  zh-CN: "Arke 关闭后即删除"
-  de: wird gelöscht, sobald Arke geschlossen ist
-  es: se elimina en cuanto Arke se cierre
-  pt-BR: excluído assim que o Arke fechar
-  ja: Arke を閉じた後すぐに削除されます
+  en: "deleted as soon as Arke-CE has closed"
+  zh-TW: "Arke-CE 關閉後就會刪除"
+  zh-CN: "Arke-CE 关闭后即删除"
+  de: wird gelöscht, sobald Arke-CE geschlossen ist
+  es: se elimina en cuanto Arke-CE se cierre
+  pt-BR: excluído assim que o Arke-CE fechar
+  ja: Arke-CE を閉じた後すぐに削除されます
 uninstall.still_running:
-  en: "Arke is still running; close it and try again"
-  zh-TW: "Arke 還在執行，請關閉後再試一次"
-  zh-CN: "Arke 仍在运行，请关闭后再试一次"
-  de: Arke läuft noch; schließen Sie es und versuchen Sie es erneut
-  es: Arke sigue en ejecución; ciérrelo y vuelva a intentarlo
-  pt-BR: O Arke ainda está em execução; feche-o e tente novamente
-  ja: Arke がまだ実行中です。閉じてからもう一度お試しください
+  en: "Arke-CE is still running; close it and try again"
+  zh-TW: "Arke-CE 還在執行，請關閉後再試一次"
+  zh-CN: "Arke-CE 仍在运行，请关闭后再试一次"
+  de: Arke-CE läuft noch; schließen Sie es und versuchen Sie es erneut
+  es: Arke-CE sigue en ejecución; ciérrelo y vuelva a intentarlo
+  pt-BR: O Arke-CE ainda está em execução; feche-o e tente novamente
+  ja: Arke-CE がまだ実行中です。閉じてからもう一度お試しください
 uninstall.exit_code:
   en: "not removed (exit code %{code})"
   zh-TW: "沒有移除（結束代碼 %{code}）"
@@ -9530,29 +9530,29 @@ uninstall.settings_unreadable:
   pt-BR: não foi possível ler o arquivo de configurações, então a opção foi deixada como estava
   ja: 設定ファイルを読み取れなかったため、設定はそのままにしました
 uninstall.refused:
-  en: "not deleted, %{path} is not Arke's own folder"
-  zh-TW: "沒有刪除，%{path} 不是 Arke 自己的資料夾"
-  zh-CN: "未删除，%{path} 不是 Arke 自己的文件夹"
-  de: nicht gelöscht, %{path} ist nicht der eigene Ordner von Arke
-  es: no se eliminó, %{path} no es la carpeta propia de Arke
-  pt-BR: não excluído, %{path} não é a pasta própria do Arke
-  ja: "%{path} は Arke 自身のフォルダーではないため、削除しませんでした"
+  en: "not deleted, %{path} is not Arke-CE's own folder"
+  zh-TW: "沒有刪除，%{path} 不是 Arke-CE 自己的資料夾"
+  zh-CN: "未删除，%{path} 不是 Arke-CE 自己的文件夹"
+  de: nicht gelöscht, %{path} ist nicht der eigene Ordner von Arke-CE
+  es: no se eliminó, %{path} no es la carpeta propia de Arke-CE
+  pt-BR: não excluído, %{path} não é a pasta própria do Arke-CE
+  ja: "%{path} は Arke-CE 自身のフォルダーではないため、削除しませんでした"
 uninstall.summary_ok:
-  en: "Arke was removed from this PC."
-  zh-TW: "已從這台電腦移除 Arke。"
-  zh-CN: "已从这台电脑卸载 Arke。"
-  de: Arke wurde von diesem PC entfernt.
-  es: Arke se quitó de este equipo.
-  pt-BR: O Arke foi removido deste computador.
-  ja: この PC から Arke を削除しました。
+  en: "Arke-CE was removed from this PC."
+  zh-TW: "已從這台電腦移除 Arke-CE。"
+  zh-CN: "已从这台电脑卸载 Arke-CE。"
+  de: Arke-CE wurde von diesem PC entfernt.
+  es: Arke-CE se quitó de este equipo.
+  pt-BR: O Arke-CE foi removido deste computador.
+  ja: この PC から Arke-CE を削除しました。
 uninstall.summary_failed:
-  en: "Arke was removed, but some steps didn't go through:"
-  zh-TW: "Arke 已移除，但有些步驟沒有完成："
-  zh-CN: "Arke 已卸载，但有些步骤没有完成："
-  de: "Arke wurde entfernt, aber einige Schritte sind fehlgeschlagen:"
-  es: "Arke se quitó, pero algunos pasos no se completaron:"
-  pt-BR: "O Arke foi removido, mas algumas etapas não foram concluídas:"
-  ja: "Arke を削除しましたが、完了しなかった手順があります:"
+  en: "Arke-CE was removed, but some steps didn't go through:"
+  zh-TW: "Arke-CE 已移除，但有些步驟沒有完成："
+  zh-CN: "Arke-CE 已卸载，但有些步骤没有完成："
+  de: "Arke-CE wurde entfernt, aber einige Schritte sind fehlgeschlagen:"
+  es: "Arke-CE se quitó, pero algunos pasos no se completaron:"
+  pt-BR: "O Arke-CE foi removido, mas algumas etapas não foram concluídas:"
+  ja: "Arke-CE を削除しましたが、完了しなかった手順があります:"
 
 # ─── Report a problem: privacy
 report.mask_names:

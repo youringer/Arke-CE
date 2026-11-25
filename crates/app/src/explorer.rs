@@ -1354,7 +1354,7 @@ impl Explorer {
             Some(p) => crate::place_names::shown_name(&self.place_names, p)
                 .unwrap_or_else(|| tab_title_for(p))
                 .into(),
-            None => "Arke".into(),
+            None => "Arke-CE".into(),
         }
     }
 

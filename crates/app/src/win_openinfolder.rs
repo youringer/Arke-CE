@@ -184,7 +184,7 @@ mod com {
             Ok(VARIANT_TRUE)
         }
         fn Type(&self) -> Res<BSTR> {
-            Ok(BSTR::from("Arke"))
+            Ok(BSTR::from("Arke-CE"))
         }
         fn Left(&self) -> Res<i32> {
             Ok(0)
@@ -235,7 +235,7 @@ mod com {
             Err(E_NOTIMPL.into())
         }
         fn Name(&self) -> Res<BSTR> {
-            Ok(BSTR::from("Arke"))
+            Ok(BSTR::from("Arke-CE"))
         }
         fn HWND(&self) -> Res<SHANDLE_PTR> {
             Ok(SHANDLE_PTR(self.hwnd.0 as isize))

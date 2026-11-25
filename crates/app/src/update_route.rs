@@ -6,10 +6,10 @@
 //! - `127.0.0.1:7890` (a host and a port): an HTTP proxy, such as a local proxy app's HTTP or
 //!   mixed port. WinHTTP has no SOCKS, so a SOCKS address is refused with that said.
 //!
-//! Only checking for and downloading updates use it; remote places, the API and everything else
-//! connect as before. Arke ships no route of its own and never picks one (`arke-network-principles`):
-//! it's empty until the user types one. Nothing is trusted because of the route: downloads and
-//! notes are installed or shown only with Arke's signature (`update_sig.rs`).
+//! Only checking for and downloading updates use it; remote places and everything else connect
+//! as before. Arke-CE ships a default route, `https://v4.gh-proxy.com/`, for GitHub releases;
+//! an empty field means that default. Nothing is trusted because of the route: downloads and
+//! notes are installed or shown only with Arke-CE's signature (`update_sig.rs`).
 //!
 //! The route goes first; when it fails, the same request goes to GitHub directly, and Settings
 //! says so ([`last`]), never silently.
@@ -128,8 +128,12 @@ static LAST: LazyLock<RwLock<Option<Used>>> = LazyLock::new(|| RwLock::new(None)
 
 /// Sets the route from the field's text; one that can't be parsed means GitHub directly (the
 /// field shows why).
+/// Default route for Arke-CE release checks and downloads.
+pub(crate) const DEFAULT: &str = "https://v4.gh-proxy.com/";
+
 pub(crate) fn set(text: &str) {
-    let route = Route::parse(text).unwrap_or(Route::Direct);
+    let text = if text.trim().is_empty() { DEFAULT } else { text };
+    let route = Route::parse(text).unwrap_or_else(|_| Route::Prefix(DEFAULT.into()));
     let changed = {
         let mut current = CURRENT.write();
         let changed = *current != route;
@@ -225,9 +229,11 @@ mod tests {
     }
 
     #[test]
-    fn empty_is_github_directly() {
+    fn empty_is_the_ce_default_route() {
         assert_eq!(Route::parse("  "), Ok(Route::Direct));
         assert_eq!(Route::Direct.host(), None);
+        set("");
+        assert_eq!(current().host().as_deref(), Some("v4.gh-proxy.com"));
     }
 
     /// What can't be used says why instead of being taken for something else.

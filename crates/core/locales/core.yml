@@ -536,13 +536,13 @@ archive.wrong_password:
   pt-BR: A senha está incorreta
   ja: パスワードが正しくありません
 archive.unsupported_method:
-  en: "Compressed with %{method}, which Arke can't read"
-  zh-TW: "以 %{method} 壓縮，Arke 無法讀取"
-  zh-CN: "以 %{method} 压缩，Arke 无法读取"
-  de: "Mit %{method} komprimiert, das kann Arke nicht lesen"
-  es: Comprimido con %{method}, que Arke no puede leer
-  pt-BR: Compactado com %{method}, que o Arke não consegue ler
-  ja: "%{method} で圧縮されており、Arke では読み取れません"
+  en: "Compressed with %{method}, which Arke-CE can't read"
+  zh-TW: "以 %{method} 壓縮，Arke-CE 無法讀取"
+  zh-CN: "以 %{method} 压缩，Arke-CE 无法读取"
+  de: "Mit %{method} komprimiert, das kann Arke-CE nicht lesen"
+  es: Comprimido con %{method}, que Arke-CE no puede leer
+  pt-BR: Compactado com %{method}, que o Arke-CE não consegue ler
+  ja: "%{method} で圧縮されており、Arke-CE では読み取れません"
 archive.system_missing:
   en: "Opening %{format} files needs Windows 11 version 23H2 or later"
   zh-TW: "開啟 %{format} 檔需要 Windows 11 23H2 以上版本"

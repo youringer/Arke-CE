@@ -251,7 +251,7 @@ fn cmd_licenses() -> Result<()> {
 fn release_version(channel: &str, args: &[String]) -> Result<String> {
     let changes = changesets();
     match channel {
-        "stable" => {
+        "stable" | "ce" => {
             ensure!(
                 changes.is_empty(),
                 "{} unused changesets: run cargo xtask version before a stable release",
@@ -276,14 +276,14 @@ fn release_version(channel: &str, args: &[String]) -> Result<String> {
             fmt_triple(next_version(&changes)?),
             today()
         )),
-        other => bail!("unknown channel: {other} (stable, rc, nightly)"),
+        other => bail!("unknown channel: {other} (ce|stable, rc, nightly)"),
     }
 }
 
 /// Release notes: this version's CHANGELOG section for stable, pending changesets for RC and
 /// nightly.
 fn release_notes(channel: &str, version: &str) -> String {
-    if channel == "stable" {
+    if channel == "stable" || channel == "ce" {
         let changelog = std::fs::read_to_string(root().join("CHANGELOG.md")).unwrap_or_default();
         let head = format!("## {version}");
         if let Some(at) = changelog.find(&head) {
@@ -686,7 +686,7 @@ fn build_setup(iscc: &Path, version: &str, arch: Arch, exe: &Path, dist: &Path) 
 /// Packages release builds as dist/arke-<version>[-arm64].exe and, with Inno Setup, the
 /// installers, each with a .sha256, plus release notes. Returns (version, file paths).
 fn cmd_build(args: &[String]) -> Result<(String, Vec<PathBuf>)> {
-    let channel = args.first().map_or_default(String::as_str);
+    let channel = args.first().map_or("ce", String::as_str);
     let version = release_version(channel, args)?;
     // Before compiling: the exe embeds this file.
     cmd_licenses()?;
@@ -761,7 +761,7 @@ fn cmd_build(args: &[String]) -> Result<(String, Vec<PathBuf>)> {
 /// What `cargo xtask build` left in dist/ for this version: the exes `--arch` asks for. Lets CI
 /// build and test without write access and publish in a separate job.
 fn prebuilt(args: &[String]) -> Result<(String, Vec<PathBuf>)> {
-    let channel = args.first().map_or_default(String::as_str);
+    let channel = args.first().map_or("ce", String::as_str);
     let version = release_version(channel, args)?;
     let dist = root().join("dist");
     let mut packaged = Vec::new();
@@ -846,7 +846,7 @@ fn cmd_publish(args: &[String]) -> Result<()> {
         "tag_name": format!("v{version}"),
         "name": format!("Arke {version}"),
         "body": notes,
-        "prerelease": channel != "stable",
+        "prerelease": channel != "stable" && channel != "ce",
     });
     let created = curl(&[
         "-sS",

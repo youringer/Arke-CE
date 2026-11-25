@@ -1,28 +1,28 @@
-<p align="center"><img src="crates/app/assets/brand/arke.svg" width="96" alt="Arke ロゴ"></p>
+<p align="center"><img src="crates/app/assets/brand/arke.svg" width="96" alt="Arke-CE ロゴ"></p>
 
-<h1 align="center">Arke</h1>
+<h1 align="center">Arke-CE</h1>
 
 <p align="center"><b>フリーズしない Windows 用ファイル マネージャー。</b><br>
 GPU レンダリング、Rust 製、小さな exe 1 つ。</p>
 
 <p align="center">
-  <a href="https://github.com/Koimsurai/Arke/releases"><img src="https://img.shields.io/github/v/release/Koimsurai/Arke?label=download" alt="最新リリース"></a>
-  <a href="https://github.com/Koimsurai/Arke/actions/workflows/ci.yml"><img src="https://github.com/Koimsurai/Arke/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/youringer/Arke-CE/releases"><img src="https://img.shields.io/github/v/release/Koimsurai/Arke-CE?label=download" alt="最新リリース"></a>
+  <a href="https://github.com/youringer/Arke-CE/actions/workflows/ci.yml"><img src="https://github.com/youringer/Arke-CE/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4" alt="Windows 10 および 11">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0-blue" alt="AGPL-3.0"></a>
 </p>
 
 <p align="center"><a href="README.md">English</a> · <a href="README.zh-CN.md">简体中文</a> · <a href="README.zh-TW.md">繁體中文</a> · <b>日本語</b> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español</a> · <a href="README.pt-BR.md">Português (Brasil)</a></p>
 
-<p align="center"><img src=".github/assets/preview.png" alt="プレビュー ウィンドウを開いた状態でフォルダーを表示する Arke"></p>
+<p align="center"><img src=".github/assets/preview.png" alt="プレビュー ウィンドウを開いた状態でフォルダーを表示する Arke-CE"></p>
 
-## Arke を選ぶ理由
+## Arke-CE を選ぶ理由
 
 **常に軽快に動きます。** 一覧表示、並べ替え、サムネイル、フォルダー サイズ、検索、ファイル操作は
 すべて UI スレッドの外で実行されます。応答のないネットワーク共有や 100,000 個のファイルがある
 フォルダーがあっても、スクロールも入力もタブの切り替えも止まりません。
 
-**何でも一瞬で見つかります。** Arke はローカル ドライブのファイル名インデックスを保持します。
+**何でも一瞬で見つかります。** Arke-CE はローカル ドライブのファイル名インデックスを保持します。
 オプションのバックグラウンド サービスを使うと NTFS のマスター ファイル テーブルを直接読み取り、
 数百万個のファイルを数秒でインデックス化し、変更ジャーナルを追跡するので、開いた時点で
 インデックスは最新です。
@@ -36,24 +36,24 @@ GPU レンダリング、Rust 製、小さな exe 1 つ。</p>
 閲覧したり内容を比較したりできます。ファイルをタブ、お気に入り、パスの区切りにドラッグすると、
 その場所にそのまま移動やコピーができます。
 
-**システムに対して安全です。** Arke にテレメトリはありません。インストール時に Windows に登録される
-オプションの検索サービスを除くと、Arke がレジストリに書き込むのは「Arke でフォルダーを開く」を
-オンにしたときだけです。このとき Arke は Windows アカウントのフォルダー ハンドラーとして自身を
+**システムに対して安全です。** Arke-CE にテレメトリはありません。インストール時に Windows に登録される
+オプションの検索サービスを除くと、Arke-CE がレジストリに書き込むのは「Arke-CE でフォルダーを開く」を
+オンにしたときだけです。このとき Arke-CE は Windows アカウントのフォルダー ハンドラーとして自身を
 登録し（`HKEY_CURRENT_USER\Software\Classes` 配下のみ）、設定をオフにすればすべて元に戻ります。
-他のプログラムのシェル拡張は別プロセスで実行されるため、不具合のある拡張で Arke が落ちることはありません。
+他のプログラムのシェル拡張は別プロセスで実行されるため、不具合のある拡張で Arke-CE が落ちることはありません。
 
-Arke が役に立ったら、GitHub で ⭐ を付けていただけると、ほかの人が見つけやすくなります。
+Arke-CE が役に立ったら、GitHub で ⭐ を付けていただけると、ほかの人が見つけやすくなります。
 
-Arke は [阮一峰のテック週刊 #420](https://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html) で紹介され、[awesome-rust](https://github.com/rust-unofficial/awesome-rust)、[awesome-gpui](https://github.com/zed-industries/awesome-gpui)、AlternativeTo に掲載されています。
+Arke-CE は [阮一峰のテック週刊 #420](https://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html) で紹介され、[awesome-rust](https://github.com/rust-unofficial/awesome-rust)、[awesome-gpui](https://github.com/zed-industries/awesome-gpui)、AlternativeTo に掲載されています。
 
-<p><a href="https://alternativeto.net/software/arke/about/?utm_source=badge&utm_medium=referral"><img src="https://alternativeto.net/static/badges/badge-compact-color.svg" alt="AlternativeTo の Arke" height="40"></a></p>
+<p><a href="https://alternativeto.net/software/arke/about/?utm_source=badge&utm_medium=referral"><img src="https://alternativeto.net/static/badges/badge-compact-color.svg" alt="AlternativeTo の Arke-CE" height="40"></a></p>
 
 ## 機能
 
 <table>
   <tr>
     <td width="50%"><img src=".github/assets/split-view.png" alt="2 つのペインに分割したタブ。左は詳細表示、右はアイコン表示"></td>
-    <td width="50%"><img src=".github/assets/context-menu.png" alt="Arke のコンテキスト メニュー"></td>
+    <td width="50%"><img src=".github/assets/context-menu.png" alt="Arke-CE のコンテキスト メニュー"></td>
   </tr>
   <tr>
     <td>どのタブも 2 つのペインに分割して、同期して閲覧したり内容を比較したりできます。</td>
@@ -61,7 +61,7 @@ Arke は [阮一峰のテック週刊 #420](https://www.ruanyifeng.com/blog/2026
   </tr>
   <tr>
     <td width="50%"><img src=".github/assets/quick-look.png" alt="Markdown ファイルを表示するクイック表示"></td>
-    <td width="50%"><img src=".github/assets/properties.png" alt="フォルダーの Arke プロパティ ウィンドウ"></td>
+    <td width="50%"><img src=".github/assets/properties.png" alt="フォルダーの Arke-CE プロパティ ウィンドウ"></td>
   </tr>
   <tr>
     <td>クイック表示 (スペース キー) は、Markdown を GitHub と同じ見た目で表示するほか、画像、PDF、Office ファイル、コードも表示します。</td>
@@ -92,10 +92,10 @@ Arke は [阮一峰のテック週刊 #420](https://www.ruanyifeng.com/blog/2026
   追加するか、ドラッグして追加します。ドラッグして並べ替えたり（ほかの項目が場所をあけます。スマート
   フォンのアプリ アイコンのように）、外にドラッグして削除したり、フォルダー名を変えずに名前を付け
   替えたりできます。エクスプローラーでクイック アクセスにピン留めしたフォルダーも表示されます。
-- 既定では 1 つのウィンドウ（0.7 以降）：他のアプリから開いたフォルダー、Win+E、Arke の再起動は、
+- 既定では 1 つのウィンドウ（0.7 以降）：他のアプリから開いたフォルダー、Win+E、Arke-CE の再起動は、
   最後に使ったウィンドウに新しいタブとして追加されます。設定の「単一ウィンドウ」をオフにすると、
   それぞれ別のウィンドウになります。
-- 「新しいウィンドウの表示: 前回のタブ」にしておくと、Arke を終了したとき（または Windows をシャット
+- 「新しいウィンドウの表示: 前回のタブ」にしておくと、Arke-CE を終了したとき（または Windows をシャット
   ダウンしたとき）に開いていたウィンドウがタブごと復元されます。ほかのウィンドウが残っている状態で
   閉じたウィンドウは保存されません。
 - スプリング ロード フォルダー、別々のフォルダーからファイルを集めるシェルフ、お気に入り、最近使った
@@ -136,7 +136,7 @@ Arke は [阮一峰のテック週刊 #420](https://www.ruanyifeng.com/blog/2026
 **場所**
 - サーバーがオフラインのときはすぐに失敗し、最後に確認できた内容を表示するネットワーク共有。`\\server`
   でその共有一覧を表示します。SFTP と WebDAV の場所（試験的。プレーンな http はその場所で許可した場合のみ）。
-  割り当て済みドライブとネットワークの場所には独自の名前を付けられ、名前は Arke 内にのみ保存されます。
+  割り当て済みドライブとネットワークの場所には独自の名前を付けられ、名前は Arke-CE 内にのみ保存されます。
 - 同期状態を表示する OneDrive などのクラウド フォルダー。プレビューでオンライン専用ファイルを
   ダウンロードすることはありません。
 - アーカイブ：zip と 7z（パスワード付きも）、tar (.gz、.xz、.bz2、.zst)、RAR のプレビューと展開、zip への圧縮。RAR と xz / bzip2 /
@@ -147,23 +147,23 @@ Arke は [阮一峰のテック週刊 #420](https://www.ruanyifeng.com/blog/2026
   なく約 4 分の 1 秒です。Windows のように 1 ファイルずつ事前確認をしないためです。復元は通常どおり
   行え、保証できないもの（ネットワーク ドライブ、OneDrive、使用中のファイル、ポリシー）は Windows に任せます。
   設定でオフにできます。単体のファイルは 1 つあたり数ミリ秒で、それでも Windows の 2〜6 倍高速です。
-- 更新はバックグラウンドで静かにダウンロードされ、次に Arke を再起動したときにインストールされます。
+- 更新はバックグラウンドで静かにダウンロードされ、次に Arke-CE を再起動したときにインストールされます。
   ファイルのコピー中や従量課金接続では行われません。
-- メニューは Windows のメニューと同様に独自のウィンドウで開くので、端の近くでは Arke のウィンドウの外に
+- メニューは Windows のメニューと同様に独自のウィンドウで開くので、端の近くでは Arke-CE のウィンドウの外に
   はみ出して表示され、押しつぶされません。「その他のオプション」からピン留めした Windows のコマンド
   (Git Bash、Windows ターミナル、VS Code、7-Zip、NanaZip など) は、メニューを開いた瞬間に表示され、
   Shift+右クリックでエクスプローラーと同様に拡張項目が追加されます。
 - ランチャーやスクリプト (Listary、ALTRun、AutoHotkey、PowerShell) は、1 つの JSON インターフェイスを
-  通じて Arke のウィンドウ、タブ、選択項目を読み取り、フォルダーを開けます
+  通じて Arke-CE のウィンドウ、タブ、選択項目を読み取り、フォルダーを開けます
   ([docs/integration.md](docs/integration.md))。
 - アイドル時は静かです。画面に変化がなければ再描画もなく、最小化中も同様です。フォルダー サイズ、
   インデックス作成、検索サービスは Windows の効率モードで低優先度で実行され、トレイ アイコンだけに
-  なった状態では Arke はキャッシュを解放します。
-- オプション（試験的）：エクスプローラーの代わりに Arke でフォルダーを開きます（他のアプリから開いた
+  なった状態では Arke-CE はキャッシュを解放します。
+- オプション（試験的）：エクスプローラーの代わりに Arke-CE でフォルダーを開きます（他のアプリから開いた
   フォルダーを含む）。ブラウザーの「フォルダーを開く」や他のアプリの「ファイルの場所を開く」にも
-  対応します。Arke をアカウントのフォルダー ハンドラーとして登録し、オフにすると元に戻ります。
+  対応します。Arke-CE をアカウントのフォルダー ハンドラーとして登録し、オフにすると元に戻ります。
   自分で起動するエクスプローラー (Win+E、タスク バー、スタート) は、「Win+E とエクスプローラー アイコンでも
-  Arke を開く」もオンにしない限りエクスプローラーのままです。
+  Arke-CE を開く」もオンにしない限りエクスプローラーのままです。
 - スクリーン リーダー対応、x64 と ARM64 のビルド（どちらも実機でテスト済み）、タスク バーのジャンプ
   リスト、USB の安全な取り外し、システム トレイ、設定のバックアップ。英語、簡体字中国語、繁体字中国語、
   日本語、ドイツ語、スペイン語、ブラジル ポルトガル語に対応（後ろの 4 言語は 0.8 で追加。表現の修正は
@@ -174,13 +174,13 @@ Arke は [阮一峰のテック週刊 #420](https://www.ruanyifeng.com/blog/2026
 
 ## パフォーマンス
 
-<p align="center"><img src=".github/assets/responsive.gif" alt="Arke が 100,000 個のファイルがあるフォルダーを開き、スクロール、並べ替え、絞り込みを同時に行い、閲覧を続けたままオフラインのサーバーを 1 秒以内に報告する様子（実時間）"></p>
+<p align="center"><img src=".github/assets/responsive.gif" alt="Arke-CE が 100,000 個のファイルがあるフォルダーを開き、スクロール、並べ替え、絞り込みを同時に行い、閲覧を続けたままオフラインのサーバーを 1 秒以内に報告する様子（実時間）"></p>
 
-<p align="center"><img src=".github/assets/search-compare.gif" alt="C: 全体から 1 つのファイルを、エクスプローラー、Files、Arke で検索する様子（3 倍速。タイマーは実時間の秒数）"></p>
+<p align="center"><img src=".github/assets/search-compare.gif" alt="C: 全体から 1 つのファイルを、エクスプローラー、Files、Arke-CE で検索する様子（3 倍速。タイマーは実時間の秒数）"></p>
 
-<p align="center"><img src=".github/assets/delete-compare.gif" alt="20,000 個のファイル (2.48 GB) が入った同じフォルダーをごみ箱に移動：Arke は 0.2 秒、エクスプローラーは 47.3 秒。その後ごみ箱から復元（5 倍速。タイマーは実時間の秒数）"></p>
+<p align="center"><img src=".github/assets/delete-compare.gif" alt="20,000 個のファイル (2.48 GB) が入った同じフォルダーをごみ箱に移動：Arke-CE は 0.2 秒、エクスプローラーは 47.3 秒。その後ごみ箱から復元（5 倍速。タイマーは実時間の秒数）"></p>
 
-| | Arke | 比較対象 |
+| | Arke-CE | 比較対象 |
 | --- | --- | --- |
 | ディスク全体のインデックスをゼロから作成（約 400 万個のファイル） | 約 10 秒、完了後のメモリは約 130 MB | Everything 1.4.1：21 秒、約 400 MB |
 | C: のどこかにある 1 つのファイルを探す | 入力に合わせて結果が表示される | Files 4.3：約 26 秒 · エクスプローラー：30 秒後も結果なし* |
@@ -197,9 +197,9 @@ Arke は [阮一峰のテック週刊 #420](https://www.ruanyifeng.com/blog/2026
 リアルタイムのウイルス スキャンはオンのままで、これはあらゆるプログラムを遅くします。ファイル システムの
 キャッシュはウォーム状態でした。
 
-- **インデックス**：Arke の検索サービスが NTFS のマスター ファイル テーブルを読み取り、新規プロファイルで
+- **インデックス**：Arke-CE の検索サービスが NTFS のマスター ファイル テーブルを読み取り、新規プロファイルで
   測定。Everything 1.4.1 Lite はサービス付きで、ファイル サイズと更新日時をインデックス化（既定）、
-  データベースを削除してから測定。Arke の数値は `arke --bench index` から、Everything の数値はデバッグ ログ
+  データベースを削除してから測定。Arke-CE の数値は `arke --bench index` から、Everything の数値はデバッグ ログ
   から取得。メモリはインデックス作成完了後のワーキング セットです。
 - **検索**：各プログラムを `C:\` で起動し、同じファイル名を検索。タイマーは入力を始めた時点から開始。
   エクスプローラーと Files は、インデックス対象のフォルダーでは Windows Search に頼り、それ以外では
@@ -208,10 +208,10 @@ Arke は [阮一峰のテック週刊 #420](https://www.ruanyifeng.com/blog/2026
   プログラムのコールド スタートから開いて測定。ウォームアップ後の 3 回の中央値で、ウィンドウの変化が止まる
   までを計測。File Pilot（無料ベータ）はこのテストにのみ含まれます。ディスク全体の検索機能がまだないためです。
 - **ごみ箱**：同じフォルダー（20 個のフォルダーに 20,000 個のファイル、2.48 GB）を各プログラムからワン
-  テイクでごみ箱に移動し、削除してからフォルダーが一覧から消えるまでを計測。Arke は高速ごみ箱
+  テイクでごみ箱に移動し、削除してからフォルダーが一覧から消えるまでを計測。Arke-CE は高速ごみ箱
   （ローカル ドライブでは既定でオン）を使用。どちらも Windows のごみ箱から通常どおり復元できます。
 
-お使いの環境では数値が異なります。Arke は自身の計測時間を `%LOCALAPPDATA%\Arke\arke.log` に記録します。
+お使いの環境では数値が異なります。Arke-CE は自身の計測時間を `%LOCALAPPDATA%\Arke-CE\arke.log` に記録します。
 
 お使いのマシンでインデックスを測定するには `arke --bench index` を実行してください。
 
@@ -219,12 +219,12 @@ Arke は [阮一峰のテック週刊 #420](https://www.ruanyifeng.com/blog/2026
 
 ## インストール
 
-[Releases](https://github.com/Koimsurai/Arke/releases) からダウンロードします。どちらのダウンロードも
-同じ Arke で、機能も更新も同じであり、設定はどちらも `%APPDATA%\Arke` に保存されます。
+[Releases](https://github.com/youringer/Arke-CE/releases) からダウンロードします。どちらのダウンロードも
+同じ Arke-CE で、機能も更新も同じであり、設定はどちらも `%APPDATA%\Arke-CE` に保存されます。
 
 - **ポータブル版**、`arke-<version>.exe`：ランタイム不要の単一 exe で、任意のフォルダーから実行できます。
   何もインストールされないため、スタート メニューにも設定 › アプリにも表示されません。設定 › バージョン情報 ›
-  **この PC から Arke を削除** で削除できます。
+  **この PC から Arke-CE を削除** で削除できます。
 - **インストーラー**、`arke-<version>-setup.exe`：管理者の承認なしで自分のアカウント用に、または Program Files
   にすべてのユーザー用にインストールし、スタート メニューと設定 › アプリに追加します。アンインストールは
   そこから行えます。
@@ -239,12 +239,12 @@ scoop bucket add arke https://github.com/Koimsurai/scoop-bucket
 scoop install arke/arke
 ```
 
-以降は Scoop が最新の状態に保ち (`scoop update arke`)、Arke は更新を Scoop に任せます。
+以降は Scoop が最新の状態に保ち (`scoop update arke`)、Arke-CE は更新を Scoop に任せます。
 
 ビルドはまだコード署名されていないため、初回は SmartScreen が確認を求めることがあります。SignPath Foundation
 による署名を申請中です。[コード署名ポリシー](#コード署名ポリシー)を参照してください。
 
-Arke は新しいバージョンを GitHub で 1 日に最大 1 回確認し、ユーザーが指示したときだけインストールします
+Arke-CE は新しいバージョンを GitHub で 1 日に最大 1 回確認し、ユーザーが指示したときだけインストールします
 (設定 › バージョン情報)。
 
 <details>
@@ -310,7 +310,7 @@ Arke は新しいバージョンを GitHub で 1 日に最大 1 回確認し、�
 
 ## アクセシビリティ
 
-Arke は UI Automation（Narrator と NVDA が使うインターフェイス）を通じて Windows のスクリーン リーダーに
+Arke-CE は UI Automation（Narrator と NVDA が使うインターフェイス）を通じて Windows のスクリーン リーダーに
 対応しています。JAWS でも動くはずです。これまで UI Automation のツールで確認しただけで、スクリーン リーダーを
 日常的に使っている方による検証はまだありません。テストへの協力を歓迎します。
 
@@ -319,7 +319,7 @@ Arke は UI Automation（Narrator と NVDA が使うインターフェイス）�
 一部のダイアログも未確認です。
 
 [キーボード ガイド](docs/keyboard.md) (英語) に、すべてのショートカットを領域ごとにまとめています。
-操作できない箇所や読み上げられない箇所があれば、[issue を作成](https://github.com/Koimsurai/Arke/issues)し、
+操作できない箇所や読み上げられない箇所があれば、[issue を作成](https://github.com/youringer/Arke-CE/issues)し、
 使用しているスクリーン リーダーとそのバージョンを書いてください。
 
 ## FAQ
@@ -327,7 +327,7 @@ Arke は UI Automation（Narrator と NVDA が使うインターフェイス）�
 <details>
 <summary><b>自宅や職場でただ使うだけなら、AGPL は影響しますか?</b></summary>
 
-いいえ。ライセンスによって義務が生じるのは、変更を加えた Arke を配布する場合（またはネットワーク経由で
+いいえ。ライセンスによって義務が生じるのは、変更を加えた Arke-CE を配布する場合（またはネットワーク経由で
 提供する場合）だけです。会社の中を含め、使うだけであれば義務はありません。
 
 </details>
@@ -338,20 +338,20 @@ Arke は UI Automation（Narrator と NVDA が使うインターフェイス）�
 こちらから求めない限り、何も変更されません。オプションの検索サービスをインストールすると（ご自身の承認のもと）、
 Windows に登録され、サービスは
 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ArkeIndex` に保存されます。それ以外でレジストリを
-変更するのは、オプションの「Arke でフォルダーを開く」設定だけです。この設定は Arke を Windows アカウントの
+変更するのは、オプションの「Arke-CE でフォルダーを開く」設定だけです。この設定は Arke-CE を Windows アカウントの
 フォルダー ハンドラーとして登録するもので、書き込み先は `HKEY_CURRENT_USER\Software\Classes` 配下のみ、
 具体的には `Folder` の `open` と `explore` の動詞です（シェルが開くすべてのフォルダー、ブラウザーやエディターの
-「フォルダーを開く」を含め、エクスプローラーの代わりに Arke が起動します。コントロール パネルなど Arke で
-表示できないものは、そのままエクスプローラーに渡されます）。「Win+E とエクスプローラー アイコンでも Arke を開く」を
+「フォルダーを開く」を含め、エクスプローラーの代わりに Arke-CE が起動します。コントロール パネルなど Arke-CE で
+表示できないものは、そのままエクスプローラーに渡されます）。「Win+E とエクスプローラー アイコンでも Arke-CE を開く」を
 オンにした場合に限り、Win+E のハンドラーも登録されます。それまでの値は
-`%APPDATA%\Arke\folder-handler-backup.json` に保存され、設定をオフにするか `arke --restore-explorer` を
+`%APPDATA%\Arke-CE\folder-handler-backup.json` に保存され、設定をオフにするか `arke --restore-explorer` を
 実行すると、そのとおりに元へ戻されます。登録では届かない場合、たとえば `explorer.exe /select,...` のために、
-Arke は新しいエクスプローラー ウィンドウの監視も続けます。Windows が Win+E を登録を参照せずに直接エクスプローラーへ
-送る PC（Windows が 2026 年後半から順次展開している変更）では、Arke はバックグラウンドで実行中にキーボード
+Arke-CE は新しいエクスプローラー ウィンドウの監視も続けます。Windows が Win+E を登録を参照せずに直接エクスプローラーへ
+送る PC（Windows が 2026 年後半から順次展開している変更）では、Arke-CE はバックグラウンドで実行中にキーボード
 フックで Win+E を受け取ります。このフックは Windows キーが押されている間の E にしか反応せず、何も記録しません。
-設定は `%APPDATA%\Arke` に、検索インデックス、ログ、ダウンロードした更新は `%LOCALAPPDATA%\Arke` に保存されます。
+設定は `%APPDATA%\Arke-CE` に、検索インデックス、ログ、ダウンロードした更新は `%LOCALAPPDATA%\Arke-CE` に保存されます。
 「Windows にサインインしたときに起動する」はスタートアップ フォルダー内のショートカット、「スタート メニューに
-Arke を表示」はスタート メニュー フォルダー内のショートカットです。SFTP と WebDAV の場所のパスワードは Windows
+Arke-CE を表示」はスタート メニュー フォルダー内のショートカットです。SFTP と WebDAV の場所のパスワードは Windows
 資格情報マネージャーに保存され、それは「記憶する」にチェックを入れたときだけです。管理者の承認が必要なのは
 オプションの検索サービスだけです。インストーラーを使う場合は、設定 › アプリ に表示されるアンインストール
 エントリが追加され（自分のアカウント用、またはすべてのユーザー用にインストールした場合はその用）、承認を求めるのは
@@ -362,17 +362,17 @@ Arke を表示」はスタート メニュー フォルダー内のショート�
 <details>
 <summary><b>完全に削除するにはどうすればよいですか?</b></summary>
 
-設定 › バージョン情報 › **この PC から Arke を削除**。インストールしていれば検索サービス（この部分は Windows が
+設定 › バージョン情報 › **この PC から Arke-CE を削除**。インストールしていれば検索サービス（この部分は Windows が
 管理者の承認を求めます）、スタート メニューと「Windows にサインインしたときに起動する」のショートカット、保存した
-SFTP と WebDAV のパスワード、ジャンプ リスト、`%LOCALAPPDATA%\Arke`、`%APPDATA%\Arke`（「設定を保持する」に
+SFTP と WebDAV のパスワード、ジャンプ リスト、`%LOCALAPPDATA%\Arke-CE`、`%APPDATA%\Arke-CE`（「設定を保持する」に
 チェックを入れない場合）、最後に exe 自体を削除し、削除した内容を表示します。
 
 ターミナルやスクリプトからは `arke --uninstall` を使います。`--keep-settings`、`--quiet`（ダイアログなし。
 サービス用の管理者プロンプトのみ）、`--dry-run`（削除対象を一覧表示するだけ）を付けられます。
-Scoop や winget（Arke が winget で提供されるようになった場合）でインストールした場合は、`arke --uninstall` は
-exe をパッケージ マネージャーに任せるので、`scoop uninstall arke` または `winget uninstall Koimsurai.Arke` で削除してください。
+Scoop や winget（Arke-CE が winget で提供されるようになった場合）でインストールした場合は、`arke --uninstall` は
+exe をパッケージ マネージャーに任せるので、`scoop uninstall arke` または `winget uninstall Koimsurai.Arke-CE` で削除してください。
 
-「Arke でフォルダーを開く」もオフになり、以前のフォルダー ハンドラーが元に戻ります。手動で Arke を削除する場合は、
+「Arke-CE でフォルダーを開く」もオフになり、以前のフォルダー ハンドラーが元に戻ります。手動で Arke-CE を削除する場合は、
 フォルダーがエクスプローラーで開き続けるよう、exe を削除する**前に**その設定をオフにしてください（または
 `arke --restore-explorer` を実行してください）。
 
@@ -384,11 +384,11 @@ exe をパッケージ マネージャーに任せるので、`scoop uninstall a
 ビルドはまだコード署名されておらず、署名のない新しい exe は SmartScreen での評価がないためです。各リリースの
 ノートには SHA-256 チェックサムと exe の VirusTotal スキャン結果が付いており、いつでもソースから自分でビルド
 できます。0.1.0 より後のリリースでは、
-`gh attestation verify arke-<version>.exe -R Koimsurai/Arke` で、exe がこのリポジトリのリリース ワークフローで
+`gh attestation verify arke-<version>.exe -R Koimsurai/Arke-CE` で、exe がこのリポジトリのリリース ワークフローで
 ビルドされたことを確認できます。
 
-ウイルス対策ソフトによっては、許可するまで新しいバージョンのたびにブロックされます。更新後の Arke の再起動時に
-新しいバージョンが止められた場合、Arke は元のバージョンに戻してそのことを知らせます。ウイルス対策ソフトで
+ウイルス対策ソフトによっては、許可するまで新しいバージョンのたびにブロックされます。更新後の Arke-CE の再起動時に
+新しいバージョンが止められた場合、Arke-CE は元のバージョンに戻してそのことを知らせます。ウイルス対策ソフトで
 `arke.exe` を許可してから、もう一度更新してください。
 
 </details>
@@ -396,19 +396,19 @@ exe をパッケージ マネージャーに任せるので、`scoop uninstall a
 <details>
 <summary><b>Linux 版や macOS 版は出ますか?</b></summary>
 
-今のところ予定はありません。`crates/core` はほぼプラットフォームに依存しませんが、Arke を Windows で高速にして
+今のところ予定はありません。`crates/core` はほぼプラットフォームに依存しませんが、Arke-CE を Windows で高速にして
 いる部分 (MFT インデックス、シェル統合) は Windows 固有です。必要なことを issue で教えてください。
 
 </details>
 
 ## 問題の報告
 
-最も簡単なのは Arke 内からの報告です：**設定 › バージョン情報 › 問題を報告 › GitHub で issue を作成**。
-Arke と Windows のバージョン、主な設定、最新のログ行が入力され、アカウント名、コンピューター名、サーバー名、
+最も簡単なのは Arke-CE 内からの報告です：**設定 › バージョン情報 › 問題を報告 › GitHub で issue を作成**。
+Arke-CE と Windows のバージョン、主な設定、最新のログ行が入力され、アカウント名、コンピューター名、サーバー名、
 ファイル名は取り除かれます。レポートをコピーしたり、ファイルとして保存して別の方法で送ったりすることもでき、
 **ログ ファイルを表示** でログそのものを開けます。
 
-Arke が起動しない場合、ログは `%LOCALAPPDATA%\Arke\arke.log` にあります。
+Arke-CE が起動しない場合、ログは `%LOCALAPPDATA%\Arke-CE\arke.log` にあります。
 
 ## ソースからビルド
 
@@ -429,13 +429,13 @@ cargo lint                     # clippy, as strict as CI
 | `crates/indexd` | オプションのバックグラウンド サービス (MFT と USN ジャーナル) |
 | `tools/xtask` | リリース用ツール：changeset、バージョン管理、パッケージング、公開 |
 
-Arke は現時点でプル リクエストを受け付けていませんが、バグ報告やアイデアは
-[issue](https://github.com/Koimsurai/Arke/issues) で大歓迎です。規約とリリース手順は
+Arke-CE は現時点でプル リクエストを受け付けていませんが、バグ報告やアイデアは
+[issue](https://github.com/youringer/Arke-CE/issues) で大歓迎です。規約とリリース手順は
 [CONTRIBUTING.md](CONTRIBUTING.md) を参照してください。
 
 ## 謝辞
 
-Arke は、Zed エディターの UI フレームワークである [GPUI](https://github.com/zed-industries/zed/tree/main/crates/gpui)
+Arke-CE は、Zed エディターの UI フレームワークである [GPUI](https://github.com/zed-industries/zed/tree/main/crates/gpui)
 と、[THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) に挙げたオープン ソースのクレートの上に作られています。
 検索構文は [Everything](https://www.voidtools.com/) に倣い、見た目は [Files](https://files.community/) アプリから
 多くを学び、タブのサイドバーは Arc ブラウザーへのオマージュです。
@@ -456,17 +456,17 @@ SignPath Foundation が発行）。
 
 ## プライバシー
 
-Arke は、あなたやあなたのファイルに関するデータを一切収集も送信もしません。オンラインに接続するのは、
+Arke-CE は、あなたやあなたのファイルに関するデータを一切収集も送信もしません。オンラインに接続するのは、
 新しいバージョンを GitHub で確認するとき（1 日に最大 1 回、設定 › バージョン情報 でオフにできます）、
 インストールを選んだときにダウンロードするとき、そしてご自身で開くネットワーク共有、SFTP、WebDAV の場所に
 接続するときだけです。
 
 お住まいの地域で GitHub が遅い、またはつながらない場合は、設定 › バージョン情報 › 更新 ›
 ダウンロード経路 に、ご自身で選んだミラー（GitHub のアドレスの前に付ける `https://` のアドレス）か
-HTTP プロキシ（`ホスト:ポート`）を入力すると、更新の確認とダウンロードがそこを経由します。Arke に
+HTTP プロキシ（`ホスト:ポート`）を入力すると、更新の確認とダウンロードがそこを経由します。Arke-CE に
 経路は組み込まれておらず、入力したときだけ使います。経路の運営者には、あなたの IP アドレスと、確認または
-ダウンロードした Arke のバージョンがわかります。それ以外は経由しません。経路に接続できないときは
-GitHub に直接接続し、そのことを設定の下に表示します。Arke は自身の鍵で署名されたファイルだけを
+ダウンロードした Arke-CE のバージョンがわかります。それ以外は経由しません。経路に接続できないときは
+GitHub に直接接続し、そのことを設定の下に表示します。Arke-CE は自身の鍵で署名されたファイルだけを
 インストールするので、ミラーやプロキシが改変されたものや古いバージョンにすり替えることはできません。
 
 ## ライセンス

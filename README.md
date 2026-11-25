@@ -1,28 +1,28 @@
-<p align="center"><img src="crates/app/assets/brand/arke.svg" width="96" alt="Arke logo"></p>
+<p align="center"><img src="crates/app/assets/brand/arke.svg" width="96" alt="Arke-CE logo"></p>
 
-<h1 align="center">Arke</h1>
+<h1 align="center">Arke-CE</h1>
 
 <p align="center"><b>A file explorer for Windows that never freezes.</b><br>
 GPU-rendered, written in Rust, one small exe.</p>
 
 <p align="center">
-  <a href="https://github.com/Koimsurai/Arke/releases"><img src="https://img.shields.io/github/v/release/Koimsurai/Arke?label=download" alt="Latest release"></a>
-  <a href="https://github.com/Koimsurai/Arke/actions/workflows/ci.yml"><img src="https://github.com/Koimsurai/Arke/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/youringer/Arke-CE/releases"><img src="https://img.shields.io/github/v/release/Koimsurai/Arke-CE?label=download" alt="Latest release"></a>
+  <a href="https://github.com/youringer/Arke-CE/actions/workflows/ci.yml"><img src="https://github.com/youringer/Arke-CE/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4" alt="Windows 10 and 11">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0-blue" alt="AGPL-3.0"></a>
 </p>
 
 <p align="center"><b>English</b> · <a href="README.zh-CN.md">简体中文</a> · <a href="README.zh-TW.md">繁體中文</a> · <a href="README.ja.md">日本語</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español</a> · <a href="README.pt-BR.md">Português (Brasil)</a></p>
 
-<p align="center"><img src=".github/assets/preview.png" alt="Arke showing a folder with the preview pane open"></p>
+<p align="center"><img src=".github/assets/preview.png" alt="Arke-CE showing a folder with the preview pane open"></p>
 
-## Why Arke
+## Why Arke-CE
 
 **It stays responsive.** Listing, sorting, thumbnails, folder sizes, search and file operations
 all run off the UI thread. An unreachable network share or a folder with 100,000 files doesn't
 stop you from scrolling, typing or switching tabs.
 
-**It finds anything, instantly.** Arke keeps a file name index of your local drives. With the
+**It finds anything, instantly.** Arke-CE keeps a file name index of your local drives. With the
 optional background service it reads the NTFS master file table directly, indexing millions of
 files in seconds, and follows the change journal so the index is current the moment you open it.
 
@@ -35,24 +35,24 @@ pinned and saved as named workspaces. Any tab splits into two panes that browse 
 their contents, and dragging a file onto a tab, a favorite or a path segment drops it right
 there.
 
-**It's safe with your system.** Arke has no telemetry. Apart from the optional search service, which
-Windows registers when you install it, Arke writes to the registry only if you turn on
-"Open folders in Arke": then it registers itself as the folder handler for your Windows account
+**It's safe with your system.** Arke-CE has no telemetry. Apart from the optional search service, which
+Windows registers when you install it, Arke-CE writes to the registry only if you turn on
+"Open folders in Arke-CE": then it registers itself as the folder handler for your Windows account
 (under `HKEY_CURRENT_USER\Software\Classes` only), and turning the setting off puts everything back.
-Shell extensions from other programs run in a separate process, so a buggy one can't take Arke down.
+Shell extensions from other programs run in a separate process, so a buggy one can't take Arke-CE down.
 
-If Arke is useful to you, a ⭐ on GitHub helps other people find it.
+If Arke-CE is useful to you, a ⭐ on GitHub helps other people find it.
 
-Arke was featured in [Ruan Yifeng's tech weekly #420](https://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html) and is listed in [awesome-rust](https://github.com/rust-unofficial/awesome-rust), [awesome-gpui](https://github.com/zed-industries/awesome-gpui) and on AlternativeTo.
+Arke-CE was featured in [Ruan Yifeng's tech weekly #420](https://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html) and is listed in [awesome-rust](https://github.com/rust-unofficial/awesome-rust), [awesome-gpui](https://github.com/zed-industries/awesome-gpui) and on AlternativeTo.
 
-<p><a href="https://alternativeto.net/software/arke/about/?utm_source=badge&utm_medium=referral"><img src="https://alternativeto.net/static/badges/badge-compact-color.svg" alt="Arke on AlternativeTo" height="40"></a></p>
+<p><a href="https://alternativeto.net/software/arke/about/?utm_source=badge&utm_medium=referral"><img src="https://alternativeto.net/static/badges/badge-compact-color.svg" alt="Arke-CE on AlternativeTo" height="40"></a></p>
 
 ## Features
 
 <table>
   <tr>
     <td width="50%"><img src=".github/assets/split-view.png" alt="A tab split into two panes, details on the left and icons on the right"></td>
-    <td width="50%"><img src=".github/assets/context-menu.png" alt="Arke's context menu"></td>
+    <td width="50%"><img src=".github/assets/context-menu.png" alt="Arke-CE's context menu"></td>
   </tr>
   <tr>
     <td>Split any tab into two panes that browse in sync or compare their contents.</td>
@@ -60,7 +60,7 @@ Arke was featured in [Ruan Yifeng's tech weekly #420](https://www.ruanyifeng.com
   </tr>
   <tr>
     <td width="50%"><img src=".github/assets/quick-look.png" alt="Quick Look showing a Markdown file"></td>
-    <td width="50%"><img src=".github/assets/properties.png" alt="Arke's Properties window for a folder"></td>
+    <td width="50%"><img src=".github/assets/properties.png" alt="Arke-CE's Properties window for a folder"></td>
   </tr>
   <tr>
     <td>Quick Look (Space) shows Markdown the way GitHub does, and images, PDF, Office files and code.</td>
@@ -92,9 +92,9 @@ Arke was featured in [Ruan Yifeng's tech weekly #420](https://www.ruanyifeng.com
   its menu, or drag it there. Drag them to reorder (the others make room, like app icons on a
   phone) or out to remove them, and rename them without renaming the folder. Folders pinned to
   Quick Access in File Explorer show up too.
-- One window by default (since 0.7): folders from other apps, Win+E and starting Arke again add a
+- One window by default (since 0.7): folders from other apps, Win+E and starting Arke-CE again add a
   tab to the window you used last. Turn off "Single window" in settings for a window each.
-- With "New windows open to: Last tabs", the windows open when you quit Arke (or Windows shuts
+- With "New windows open to: Last tabs", the windows open when you quit Arke-CE (or Windows shuts
   down) come back with their tabs. A window you close while others stay open isn't kept.
 - Spring-loaded folders, a shelf for collecting files from different folders, and a Home page
   with your favorites, recent files, drives and network locations, each with its own right-click
@@ -134,7 +134,7 @@ Arke was featured in [Ruan Yifeng's tech weekly #420](https://www.ruanyifeng.com
 - Network shares that fail fast when a server is offline and show the last known contents;
   `\\server` lists its shares. SFTP and WebDAV locations (experimental; plain http only after you
   allow it for that location). Mapped drives and network places can get names of their own, kept
-  in Arke only.
+  in Arke-CE only.
 - OneDrive and other cloud folders with sync status. Previews never download online-only files.
 - Archives: preview and extract zip and 7z (password-protected ones too), tar (.gz, .xz, .bz2, .zst) and RAR, compress to zip.
   RAR and the xz / bzip2 / zstd tars use the libarchive built into Windows (best on Windows 11
@@ -146,22 +146,22 @@ Arke was featured in [Ruan Yifeng's tech weekly #420](https://www.ruanyifeng.com
   anything it can't vouch for (network drives, OneDrive, files in use, policies) is left to Windows.
   It can be turned off in settings. Loose files take a few milliseconds each, still two to six times
   faster than Windows.
-- Updates download quietly in the background and install the next time Arke restarts, never while
+- Updates download quietly in the background and install the next time Arke-CE restarts, never while
   files are being copied and never over a metered connection.
-- Menus open in windows of their own, like Windows menus, so near the edge they reach past Arke's
+- Menus open in windows of their own, like Windows menus, so near the edge they reach past Arke-CE's
   window instead of being squeezed. Windows commands you pin from "More options" (Git Bash,
   Windows Terminal, VS Code, 7-Zip, NanaZip...) show as soon as the menu opens, and Shift+right-click
   adds the extended ones, as in File Explorer.
-- Launchers and scripts (Listary, ALTRun, AutoHotkey, PowerShell) can read Arke's windows, tabs and
+- Launchers and scripts (Listary, ALTRun, AutoHotkey, PowerShell) can read Arke-CE's windows, tabs and
   selection and open folders through one JSON interface ([docs/integration.md](docs/integration.md)).
 - Quiet when idle: nothing on screen changing means nothing redrawn, minimized included. Folder
   sizes, indexing and the search service run at low priority in Windows' efficiency mode, and with
-  only the tray icon left Arke frees its caches.
-- Optionally (experimental) open folders in Arke instead of File Explorer (folders opened from other
+  only the tray icon left Arke-CE frees its caches.
+- Optionally (experimental) open folders in Arke-CE instead of File Explorer (folders opened from other
   apps included), also "Show in folder" from browsers and "Open file location" from other apps.
-  It registers Arke as the folder handler for your account and is undone when you turn it off.
+  It registers Arke-CE as the folder handler for your account and is undone when you turn it off.
   File Explorer you start yourself (Win+E, the taskbar, Start) stays File Explorer unless you also
-  turn on "Win+E and the File Explorer icon open Arke too".
+  turn on "Win+E and the File Explorer icon open Arke-CE too".
 - Screen reader support, x64 and ARM64 builds (both tested on real hardware),
   taskbar jump list, safe USB eject, system tray, settings backup. English, Simplified and
   Traditional Chinese, Japanese, German, Spanish and Brazilian Portuguese (the last four are new
@@ -172,13 +172,13 @@ used; see the [changelog](CHANGELOG.md). Feedback in issues is welcome.
 
 ## Performance
 
-<p align="center"><img src=".github/assets/responsive.gif" alt="Arke opening a folder with 100,000 files, scrolling, re-sorting and filtering it at once, then reporting an offline server within a second while browsing goes on (real time)"></p>
+<p align="center"><img src=".github/assets/responsive.gif" alt="Arke-CE opening a folder with 100,000 files, scrolling, re-sorting and filtering it at once, then reporting an offline server within a second while browsing goes on (real time)"></p>
 
-<p align="center"><img src=".github/assets/search-compare.gif" alt="Searching all of C: for one file in File Explorer, Files and Arke (3× speed; the timer shows real seconds)"></p>
+<p align="center"><img src=".github/assets/search-compare.gif" alt="Searching all of C: for one file in File Explorer, Files and Arke-CE (3× speed; the timer shows real seconds)"></p>
 
-<p align="center"><img src=".github/assets/delete-compare.gif" alt="Sending the same folder of 20,000 files (2.48 GB) to the Recycle Bin: Arke in 0.2 s, File Explorer in 47.3 s, then restoring it from the Recycle Bin (5× speed; the timers show real seconds)"></p>
+<p align="center"><img src=".github/assets/delete-compare.gif" alt="Sending the same folder of 20,000 files (2.48 GB) to the Recycle Bin: Arke-CE in 0.2 s, File Explorer in 47.3 s, then restoring it from the Recycle Bin (5× speed; the timers show real seconds)"></p>
 
-| | Arke | For comparison |
+| | Arke-CE | For comparison |
 | --- | --- | --- |
 | Build the whole-disk index from scratch (about 4 million files) | about 10 s, about 130 MB of memory afterwards | Everything 1.4.1: 21 s, about 400 MB |
 | Find one file anywhere on C: | results appear as you type | Files 4.3: about 26 s · File Explorer: no result after 30 s* |
@@ -194,9 +194,9 @@ much faster.
 One PC: Intel i9-13900, 64 GB RAM, Samsung 990 PRO NVMe, Windows 11 (build 26200), with
 real-time antivirus scanning on, which slows every program down. File system caches were warm.
 
-- **Index**: Arke's search service reading the NTFS master file table, in a fresh profile;
+- **Index**: Arke-CE's search service reading the NTFS master file table, in a fresh profile;
   Everything 1.4.1 Lite with its service, file size and date modified indexed (the defaults), after
-  deleting its database. Arke's numbers come from `arke --bench index`, Everything's from its debug
+  deleting its database. Arke-CE's numbers come from `arke --bench index`, Everything's from its debug
   log; memory is the working set once indexing finished.
 - **Search**: each program started in `C:\` and searched for the same file name; the timer starts
   when typing starts. File Explorer and Files rely on Windows Search for indexed folders and scan
@@ -205,11 +205,11 @@ real-time antivirus scanning on, which slows every program down. File system cac
   cold start of each program; median of three runs after a warm-up, timed until the window stopped
   changing. File Pilot (free beta) is only in this test: it has no whole-disk search yet.
 - **Recycle Bin**: the same folder (20,000 files in 20 folders, 2.48 GB) sent to the Recycle Bin
-  from each program in one take, timed from Delete until the folder left the list. Arke uses its
+  from each program in one take, timed from Delete until the folder left the list. Arke-CE uses its
   fast Recycle Bin (on by default for local drives); both restore from the Windows Recycle Bin as
   usual.
 
-Your numbers will differ. Arke logs its own timings in `%LOCALAPPDATA%\Arke\arke.log`.
+Your numbers will differ. Arke-CE logs its own timings in `%LOCALAPPDATA%\Arke-CE\arke.log`.
 
 Run `arke --bench index` to measure the index on your machine.
 
@@ -217,13 +217,13 @@ Run `arke --bench index` to measure the index on your machine.
 
 ## Install
 
-Download from [Releases](https://github.com/Koimsurai/Arke/releases). Both downloads are the same
-Arke, with the same features and updates, and both keep settings in `%APPDATA%\Arke`:
+Download from [Releases](https://github.com/youringer/Arke-CE/releases). Both downloads are the same
+Arke-CE, with the same features and updates, and both keep settings in `%APPDATA%\Arke-CE`:
 
 - **Portable**, `arke-<version>.exe`: a single exe with no runtime that runs from any folder. Nothing
-  is installed, so it isn't in the Start menu or in Settings › Apps; Settings › About › **Remove Arke
+  is installed, so it isn't in the Start menu or in Settings › Apps; Settings › About › **Remove Arke-CE
   from this PC** removes it.
-- **Installer**, `arke-<version>-setup.exe`: installs Arke for your account without administrator
+- **Installer**, `arke-<version>-setup.exe`: installs Arke-CE for your account without administrator
   approval, or for all users in Program Files, and adds it to the Start menu and to Settings › Apps,
   where you can uninstall it.
 
@@ -237,13 +237,13 @@ scoop bucket add arke https://github.com/Koimsurai/scoop-bucket
 scoop install arke/arke
 ```
 
-Scoop then keeps it up to date (`scoop update arke`), and Arke leaves updating to it.
+Scoop then keeps it up to date (`scoop update arke`), and Arke-CE leaves updating to it.
 
 Builds aren't code-signed yet, so SmartScreen may ask for confirmation the first time. Signing
 through SignPath Foundation is on the way, see [Code signing policy](#code-signing-policy).
 
-Arke checks GitHub for a new version at most once a day and only installs one when you say so
-(Settings › About). Updates are signed: Arke installs only files signed with its own key. Where
+Arke-CE checks GitHub for a new version at most once a day and only installs one when you say so
+(Settings › About). Updates are signed: Arke-CE installs only files signed with its own key. Where
 GitHub is slow, you can set a download route there (see [Privacy](#privacy)).
 
 <details>
@@ -309,7 +309,7 @@ ranks higher; turn it off or clear it in Settings › Search.
 
 ## Accessibility
 
-Arke works with Windows screen readers through UI Automation, the interface Narrator and NVDA use;
+Arke-CE works with Windows screen readers through UI Automation, the interface Narrator and NVDA use;
 JAWS should work too. So far it has been checked with UI Automation tools, not yet by people who
 use a screen reader every day, so help with testing is welcome.
 
@@ -318,7 +318,7 @@ Properties window. What is still incomplete: the toolbar buttons can't be reache
 (use F6 and the shortcuts instead), and some dialogs haven't been checked.
 
 The [keyboard guide](docs/keyboard.md) lists every shortcut by area. If something can't be reached
-or isn't announced, please [open an issue](https://github.com/Koimsurai/Arke/issues) and mention
+or isn't announced, please [open an issue](https://github.com/youringer/Arke-CE/issues) and mention
 your screen reader and its version.
 
 ## FAQ
@@ -326,7 +326,7 @@ your screen reader and its version.
 <details>
 <summary><b>Does AGPL affect me if I just use it, at home or at work?</b></summary>
 
-No. The license only adds obligations when you distribute a modified Arke (or offer it over a
+No. The license only adds obligations when you distribute a modified Arke-CE (or offer it over a
 network); using it, including inside a company, carries none.
 
 </details>
@@ -337,19 +337,19 @@ network); using it, including inside a company, carries none.
 Nothing unless you ask. Installing the optional search service (with your approval) registers it
 with Windows, which keeps services under
 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ArkeIndex`. Besides that, the only registry
-change is the optional "Open folders in Arke" setting, which registers Arke as the folder handler for your Windows account, only under
+change is the optional "Open folders in Arke-CE" setting, which registers Arke-CE as the folder handler for your Windows account, only under
 `HKEY_CURRENT_USER\Software\Classes`: the `open` and `explore` verbs of `Folder` (so every folder
-the shell opens, "Show in folder" of browsers and editors included, starts Arke instead of File
-Explorer; whatever Arke can't show, such as Control Panel, is handed straight to Explorer) and, only
-with "Win+E and the File Explorer icon open Arke too", the Win+E handler. Whatever was there before
-is saved to `%APPDATA%\Arke\folder-handler-backup.json` and put back exactly when you turn the
-setting off or run `arke --restore-explorer`. Arke also keeps watching for new Explorer windows for
+the shell opens, "Show in folder" of browsers and editors included, starts Arke-CE instead of File
+Explorer; whatever Arke-CE can't show, such as Control Panel, is handed straight to Explorer) and, only
+with "Win+E and the File Explorer icon open Arke-CE too", the Win+E handler. Whatever was there before
+is saved to `%APPDATA%\Arke-CE\folder-handler-backup.json` and put back exactly when you turn the
+setting off or run `arke --restore-explorer`. Arke-CE also keeps watching for new Explorer windows for
 the cases the registration can't reach, such as `explorer.exe /select,...`. On PCs where Windows
 sends Win+E straight to File Explorer without asking the registration (a change Windows has been
-rolling out since late 2026), Arke takes Win+E with a keyboard hook while it runs in the background:
-it only reacts to E while a Windows key is held and records nothing. Settings live in `%APPDATA%\Arke`, the search index, log and
-downloaded updates in `%LOCALAPPDATA%\Arke`. "Start when I sign in to Windows" is a shortcut in your Startup
-folder, and "Show Arke in the Start menu" one in your Start menu folder. Passwords for SFTP and WebDAV locations go to Windows Credential Manager, and only when
+rolling out since late 2026), Arke-CE takes Win+E with a keyboard hook while it runs in the background:
+it only reacts to E while a Windows key is held and records nothing. Settings live in `%APPDATA%\Arke-CE`, the search index, log and
+downloaded updates in `%LOCALAPPDATA%\Arke-CE`. "Start when I sign in to Windows" is a shortcut in your Startup
+folder, and "Show Arke-CE in the Start menu" one in your Start menu folder. Passwords for SFTP and WebDAV locations go to Windows Credential Manager, and only when
 you tick "Remember". The optional search service is the only part that needs administrator
 approval. The installer, if you use it, adds the uninstall entry Windows lists in Settings › Apps
 (for your account, or for all users when you install it there) and asks for approval only for an
@@ -360,17 +360,17 @@ all-users install.
 <details>
 <summary><b>How do I remove it completely?</b></summary>
 
-Settings › About › **Remove Arke from this PC**. It removes the search service if you installed it
+Settings › About › **Remove Arke-CE from this PC**. It removes the search service if you installed it
 (Windows asks for administrator approval for that part), the Start menu and "Start when I sign in to
-Windows" shortcuts, saved SFTP and WebDAV passwords, the jump list, `%LOCALAPPDATA%\Arke`, `%APPDATA%\Arke`
+Windows" shortcuts, saved SFTP and WebDAV passwords, the jump list, `%LOCALAPPDATA%\Arke-CE`, `%APPDATA%\Arke-CE`
 (unless you tick "Keep my settings") and finally the exe itself, then shows what it removed.
 
 From a terminal or a script: `arke --uninstall`, with `--keep-settings`, `--quiet` (no dialogs,
 only the administrator prompt for the service) or `--dry-run` (only lists what it would remove).
-Installed with Scoop or winget (once Arke is available on winget)? `arke --uninstall` leaves the exe to the package manager; remove it
-with `scoop uninstall arke` or `winget uninstall Koimsurai.Arke`.
+Installed with Scoop or winget (once Arke-CE is available on winget)? `arke --uninstall` leaves the exe to the package manager; remove it
+with `scoop uninstall arke` or `winget uninstall Koimsurai.Arke-CE`.
 
-It also turns off "Open folders in Arke" and puts the previous folder handler back. Removing Arke by hand instead? Turn that setting off (or run `arke --restore-explorer`) **before** deleting the exe, so folders keep opening in File Explorer.
+It also turns off "Open folders in Arke-CE" and puts the previous folder handler back. Removing Arke-CE by hand instead? Turn that setting off (or run `arke --restore-explorer`) **before** deleting the exe, so folders keep opening in File Explorer.
 
 </details>
 
@@ -380,10 +380,10 @@ It also turns off "Open folders in Arke" and puts the previous folder handler ba
 The builds aren't code-signed yet, and a new unsigned exe has no reputation with SmartScreen.
 Each release comes with a SHA-256 checksum and a VirusTotal scan of the exes in its notes, and you
 can always build it from source yourself. For releases after 0.1.0,
-`gh attestation verify arke-<version>.exe -R Koimsurai/Arke` confirms that an exe was built by this repository's release workflow.
+`gh attestation verify arke-<version>.exe -R Koimsurai/Arke-CE` confirms that an exe was built by this repository's release workflow.
 
 Some antivirus software blocks each new version until you allow it. If it stops the new version
-when Arke restarts after an update, Arke puts the version you had back and says so; allow
+when Arke-CE restarts after an update, Arke-CE puts the version you had back and says so; allow
 `arke.exe` in your antivirus and update again.
 
 </details>
@@ -391,7 +391,7 @@ when Arke restarts after an update, Arke puts the version you had back and says 
 <details>
 <summary><b>Will there be a Linux or macOS version?</b></summary>
 
-Not yet. `crates/core` is mostly platform-independent, but the parts that make Arke fast on
+Not yet. `crates/core` is mostly platform-independent, but the parts that make Arke-CE fast on
 Windows (the MFT index, shell integration) are Windows-specific. Tell us in an issue what you'd
 need.
 
@@ -399,12 +399,12 @@ need.
 
 ## Reporting a problem
 
-The easiest way is from Arke: **Settings › About › Report a problem › Open an issue on GitHub**.
-It fills in your Arke and Windows versions, the main settings and the latest log lines, with your
+The easiest way is from Arke-CE: **Settings › About › Report a problem › Open an issue on GitHub**.
+It fills in your Arke-CE and Windows versions, the main settings and the latest log lines, with your
 account, computer, server and file names taken out. You can also copy the report or save it as a
 file and send it another way, and **Show log file** opens the log itself.
 
-If Arke won't start, the log is `%LOCALAPPDATA%\Arke\arke.log`.
+If Arke-CE won't start, the log is `%LOCALAPPDATA%\Arke-CE\arke.log`.
 
 ## Building from source
 
@@ -425,19 +425,19 @@ cargo lint                     # clippy, as strict as CI
 | `crates/indexd` | The optional background service (MFT and USN journal) |
 | `tools/xtask` | Release tooling: changesets, versioning, packaging, publishing |
 
-Arke doesn't accept pull requests for now, but bug reports and ideas are very welcome as
-[issues](https://github.com/Koimsurai/Arke/issues). See [CONTRIBUTING.md](CONTRIBUTING.md) for
+Arke-CE doesn't accept pull requests for now, but bug reports and ideas are very welcome as
+[issues](https://github.com/youringer/Arke-CE/issues). See [CONTRIBUTING.md](CONTRIBUTING.md) for
 conventions and the release process.
 
 ## Acknowledgements
 
-Arke is built on [GPUI](https://github.com/zed-industries/zed/tree/main/crates/gpui), the UI
+Arke-CE is built on [GPUI](https://github.com/zed-industries/zed/tree/main/crates/gpui), the UI
 framework of the Zed editor, and on the open-source crates listed in
 [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md). The search syntax follows
 [Everything](https://www.voidtools.com/), the look owes a lot to the
 [Files](https://files.community/) app, and the tab sidebar is a nod to the Arc browser.
 
-The name comes from Greek myth: Arke is the twin sister of Iris, both winged messengers.
+The name comes from Greek myth: Arke-CE is the twin sister of Iris, both winged messengers.
 
 ## Code signing policy
 
@@ -452,17 +452,17 @@ signed, and each release is approved by hand before it is signed.
 
 ## Privacy
 
-Arke doesn't collect or send any data about you or your files. It goes online only to
+Arke-CE doesn't collect or send any data about you or your files. It goes online only to
 check GitHub for a new version (at most once a day, can be turned off in Settings › About), to
 download one when you choose to install it, and to reach the network shares, SFTP and WebDAV
 locations you open yourself.
 
 If GitHub is slow or blocked where you are, Settings › About › Updates › Download route sends
 update checks and downloads through a mirror (an `https://` address put in front of GitHub's) or
-an HTTP proxy (`host:port`) you choose. Arke ships none of its own and uses one only if you type
-it in. Whoever runs it sees your IP address and which Arke version you check for or download;
-nothing else goes through it. When it fails, Arke asks GitHub directly and says so under the
-setting. Arke installs only downloads signed with its own key, so a mirror or proxy can't slip in
+an HTTP proxy (`host:port`) you choose. Arke-CE ships none of its own and uses one only if you type
+it in. Whoever runs it sees your IP address and which Arke-CE version you check for or download;
+nothing else goes through it. When it fails, Arke-CE asks GitHub directly and says so under the
+setting. Arke-CE installs only downloads signed with its own key, so a mirror or proxy can't slip in
 a changed or older version.
 
 ## License
