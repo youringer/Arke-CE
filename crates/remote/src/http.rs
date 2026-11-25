@@ -102,12 +102,13 @@ fn send_stream(
     reader: &mut dyn Read,
     len: u64,
     progress: Progress<'_>,
+    fail: &impl Fn(windows::core::Error) -> RemoteError,
 ) -> RemoteResult<()> {
     let total = u32::try_from(len).map_err(|_too_big| {
         RemoteError::Server("files over 4 GB can't be uploaded over WebDAV".into())
     })?;
     // SAFETY: `req` is a valid request handle and `total` is the length the server expects.
-    unsafe { WinHttpSendRequest(req, None, None, 0, total, 0) }?;
+    unsafe { WinHttpSendRequest(req, None, None, 0, total, 0) }.map_err(fail)?;
     let mut buf = vec![0u8; CHUNK];
     let mut sent = 0u64;
     loop {
@@ -125,7 +126,8 @@ fn send_stream(
                 u32::try_from(n).unwrap_or(u32::MAX),
                 &raw mut written,
             )
-        }?;
+        }
+        .map_err(fail)?;
         sent += n as u64;
         if !progress(sent) {
             return Err(RemoteError::Cancelled);
@@ -303,7 +305,7 @@ impl WinHttp {
                         .map_err(fail)?;
                 }
                 Body::Stream { reader, len } => {
-                    send_stream(req.0, reader, *len, progress).map_err(fail)?;
+                    send_stream(req.0, reader, *len, *progress, &fail)?;
                 }
             }
             WinHttpReceiveResponse(req.0, std::ptr::null_mut()).map_err(fail)?;
