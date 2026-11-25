@@ -131,9 +131,13 @@ static LAST: LazyLock<RwLock<Option<Used>>> = LazyLock::new(|| RwLock::new(None)
 /// Default route for Arke-CE release checks and downloads.
 pub(crate) const DEFAULT: &str = "https://v4.gh-proxy.com/";
 
-pub(crate) fn set(text: &str) {
+fn route_for(text: &str) -> Route {
     let text = if text.trim().is_empty() { DEFAULT } else { text };
-    let route = Route::parse(text).unwrap_or_else(|_| Route::Prefix(DEFAULT.into()));
+    Route::parse(text).unwrap_or_else(|_| Route::Prefix(DEFAULT.into()))
+}
+
+pub(crate) fn set(text: &str) {
+    let route = route_for(text);
     let changed = {
         let mut current = CURRENT.write();
         let changed = *current != route;
@@ -232,8 +236,8 @@ mod tests {
     fn empty_is_the_ce_default_route() {
         assert_eq!(Route::parse("  "), Ok(Route::Direct));
         assert_eq!(Route::Direct.host(), None);
-        set("");
-        assert_eq!(current().host().as_deref(), Some("v4.gh-proxy.com"));
+        assert_eq!(route_for("").host().as_deref(), Some("v4.gh-proxy.com"));
+        assert_eq!(Route::parse(DEFAULT), Ok(Route::Prefix(DEFAULT.into())));
     }
 
     /// What can't be used says why instead of being taken for something else.
