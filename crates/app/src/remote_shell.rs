@@ -546,7 +546,7 @@ fn wait_for_local_save(local: &Path, baseline: SystemTime, baseline_size: u64) {
             continue;
         };
         let changed =
-            meta.len() != baseline_size || meta.modified().ok().is_some_and(|time| time > baseline);
+            meta.len() != baseline_size || meta.modified().is_ok_and(|time| time > baseline);
         if !changed {
             continue;
         }
@@ -566,17 +566,16 @@ impl RemoteShell {
         let baseline = std::fs::metadata(local)
             .ok()
             .and_then(|meta| meta.modified().ok())
-            .unwrap_or(before.modified.unwrap_or(SystemTime::UNIX_EPOCH));
+            .unwrap_or_else(|| before.modified.unwrap_or(SystemTime::UNIX_EPOCH));
         self.inner.open_and_wait(local, None)?;
         // An already running Office instance may have received the file without handing us a
         // process to wait on: watch the cache copy for a saved change as well.
         wait_for_local_save(local, baseline, before.size);
-        let meta = match std::fs::metadata(local) {
-            Ok(meta) => meta,
-            Err(_) => return Ok(()),
+        let Ok(meta) = std::fs::metadata(local) else {
+            return Ok(());
         };
         let changed =
-            meta.len() != before.size || meta.modified().ok().is_some_and(|time| time > baseline);
+            meta.len() != before.size || meta.modified().is_ok_and(|time| time > baseline);
         if !changed {
             return Ok(());
         }
