@@ -366,6 +366,13 @@ impl DavClient {
             &mut body,
             &mut |_| true,
         )?;
+        // A WebDAV endpoint answers PROPFIND; a plain web page answers 405. The generic
+        // status() maps 405 to Exists (correct for MKCOL on an existing folder), which would
+        // show "an item with that name already exists" when the user simply pointed at a
+        // non-DAV path. Report it as NotFound instead.
+        if status == 405 {
+            return Err(RemoteError::NotFound);
+        }
         self.status(status)?;
         parse_multistatus(&String::from_utf8_lossy(&body))
     }
