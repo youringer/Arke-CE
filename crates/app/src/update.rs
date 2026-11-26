@@ -151,7 +151,10 @@ pub(crate) struct Release {
     pub(crate) page: String,
 }
 
-/// Suffix of this build's release asset: `arke-<version>.exe` is x64, `arke-<version>-arm64.exe`
+/// Prefix of this build's release assets. The CE edition publishes `arke-ce-<version>.exe`.
+pub(crate) const ASSET_PREFIX: &str = "arke-ce-";
+
+/// Suffix of this build's release asset: `arke-ce-<version>.exe` is x64, `arke-ce-<version>-arm64.exe`
 /// is ARM64 (the names `cargo xtask build` gives them).
 pub(crate) const ARCH_SUFFIX: &str = if cfg!(target_arch = "aarch64") {
     "-arm64"
@@ -161,7 +164,7 @@ pub(crate) const ARCH_SUFFIX: &str = if cfg!(target_arch = "aarch64") {
 
 /// Whether `name` is the exe for `version` built for the architecture with `suffix`.
 fn is_exe_for(name: &str, version: &str, suffix: &str) -> bool {
-    name.eq_ignore_ascii_case(&format!("arke-{version}{suffix}.exe"))
+    name.eq_ignore_ascii_case(&format!("{ASSET_PREFIX}{version}{suffix}.exe"))
 }
 
 /// Added to the asset name for the installer (`installer/arke.iss`): `arke-<version>-setup.exe`,
@@ -279,7 +282,7 @@ pub(crate) fn check(channel: Channel) -> Result<Option<Release>, UpdateError> {
 
 /// Release asset name of the notes Arke shows about `version` (`cargo xtask publish` signs it).
 fn notes_asset(version: &str) -> String {
-    format!("arke-{version}-notes.md")
+    format!("{ASSET_PREFIX}{version}-notes.md")
 }
 
 /// `release` with the notes from the signed notes file instead of the release's text, which
@@ -370,7 +373,7 @@ fn pick_from_feed_for(
             continue;
         }
         let number = tag.strip_prefix('v').unwrap_or(tag);
-        let exe_name = format!("arke-{number}{suffix}.exe");
+        let exe_name = format!("{ASSET_PREFIX}{number}{suffix}.exe");
         let exe_url = format!("https://github.com/{repo}/releases/download/{tag}/{exe_name}");
         let content = entry
             .split_once("<content type=\"html\">")
@@ -614,10 +617,10 @@ pub(crate) fn downloaded_version(name: &str, suffix: &str) -> Option<Version> {
 /// [`downloaded_version`] as written in the name (`0.4.0-rc.2`).
 pub(crate) fn downloaded_number<'a>(name: &'a str, suffix: &str) -> Option<&'a str> {
     let version = name
-        .strip_prefix("arke-")?
+        .strip_prefix(ASSET_PREFIX)?
         .strip_suffix(".exe")?
         .strip_suffix(suffix)?;
-    // `arke-0.4.0-setup.exe` is no single exe of a version `0.4.0-setup`.
+    // `arke-ce-0.4.0-setup.exe` is no single exe of a version `0.4.0-setup`.
     if version.ends_with(SETUP_SUFFIX) || version.ends_with("-arm64") {
         return None;
     }
@@ -1185,14 +1188,14 @@ mod tests {
     fn picks_the_newest_release_the_channel_can_see() {
         let json = r#"[
           {"tag_name":"v0.3.0-nightly.20261112","draft":false,"body":"n","html_url":"p3",
-           "assets":[{"name":"arke-0.3.0-nightly.20261112.exe","browser_download_url":"u3","size":3},
-                     {"name":"arke-0.3.0-nightly.20261112.exe.sha256","browser_download_url":"s3"}]},
+           "assets":[{"name":"arke-ce-0.3.0-nightly.20261112.exe","browser_download_url":"u3","size":3},
+                     {"name":"arke-ce-0.3.0-nightly.20261112.exe.sha256","browser_download_url":"s3"}]},
           {"tag_name":"v0.2.0-rc.1","draft":false,"body":"r","html_url":"p2",
-           "assets":[{"name":"arke-0.2.0-rc.1.exe","browser_download_url":"u2","size":2}]},
+           "assets":[{"name":"arke-ce-0.2.0-rc.1.exe","browser_download_url":"u2","size":2}]},
           {"tag_name":"v0.2.0","draft":true,"body":"","html_url":"",
-           "assets":[{"name":"arke-0.2.0.exe","browser_download_url":"x","size":1}]},
+           "assets":[{"name":"arke-ce-0.2.0.exe","browser_download_url":"x","size":1}]},
           {"tag_name":"v0.1.5","draft":false,"body":"s","html_url":"p1",
-           "assets":[{"name":"arke-0.1.5.exe","browser_download_url":"u1","size":1}]}
+           "assets":[{"name":"arke-ce-0.1.5.exe","browser_download_url":"u1","size":1}]}
         ]"#;
         let current = v("0.1.0");
         let nightly = pick(json, Channel::Nightly, &current).unwrap();
@@ -1241,14 +1244,14 @@ mod tests {
 
         let stable = pick_from_feed_for(&feed, "o/r", Channel::Stable, &current, "").unwrap();
         assert_eq!(stable.version, "0.6.1");
-        assert_eq!(stable.exe_name, "arke-0.6.1.exe");
+        assert_eq!(stable.exe_name, "arke-ce-0.6.1.exe");
         assert_eq!(
             stable.exe_url,
-            "https://github.com/o/r/releases/download/v0.6.1/arke-0.6.1.exe"
+            "https://github.com/o/r/releases/download/v0.6.1/arke-ce-0.6.1.exe"
         );
         assert_eq!(
             stable.sha_url.as_deref(),
-            Some("https://github.com/o/r/releases/download/v0.6.1/arke-0.6.1.exe.sha256")
+            Some("https://github.com/o/r/releases/download/v0.6.1/arke-ce-0.6.1.exe.sha256")
         );
         assert_eq!(stable.page, "https://github.com/o/r/releases/tag/v0.6.1");
         assert_eq!(
@@ -1260,7 +1263,7 @@ mod tests {
         assert_eq!(rc.version, "0.6.2-rc.1");
         assert_eq!(
             rc.exe_url,
-            "https://github.com/o/r/releases/download/v0.6.2-rc.1/arke-0.6.2-rc.1-arm64-setup.exe"
+            "https://github.com/o/r/releases/download/v0.6.2-rc.1/arke-ce-0.6.2-rc.1-arm64-setup.exe"
         );
         assert!(pick_from_feed_for(&feed, "o/r", Channel::Stable, &v("0.6.1"), "").is_none());
         assert!(pick_from_feed_for("<html>", "o/r", Channel::Stable, &current, "").is_none());
@@ -1367,7 +1370,7 @@ mod tests {
         let proxy = std::env::var("ARKE_TEST_PROXY").expect("ARKE_TEST_PROXY=host:port");
         crate::update_route::set(&proxy);
         let url =
-            "https://github.com/youringer/Arke-CE/releases/download/v0.8.1/arke-0.8.1-setup.exe";
+            "https://github.com/youringer/Arke-CE/releases/download/v0.8.1/arke-ce-0.8.1-setup.exe";
         let path = std::env::temp_dir().join(format!("arke-live-route-{}.exe", std::process::id()));
         let mut file = std::fs::OpenOptions::new()
             .create(true)
@@ -1412,12 +1415,12 @@ mod tests {
     fn picks_the_exe_for_this_architecture() {
         let json = r#"[
           {"tag_name":"v0.3.0","draft":false,"body":"","html_url":"p",
-           "assets":[{"name":"arke-0.3.0-arm64.exe","browser_download_url":"a","size":2},
-                     {"name":"arke-0.3.0-arm64.exe.sha256","browser_download_url":"as"},
-                     {"name":"arke-0.3.0.exe","browser_download_url":"x","size":1},
-                     {"name":"arke-0.3.0.exe.sha256","browser_download_url":"xs"}]},
+           "assets":[{"name":"arke-ce-0.3.0-arm64.exe","browser_download_url":"a","size":2},
+                     {"name":"arke-ce-0.3.0-arm64.exe.sha256","browser_download_url":"as"},
+                     {"name":"arke-ce-0.3.0.exe","browser_download_url":"x","size":1},
+                     {"name":"arke-ce-0.3.0.exe.sha256","browser_download_url":"xs"}]},
           {"tag_name":"v0.2.0","draft":false,"body":"","html_url":"p",
-           "assets":[{"name":"arke-0.2.0.exe","browser_download_url":"old","size":1}]}
+           "assets":[{"name":"arke-ce-0.2.0.exe","browser_download_url":"old","size":1}]}
         ]"#;
         let current = v("0.1.0");
         let x64 = pick_for(json, Channel::Stable, &current, "").unwrap();
@@ -1434,7 +1437,7 @@ mod tests {
         assert!(pick_for(json, Channel::Stable, &v("0.3.0"), "-arm64").is_none());
         assert_eq!(
             pick_for(
-                &json.replace("arke-0.3.0-arm64", "gone"),
+                &json.replace("arke-ce-0.3.0-arm64", "gone"),
                 Channel::Stable,
                 &current,
                 "-arm64"
@@ -1448,12 +1451,12 @@ mod tests {
     fn an_installed_copy_updates_through_the_installer() {
         let json = r#"[
           {"tag_name":"v0.4.0","draft":false,"body":"","html_url":"p",
-           "assets":[{"name":"arke-0.4.0.exe","browser_download_url":"x","size":1},
-                     {"name":"arke-0.4.0-setup.exe","browser_download_url":"s","size":3},
-                     {"name":"arke-0.4.0-setup.exe.sha256","browser_download_url":"ss"},
-                     {"name":"arke-0.4.0-arm64-setup.exe","browser_download_url":"as","size":4}]},
+           "assets":[{"name":"arke-ce-0.4.0.exe","browser_download_url":"x","size":1},
+                     {"name":"arke-ce-0.4.0-setup.exe","browser_download_url":"s","size":3},
+                     {"name":"arke-ce-0.4.0-setup.exe.sha256","browser_download_url":"ss"},
+                     {"name":"arke-ce-0.4.0-arm64-setup.exe","browser_download_url":"as","size":4}]},
           {"tag_name":"v0.3.0","draft":false,"body":"","html_url":"p",
-           "assets":[{"name":"arke-0.3.0.exe","browser_download_url":"old","size":1}]}
+           "assets":[{"name":"arke-ce-0.3.0.exe","browser_download_url":"old","size":1}]}
         ]"#;
         let current = v("0.2.0");
         let setup = pick_for(json, Channel::Stable, &current, "-setup").unwrap();
@@ -1463,15 +1466,15 @@ mod tests {
                 setup.sha_url.as_deref(),
                 setup.exe_name.as_str()
             ),
-            ("s", Some("ss"), "arke-0.4.0-setup.exe")
+            ("s", Some("ss"), "arke-ce-0.4.0-setup.exe")
         );
         let arm = pick_for(json, Channel::Stable, &current, "-arm64-setup").unwrap();
         assert_eq!(arm.exe_url, "as");
         // Releases from before the installer have none: an installed copy waits for one.
         assert!(pick_for(json, Channel::Stable, &v("0.4.0"), "-setup").is_none());
-        assert!(is_setup(Path::new(r"C:\u\arke-0.4.0-setup.exe")));
-        assert!(is_setup(Path::new(r"C:\u\arke-0.4.0-arm64-setup.exe")));
-        assert!(!is_setup(Path::new(r"C:\u\arke-0.4.0.exe")));
+        assert!(is_setup(Path::new(r"C:\u\arke-ce-0.4.0-setup.exe")));
+        assert!(is_setup(Path::new(r"C:\u\arke-ce-0.4.0-arm64-setup.exe")));
+        assert!(!is_setup(Path::new(r"C:\u\arke-ce-0.4.0.exe")));
     }
 
     #[test]
@@ -1496,20 +1499,20 @@ mod tests {
     #[test]
     fn reads_the_version_of_a_finished_download() {
         let at = |name: &str, suffix: &str| downloaded_version(name, suffix).map(|v| v.core);
-        assert_eq!(at("arke-0.4.0.exe", ""), Some((0, 4, 0)));
+        assert_eq!(at("arke-ce-0.4.0.exe", ""), Some((0, 4, 0)));
         assert_eq!(
-            at("arke-0.4.0-rc.2-arm64-setup.exe", "-arm64-setup"),
+            at("arke-ce-0.4.0-rc.2-arm64-setup.exe", "-arm64-setup"),
             Some((0, 4, 0))
         );
         assert_eq!(
-            downloaded_version("arke-0.4.0-rc.2.exe", "").map(|v| v.channel()),
+            downloaded_version("arke-ce-0.4.0-rc.2.exe", "").map(|v| v.channel()),
             Some(Channel::Rc)
         );
         // Another copy's kind of download isn't this one's.
-        assert_eq!(at("arke-0.4.0-setup.exe", ""), None);
-        assert_eq!(at("arke-0.4.0-arm64.exe", ""), None);
-        assert_eq!(at("arke-0.4.0.exe", "-setup"), None);
-        assert_eq!(at("arke-0.4.0.part", ""), None);
+        assert_eq!(at("arke-ce-0.4.0-setup.exe", ""), None);
+        assert_eq!(at("arke-ce-0.4.0-arm64.exe", ""), None);
+        assert_eq!(at("arke-ce-0.4.0.exe", "-setup"), None);
+        assert_eq!(at("arke-ce-0.4.0.part", ""), None);
         assert_eq!(at("notes.txt", ""), None);
     }
 
@@ -1521,24 +1524,24 @@ mod tests {
         let _ = std::fs::remove_dir_all(&dir);
         std::fs::create_dir_all(&dir).unwrap();
         for name in [
-            "arke-0.3.0.exe",
-            "arke-0.4.0.exe",
-            "arke-0.5.0.exe",
-            "arke-0.6.0.exe",
-            "arke-0.7.0.part",
-            "arke-0.2.0.part",
-            "arke-0.6.0-setup.exe",
+            "arke-ce-0.3.0.exe",
+            "arke-ce-0.4.0.exe",
+            "arke-ce-0.5.0.exe",
+            "arke-ce-0.6.0.exe",
+            "arke-ce-0.7.0.part",
+            "arke-ce-0.2.0.part",
+            "arke-ce-0.6.0-setup.exe",
         ] {
             std::fs::write(dir.join(name), b"x").unwrap();
         }
         let kept = keep_pending(&dir, &v("0.4.0"), "");
-        assert_eq!(kept, Some(dir.join("arke-0.6.0.exe")));
+        assert_eq!(kept, Some(dir.join("arke-ce-0.6.0.exe")));
         let mut left: Vec<String> = std::fs::read_dir(&dir)
             .unwrap()
             .map(|e| e.unwrap().file_name().to_string_lossy().into_owned())
             .collect();
         left.sort();
-        assert_eq!(left, ["arke-0.6.0.exe", "arke-0.7.0.part"]);
+        assert_eq!(left, ["arke-ce-0.6.0.exe", "arke-ce-0.7.0.part"]);
         assert_eq!(keep_pending(&dir, &v("0.7.0"), ""), None, "all went in");
         assert_eq!(std::fs::read_dir(&dir).unwrap().count(), 0);
         std::fs::remove_dir_all(&dir).unwrap();
@@ -1551,7 +1554,7 @@ mod tests {
         let _ = std::fs::remove_dir_all(&dir);
         std::fs::create_dir_all(&dir).unwrap();
         let exe = dir.join("arke.exe");
-        let new = dir.join("arke-0.5.0.exe");
+        let new = dir.join("arke-ce-0.5.0.exe");
         std::fs::write(&exe, b"old").unwrap();
         std::fs::write(&new, b"new").unwrap();
         swap_in(&new, &exe).unwrap();

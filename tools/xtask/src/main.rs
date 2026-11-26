@@ -65,6 +65,9 @@ fn root() -> PathBuf {
         .map_or_else(|| PathBuf::from("."), Path::to_path_buf)
 }
 
+/// Prefix of release assets. The CE edition keeps the `arke-ce-` package name.
+const ASSET_PREFIX: &str = "arke-ce-";
+
 /// On 0.x a major change only bumps the minor version, as in Cargo.
 const fn apply(bump: Bump, (major, minor, patch): (u64, u64, u64)) -> (u64, u64, u64) {
     match bump {
@@ -493,12 +496,12 @@ fn arches(args: &[String]) -> Result<Vec<Arch>> {
 
 /// Release asset name of the exe for `arch`.
 fn exe_name(version: &str, arch: Arch) -> String {
-    format!("arke-{version}{}.exe", arch.suffix)
+    format!("{ASSET_PREFIX}{version}{}.exe", arch.suffix)
 }
 
 /// Release asset name of the installer for `arch`.
 fn setup_name(version: &str, arch: Arch) -> String {
-    format!("arke-{version}{}-setup.exe", arch.suffix)
+    format!("{ASSET_PREFIX}{version}{}-setup.exe", arch.suffix)
 }
 
 /// Inno Setup's compiler: `ISCC`, or where its installer puts it.
@@ -660,9 +663,9 @@ fn arke_keys() -> Result<Vec<minisign::PublicKey>> {
 /// another language (Arke shows the new version's part of it before updating).
 fn notes_asset(version: &str, lang: &str) -> String {
     if lang == "en" {
-        format!("arke-{version}-notes.md")
+        format!("{ASSET_PREFIX}{version}-notes.md")
     } else {
-        format!("arke-{version}-changelog.{lang}.md")
+        format!("{ASSET_PREFIX}{version}-changelog.{lang}.md")
     }
 }
 
@@ -957,7 +960,7 @@ mod tests {
         let args = |a: &[&str]| a.iter().map(ToString::to_string).collect::<Vec<_>>();
         let all = arches(&args(&["nightly"])).unwrap();
         let names: Vec<String> = all.iter().map(|a| exe_name("0.3.0-rc.1", *a)).collect();
-        assert_eq!(names, ["arke-0.3.0-rc.1.exe", "arke-0.3.0-rc.1-arm64.exe"]);
+        assert_eq!(names, ["arke-ce-0.3.0-rc.1.exe", "arke-ce-0.3.0-rc.1-arm64.exe"]);
         let arm = arches(&args(&["stable", "--arch", "arm64"])).unwrap();
         let targets: Vec<&str> = arm.iter().map(|a| a.target).collect();
         assert_eq!(targets, ["aarch64-pc-windows-msvc"]);
@@ -1019,11 +1022,11 @@ mod tests {
         let pair = minisign::KeyPair::generate_unencrypted_keypair().unwrap();
         let file = std::env::temp_dir().join(format!("xtask-sign-{}.txt", std::process::id()));
         std::fs::write(&file, "notes").unwrap();
-        let signed = sign(&file, "arke-0.0.1-notes.md", "0.0.1", &pair.sk);
+        let signed = sign(&file, "arke-ce-0.0.1-notes.md", "0.0.1", &pair.sk);
         let _ = std::fs::remove_file(&file);
         let err = signed.unwrap_err().to_string();
         assert!(err.contains("doesn't match"), "{err}");
-        assert!(!root().join("dist/arke-0.0.1-notes.md.minisig").exists());
+        assert!(!root().join("dist/arke-ce-0.0.1-notes.md.minisig").exists());
     }
 
     /// An unencrypted key saved as text and read back (the repository secret) signs what its
@@ -1060,14 +1063,14 @@ mod tests {
 
     #[test]
     fn notes_have_an_asset_per_language() {
-        assert_eq!(notes_asset("0.9.0", "en"), "arke-0.9.0-notes.md");
+        assert_eq!(notes_asset("0.9.0", "en"), "arke-ce-0.9.0-notes.md");
         assert_eq!(
             notes_asset("0.9.0", "zh-TW"),
-            "arke-0.9.0-changelog.zh-TW.md"
+            "arke-ce-0.9.0-changelog.zh-TW.md"
         );
         assert_eq!(
-            trusted_comment("arke-0.9.0.exe", "0.9.0"),
-            "file:arke-0.9.0.exe version:0.9.0"
+            trusted_comment("arke-ce-0.9.0.exe", "0.9.0"),
+            "file:arke-ce-0.9.0.exe version:0.9.0"
         );
     }
 }

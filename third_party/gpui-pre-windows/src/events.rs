@@ -37,6 +37,18 @@ const SIZE_MOVE_LOOP_TIMER_ID: usize = 1;
 /// drew a selection rectangle and never scrolled. GPUI recognizes touch pans itself once it
 /// receives `PlatformInput::Touch`, including a synthetic tap for clicks.
 fn is_touch_synthesized_mouse_message() -> bool {
+    // Arke: some touchscreens only emit the synthesized mouse messages and never send
+    // WM_POINTER*, so GPUI's touch recognizer never sees a contact. Dropping those mouse
+    // messages then makes the whole window (including the title bar) unclickable. Default to
+    // letting them through; set ARKE_TOUCH_POINTER_ONLY=1 to restore the strict behaviour on
+    // devices that do deliver WM_POINTER* (where a finger drag must not start a marquee).
+    static POINTER_ONLY: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
+    if !*POINTER_ONLY.get_or_init(|| {
+        std::env::var("ARKE_TOUCH_POINTER_ONLY")
+            .is_ok_and(|v| v == "1" || v.eq_ignore_ascii_case("true"))
+    }) {
+        return false;
+    }
     const SIGNATURE_MASK: isize = 0xFFFF_FF00;
     const MI_WP_SIGNATURE: isize = 0xFF51_5700;
     // SAFETY: no arguments; reads the extra info of the message currently being dispatched.

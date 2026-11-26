@@ -15,7 +15,7 @@ use minisign_verify::{PublicKey, Signature};
 
 /// Arke's update keys (minisign public keys). While a key is being replaced, the old and the new
 /// one are both here for a few releases.
-const KEYS: [&str; 1] = ["RWTaWSr3SFSSunIocrKdQcaM3w3q2qEHs+gw6rfwWnfmm41uuixOzGNm"];
+const KEYS: [&str; 1] = ["RWRXPSJcwq9TuecX6QiesPQrUj3EWaG8cGMtpJEIZY0bd93x0rXg7zVb"];
 
 /// Why a download wasn't accepted.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, thiserror::Error)]
