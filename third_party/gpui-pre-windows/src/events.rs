@@ -433,6 +433,8 @@ impl WindowsWindowInner {
                     return Some(0);
                 }
                 TouchMouseMode::Mouse => {}
+                // `touch_mouse_mode()` resolves Auto to Touch or PointerOnly before returning.
+                TouchMouseMode::Auto => {}
             }
         }
         self.start_tracking_mouse(handle, TME_LEAVE);
@@ -672,6 +674,8 @@ impl WindowsWindowInner {
                     return Some(0);
                 }
                 TouchMouseMode::Mouse => {}
+                // `touch_mouse_mode()` resolves Auto to Touch or PointerOnly before returning.
+                TouchMouseMode::Auto => {}
             }
         }
         unsafe { SetCapture(handle) };
@@ -716,6 +720,8 @@ impl WindowsWindowInner {
                     return Some(0);
                 }
                 TouchMouseMode::Mouse => {}
+                // `touch_mouse_mode()` resolves Auto to Touch or PointerOnly before returning.
+                TouchMouseMode::Auto => {}
             }
         }
         // Before releasing the capture: that sends `WM_CAPTURECHANGED`, which isn't a lost press.

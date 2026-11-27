@@ -960,7 +960,10 @@ mod tests {
         let args = |a: &[&str]| a.iter().map(ToString::to_string).collect::<Vec<_>>();
         let all = arches(&args(&["nightly"])).unwrap();
         let names: Vec<String> = all.iter().map(|a| exe_name("0.3.0-rc.1", *a)).collect();
-        assert_eq!(names, ["arke-ce-0.3.0-rc.1.exe", "arke-ce-0.3.0-rc.1-arm64.exe"]);
+        assert_eq!(
+            names,
+            ["arke-ce-0.3.0-rc.1.exe", "arke-ce-0.3.0-rc.1-arm64.exe"]
+        );
         let arm = arches(&args(&["stable", "--arch", "arm64"])).unwrap();
         let targets: Vec<&str> = arm.iter().map(|a| a.target).collect();
         assert_eq!(targets, ["aarch64-pc-windows-msvc"]);
