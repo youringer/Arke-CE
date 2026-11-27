@@ -845,14 +845,18 @@ fn cmd_publish(args: &[String]) -> Result<()> {
         uploads.push((sig, format!("{name}.minisig")));
     }
     uploads.push((root().join("dist").join(LICENSES), LICENSES.to_owned()));
+    // Create a draft first: releases are immutable once published on this repository, so
+    // uploading to a published release is rejected with HTTP 422.
     let body = serde_json::json!({
         "tag_name": format!("v{version}"),
         "name": format!("Arke {version}"),
         "body": notes,
+        "draft": true,
         "prerelease": channel != "stable" && channel != "ce",
     });
     let created = curl(&[
         "-sS",
+        "-f",
         "-X",
         "POST",
         "-H",
@@ -872,6 +876,7 @@ fn cmd_publish(args: &[String]) -> Result<()> {
     for (file, name) in uploads {
         curl(&[
             "-sS",
+            "-f",
             "-X",
             "POST",
             "-H",
@@ -885,9 +890,28 @@ fn cmd_publish(args: &[String]) -> Result<()> {
         .with_context(|| format!("uploading {}", file.display()))?;
         println!("uploaded {name}");
     }
+    // Publish only after every asset is attached.
+    let published = curl(&[
+        "-sS",
+        "-f",
+        "-X",
+        "PATCH",
+        "-H",
+        &format!("Authorization: Bearer {token}"),
+        "-H",
+        "Accept: application/vnd.github+json",
+        "-H",
+        "Content-Type: application/json",
+        "-d",
+        "{\"draft\":false}",
+        &format!("https://api.github.com/repos/{repo}/releases/{id}"),
+    ])
+    .with_context(|| format!("publishing release v{version} on {repo}"))?;
+    let published: serde_json::Value = serde_json::from_str(&published)
+        .with_context(|| format!("parsing the publish response: {published}"))?;
     println!(
         "published: {}",
-        release["html_url"].as_str().unwrap_or_default()
+        published["html_url"].as_str().unwrap_or_default()
     );
     Ok(())
 }
