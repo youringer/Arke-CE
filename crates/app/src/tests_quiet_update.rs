@@ -101,7 +101,7 @@ fn release(version: &str) -> Release {
 }
 
 fn downloaded(version: &str) -> PathBuf {
-    PathBuf::from(format!(r"C:\fake\updates\arke-{version}.exe"))
+    PathBuf::from(format!(r"C:\fake\updates\arke-ce-{version}.exe"))
 }
 
 fn fake_host(cx: &mut VisualTestContext) -> Arc<FakeHost> {
