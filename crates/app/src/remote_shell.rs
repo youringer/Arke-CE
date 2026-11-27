@@ -538,6 +538,39 @@ fn is_slide(path: &str) -> bool {
         .is_some_and(|(_, ext)| ext.eq_ignore_ascii_case("ppt") || ext.eq_ignore_ascii_case("pptx"))
 }
 
+/// Servers and FAT keep whole seconds: a two-second window avoids a false "changed while open"
+/// that would silently drop the saved slide.
+fn same_modified(a: Option<SystemTime>, b: Option<SystemTime>) -> bool {
+    match (a, b) {
+        (Some(a), Some(b)) => {
+            a.duration_since(b).unwrap_or_else(|e| e.duration()) < Duration::from_secs(2)
+        }
+        (None, None) => true,
+        _ => false,
+    }
+}
+
+/// Arke: a WebDAV place can move when the STUN punch-through port changes. Re-resolve its
+/// current address before using it; fall back to the saved URL when the probe fails so an
+/// already cached copy can still be opened.
+fn current_dav_url(remotes: &Remotes, url: &RemoteUrl) -> RemoteUrl {
+    if !url.scheme.is_dav() {
+        return url.clone();
+    }
+    match remotes.resolve_dav(url) {
+        Ok(resolved) => {
+            if resolved != *url {
+                log::info!("webdav place moved from {url} to {resolved}");
+            }
+            resolved
+        }
+        Err(e) => {
+            log::warn!("could not re-resolve {url}: {e}; using saved address");
+            url.clone()
+        }
+    }
+}
+
 fn wait_for_local_save(local: &Path, baseline: SystemTime, baseline_size: u64) {
     let mut changed_at: Option<Instant> = None;
     for _ in 0..300 {
@@ -546,7 +579,7 @@ fn wait_for_local_save(local: &Path, baseline: SystemTime, baseline_size: u64) {
             continue;
         };
         let changed =
-            meta.len() != baseline_size || meta.modified().is_ok_and(|time| time > baseline);
+            meta.len() != baseline_size || !same_modified(meta.modified().ok(), Some(baseline));
         if !changed {
             continue;
         }
@@ -562,7 +595,8 @@ impl RemoteShell {
     /// Opens a remote slide from its cache copy and uploads the saved copy back if it changed
     /// and nobody else changed the server's file in the meantime.
     fn open_slide(&self, url: &RemoteUrl, local: &Path) -> Result<(), ShellError> {
-        let before = self.remotes.stat(url)?;
+        let current_url = current_dav_url(&self.remotes, url);
+        let before = self.remotes.stat(&current_url)?;
         let baseline = std::fs::metadata(local)
             .ok()
             .and_then(|meta| meta.modified().ok())
@@ -575,18 +609,20 @@ impl RemoteShell {
             return Ok(());
         };
         let changed =
-            meta.len() != before.size || meta.modified().is_ok_and(|time| time > baseline);
+            meta.len() != before.size || !same_modified(meta.modified().ok(), Some(baseline));
         if !changed {
             return Ok(());
         }
-        let current = match self.remotes.stat(url) {
+        // The punch-through address may have changed again while the file was open.
+        let upload_url = current_dav_url(&self.remotes, &current_url);
+        let current = match self.remotes.stat(&upload_url) {
             Ok(current) => current,
             Err(e) => {
                 log::warn!("not uploading {}: cannot check remote copy: {e}", url);
                 return Ok(());
             }
         };
-        if current.size != before.size || current.modified != before.modified {
+        if current.size != before.size || !same_modified(current.modified, before.modified) {
             log::warn!(
                 "not uploading {}: the remote file changed while it was open",
                 url
@@ -595,10 +631,10 @@ impl RemoteShell {
         }
         let mut file = std::fs::File::open(local)?;
         self.remotes
-            .upload_file(local, url, &mut file, meta.len(), &NoProgress)?;
+            .upload_file(local, &upload_url, &mut file, meta.len(), &NoProgress)?;
         // Invalidate the cache so the next open downloads the version we just saved.
         let _ = std::fs::remove_file(local);
-        log::info!("uploaded saved slide back to {url}");
+        log::info!("uploaded saved slide back to {upload_url}");
         Ok(())
     }
 }
@@ -625,6 +661,7 @@ impl Shell for RemoteShell {
         match remote(path) {
             // A downloaded copy has no folder to step through.
             Some(url) => {
+                let url = current_dav_url(&self.remotes, &url);
                 let local = self.remotes.fetch(&url, OPEN_MAX)?;
                 if is_slide(&url.path) {
                     self.open_slide(&url, &local)?;
@@ -1142,5 +1179,22 @@ mod tests {
             path: local,
             new_name: "b".into(),
         }));
+    }
+
+    #[test]
+    fn slide_extensions_are_recognized() {
+        assert!(is_slide("dav://h/dav/a.PPTX"));
+        assert!(is_slide("a.ppt"));
+        assert!(!is_slide("a.docx"));
+        assert!(!is_slide("a.pptx.bak"));
+    }
+
+    #[test]
+    fn whole_second_timestamps_do_not_look_like_conflicts() {
+        let t = SystemTime::UNIX_EPOCH + Duration::from_secs(1000);
+        assert!(same_modified(Some(t), Some(t + Duration::from_millis(900))));
+        assert!(!same_modified(Some(t), Some(t + Duration::from_secs(5))));
+        assert!(same_modified(None, None));
+        assert!(!same_modified(Some(t), None));
     }
 }

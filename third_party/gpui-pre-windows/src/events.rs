@@ -32,29 +32,69 @@ pub(crate) const WM_GPUI_DISPLAYS_CHANGED: u32 = WM_USER + 10;
 const SIZE_MOVE_LOOP_TIMER_ID: usize = 1;
 
 /// Arke (#378): Windows synthesizes `WM_LBUTTON*` / `WM_MOUSEMOVE` for touchscreens and marks
-/// them with this signature in the message extra info. They must not be dispatched as real
-/// mouse presses: in a file list a press starts the marquee selection, so a finger drag only
-/// drew a selection rectangle and never scrolled. GPUI recognizes touch pans itself once it
-/// receives `PlatformInput::Touch`, including a synthetic tap for clicks.
+/// them with this signature in the message extra info. Treating them as plain mouse presses is
+/// wrong: a finger drag starts a marquee selection instead of scrolling, and the app never sees
+/// a touch contact at all. Feed them into GPUI's touch recognizer instead, which turns a tap into
+/// a click, a drag into a pan and a held contact into a long press.
 fn is_touch_synthesized_mouse_message() -> bool {
-    // Arke: some touchscreens only emit the synthesized mouse messages and never send
-    // WM_POINTER*, so GPUI's touch recognizer never sees a contact. Dropping those mouse
-    // messages then makes the whole window (including the title bar) unclickable. Default to
-    // letting them through; set ARKE_TOUCH_POINTER_ONLY=1 to restore the strict behaviour on
-    // devices that do deliver WM_POINTER* (where a finger drag must not start a marquee).
-    static POINTER_ONLY: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
-    if !*POINTER_ONLY.get_or_init(|| {
-        std::env::var("ARKE_TOUCH_POINTER_ONLY")
-            .is_ok_and(|v| v == "1" || v.eq_ignore_ascii_case("true"))
-    }) {
-        return false;
-    }
     const SIGNATURE_MASK: isize = 0xFFFF_FF00;
     const MI_WP_SIGNATURE: isize = 0xFF51_5700;
     // SAFETY: no arguments; reads the extra info of the message currently being dispatched.
     let extra = unsafe { GetMessageExtraInfo() }.0;
     extra & SIGNATURE_MASK == MI_WP_SIGNATURE
 }
+
+/// How to treat the mouse messages Windows synthesizes from a finger.
+#[derive(Clone, Copy, PartialEq, Eq)]
+enum TouchMouseMode {
+    /// Drop synthetic mouse messages when real `WM_POINTER*` touch contacts are arriving;
+    /// otherwise translate them into touch events. This is the default: it works both on devices
+    /// that send pointer messages and on older touchscreens that only synthesize mouse messages.
+    Auto,
+    /// The device also sends `WM_POINTER*`; drop the synthetic mouse messages.
+    PointerOnly,
+    /// No `WM_POINTER*` on this device: translate the synthetic messages into touch events.
+    Touch,
+    /// Legacy fallback: let them through as ordinary mouse input.
+    Mouse,
+}
+
+/// Set as soon as a genuine touch pointer is observed, so an `Auto` mode never creates a second
+/// synthetic contact alongside the real one.
+static POINTER_TOUCH_SEEN: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+
+fn touch_mouse_mode() -> TouchMouseMode {
+    static MODE: std::sync::OnceLock<TouchMouseMode> = std::sync::OnceLock::new();
+    let configured = *MODE.get_or_init(|| {
+        // Keep the old opt-in name working for anyone who set it while debugging #378.
+        if std::env::var("ARKE_TOUCH_POINTER_ONLY")
+            .is_ok_and(|v| v == "1" || v.eq_ignore_ascii_case("true"))
+        {
+            return TouchMouseMode::PointerOnly;
+        }
+        match std::env::var("ARKE_TOUCH_MODE").as_deref() {
+            Ok("pointer-only") | Ok("pointer") => TouchMouseMode::PointerOnly,
+            Ok("mouse") | Ok("legacy") => TouchMouseMode::Mouse,
+            Ok("touch") | Ok("synthetic") => TouchMouseMode::Touch,
+            _ => TouchMouseMode::Auto,
+        }
+    });
+    match configured {
+        TouchMouseMode::Auto => {
+            if POINTER_TOUCH_SEEN.load(Ordering::Relaxed) {
+                TouchMouseMode::PointerOnly
+            } else {
+                TouchMouseMode::Touch
+            }
+        }
+        other => other,
+    }
+}
+
+/// Pointer ids from `WM_POINTER*` start at 1; reserve an id for synthetic contacts so the two
+/// paths can never be mistaken for the same finger.
+const SYNTHETIC_TOUCH_ID: u64 = u64::MAX;
 
 /// Coordinates window draws on the UI thread. Owned by the platform and
 /// shared with every window (like `WindowsPlatformState::cursor_visible`),
@@ -386,7 +426,14 @@ impl WindowsWindowInner {
 
     fn handle_mouse_move_msg(&self, handle: HWND, lparam: LPARAM, wparam: WPARAM) -> Option<isize> {
         if is_touch_synthesized_mouse_message() {
-            return Some(0);
+            match touch_mouse_mode() {
+                TouchMouseMode::PointerOnly => return Some(0),
+                TouchMouseMode::Touch => {
+                    self.dispatch_synthetic_touch(TouchPhase::Moved, lparam);
+                    return Some(0);
+                }
+                TouchMouseMode::Mouse => {}
+            }
         }
         self.start_tracking_mouse(handle, TME_LEAVE);
         self.restore_cursor_after_hide();
@@ -554,6 +601,9 @@ impl WindowsWindowInner {
         {
             return None;
         }
+        // Remember that this device speaks WM_POINTER* so Auto mode stops translating any
+        // synthetic mouse messages that Windows might still emit alongside it.
+        POINTER_TOUCH_SEEN.store(true, Ordering::Relaxed);
 
         let phase = match msg {
             WM_POINTERDOWN => TouchPhase::Started,
@@ -583,16 +633,46 @@ impl WindowsWindowInner {
         Some(0)
     }
 
+    /// Convert a touch-synthesized mouse message into a real touch contact. Devices that do not
+    /// send `WM_POINTER*` otherwise look like a mouse to GPUI, so a finger drag draws a marquee
+    /// instead of scrolling and no tap or long-press gesture is ever recognized.
+    fn dispatch_synthetic_touch(&self, phase: TouchPhase, lparam: LPARAM) {
+        let scale_factor = self.state.scale_factor.get();
+        let position = logical_point(
+            lparam.signed_loword() as f32,
+            lparam.signed_hiword() as f32,
+            scale_factor,
+        );
+        let Some(mut func) = self.state.callbacks.input.take() else {
+            return;
+        };
+        let input = PlatformInput::Touch(TouchEvent {
+            id: TouchId(SYNTHETIC_TOUCH_ID),
+            phase,
+            position,
+            ..Default::default()
+        });
+        func(input);
+        self.state.callbacks.input.set(Some(func));
+    }
+
     fn handle_mouse_down_msg(
         &self,
         handle: HWND,
         button: MouseButton,
         lparam: LPARAM,
     ) -> Option<isize> {
-        // Arke (#378): drop the mouse messages Windows synthesizes from a finger. This has to
-        // happen before SetCapture so touch input never captures the mouse.
+        // Arke (#378): handle the mouse messages Windows synthesizes from a finger before
+        // SetCapture, so a synthetic touch press never captures the mouse as a drag.
         if is_touch_synthesized_mouse_message() {
-            return Some(0);
+            match touch_mouse_mode() {
+                TouchMouseMode::PointerOnly => return Some(0),
+                TouchMouseMode::Touch => {
+                    self.dispatch_synthetic_touch(TouchPhase::Started, lparam);
+                    return Some(0);
+                }
+                TouchMouseMode::Mouse => {}
+            }
         }
         unsafe { SetCapture(handle) };
         let pressed = &self.state.pressed_buttons;
@@ -629,7 +709,14 @@ impl WindowsWindowInner {
     ) -> Option<isize> {
         // Arke (#378): a finger release must not release a mouse capture we never took.
         if is_touch_synthesized_mouse_message() {
-            return Some(0);
+            match touch_mouse_mode() {
+                TouchMouseMode::PointerOnly => return Some(0),
+                TouchMouseMode::Touch => {
+                    self.dispatch_synthetic_touch(TouchPhase::Ended, lparam);
+                    return Some(0);
+                }
+                TouchMouseMode::Mouse => {}
+            }
         }
         // Before releasing the capture: that sends `WM_CAPTURECHANGED`, which isn't a lost press.
         let pressed = &self.state.pressed_buttons;

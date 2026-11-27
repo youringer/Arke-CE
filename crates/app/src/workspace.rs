@@ -2132,6 +2132,11 @@ impl Workspace {
         self.open_folder_tab(path, at, false, window, cx);
     }
 
+    /// A click on a WebDAV place (root or any `/dav` subfolder) needs a fresh redirect lookup.
+    fn clicked_dav_place(path: &Path) -> Option<arke_core::remote::RemoteUrl> {
+        arke_core::remote::RemoteUrl::from_path(path).filter(|url| url.scheme.is_dav())
+    }
+
     /// A click on a folder in the sidebar: opens it here, or with Ctrl in a new tab, in the
     /// background or with Shift too in front, as a link in a browser (#291).
     fn open_clicked(
@@ -2143,8 +2148,10 @@ impl Workspace {
     ) {
         // Arke (#381): a server may 301 a WebDAV mount to a different URL. Re-resolve it on
         // each click and navigate to the current target; the saved place stays unchanged.
-        let place = arke_core::remote::RemoteUrl::from_path(&path)
-            .filter(|url| url.scheme.is_dav() && url.is_root());
+        // Arke (#381): a place is saved as its WebDAV folder (often `/dav`, not `/`), so
+        // re-resolve every DAV path a click can open, not just the server root. Otherwise
+        // a place whose punch-through target changed is opened at the stale saved URL.
+        let place = Self::clicked_dav_place(&path);
         if let Some(url) = place {
             let remotes = Arc::clone(&self.services.remotes);
             let (control, shift) = (modifiers.control, modifiers.shift);
@@ -3687,4 +3694,15 @@ fn tooltip_card(text: &SharedString) -> AnyElement {
         crate::motion::fade_in,
     )
     .into_any_element()
+}
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn every_dav_path_click_is_resolved() {
+        assert!(Workspace::clicked_dav_place(Path::new("dav://u@h/dav")).is_some());
+        assert!(Workspace::clicked_dav_place(Path::new("davs://u@h/")).is_some());
+        assert!(Workspace::clicked_dav_place(Path::new(r"C:\tmp")).is_none());
+    }
 }
