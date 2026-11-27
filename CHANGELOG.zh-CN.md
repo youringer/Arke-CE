@@ -2,7 +2,7 @@
 
 由 `cargo xtask version` 根据 `.changeset/` 中的文件生成；英文版是 [CHANGELOG.md](CHANGELOG.md)。
 
-## 0.9.3 (2026-11-27)
+## 0.9.4 (2026-11-27)
 
 ### 修复
 
