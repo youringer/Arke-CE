@@ -797,6 +797,7 @@ fn prebuilt(args: &[String]) -> Result<(String, Vec<PathBuf>)> {
 
 /// Publishes to GitHub Releases: creates the v<version> release (RC and nightly marked as
 /// pre-release) and uploads each exe with its .sha256, then the license texts.
+#[allow(clippy::too_many_lines)]
 fn cmd_publish(args: &[String]) -> Result<()> {
     let repo = releases_repo();
     ensure!(
