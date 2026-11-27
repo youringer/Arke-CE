@@ -90,7 +90,7 @@ impl FakeHost {
 fn release(version: &str) -> Release {
     Release {
         version: version.into(),
-        exe_url: format!("https://example.test/arke-{version}.exe"),
+        exe_url: format!("https://example.test/arke-ce-{version}.exe"),
         exe_name: format!("arke-{version}.exe"),
         size: 100,
         sha_url: None,
