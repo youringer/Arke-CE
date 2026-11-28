@@ -571,6 +571,96 @@ fn current_dav_url(remotes: &Remotes, url: &RemoteUrl) -> RemoteUrl {
     }
 }
 
+/// The presentation apps Arke waits for. WPS uses `wps.exe` / `wpp.exe`; PowerPoint uses
+/// `POWERPNT.EXE`. Only processes that appear *after* we launched the file are tracked, so
+/// an unrelated deck already open in Office cannot delay or trigger an upload.
+fn is_office_image(path: &Path) -> bool {
+    path.file_name().and_then(|n| n.to_str()).is_some_and(|n| {
+        let n = n.to_ascii_lowercase();
+        n == "powerpnt.exe" || n == "wps.exe" || n == "wpp.exe"
+    })
+}
+
+fn office_pids() -> HashSet<u32> {
+    use windows::Win32::Foundation::CloseHandle;
+    use windows::Win32::System::ProcessStatus::EnumProcesses;
+    use windows::Win32::System::Threading::{
+        OpenProcess, PROCESS_NAME_WIN32, PROCESS_QUERY_LIMITED_INFORMATION,
+        QueryFullProcessImageNameW,
+    };
+    let mut pids = vec![0u32; 4096];
+    let mut used = 0u32;
+    let bytes = u32::try_from(pids.len() * 4).unwrap_or(u32::MAX);
+    if unsafe { EnumProcesses(pids.as_mut_ptr(), bytes, &raw mut used) }.is_err() {
+        return HashSet::new();
+    }
+    pids.truncate(used as usize / 4);
+    let mut found = HashSet::new();
+    for pid in pids {
+        if pid == 0 {
+            continue;
+        }
+        // SAFETY: plain Win32 calls; the handle is closed in this iteration.
+        let Ok(process) = (unsafe { OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, false, pid) })
+        else {
+            continue;
+        };
+        let mut buf = [0u16; 1024];
+        let mut len = u32::try_from(buf.len()).unwrap_or(0);
+        let named = unsafe {
+            QueryFullProcessImageNameW(
+                process,
+                PROCESS_NAME_WIN32,
+                windows::core::PWSTR(buf.as_mut_ptr()),
+                &raw mut len,
+            )
+        }
+        .is_ok();
+        // SAFETY: closes the handle opened above.
+        let _ = unsafe { CloseHandle(process) };
+        if named
+            && is_office_image(&PathBuf::from(String::from_utf16_lossy(
+                &buf[..len as usize],
+            )))
+        {
+            found.insert(pid);
+        }
+    }
+    found
+}
+
+/// Waits until the presentation process launched for this file exits. Returns `false` when no
+/// new process appeared (an already running Office instance consumed the file), in which case
+/// the caller falls back to watching the cache copy itself.
+fn wait_for_office_close(before: &HashSet<u32>) -> bool {
+    // Give a slow Office/WPS start a minute to show up.
+    let appeared = Instant::now() + Duration::from_secs(60);
+    let mut tracked = HashSet::new();
+    while Instant::now() < appeared {
+        tracked = office_pids().difference(before).copied().collect();
+        if !tracked.is_empty() {
+            break;
+        }
+        std::thread::sleep(Duration::from_secs(1));
+    }
+    if tracked.is_empty() {
+        return false;
+    }
+    // Safety net: never hold a worker thread forever if a process is left open. This is far
+    // longer than a normal edit and is not the usual path; the loop exits as soon as it can.
+    let give_up = Instant::now() + Duration::from_secs(8 * 60 * 60);
+    while Instant::now() < give_up {
+        let still_open = office_pids()
+            .difference(before)
+            .any(|pid| tracked.contains(pid));
+        if !still_open {
+            return true;
+        }
+        std::thread::sleep(Duration::from_secs(1));
+    }
+    true
+}
+
 fn wait_for_local_save(local: &Path, baseline: SystemTime, baseline_size: u64) {
     let mut changed_at: Option<Instant> = None;
     for _ in 0..300 {
@@ -596,20 +686,23 @@ impl RemoteShell {
     /// and nobody else changed the server's file in the meantime.
     fn open_slide(&self, url: &RemoteUrl, local: &Path) -> Result<(), ShellError> {
         let current_url = current_dav_url(&self.remotes, url);
-        let before = self.remotes.stat(&current_url)?;
+        let before_stat = self.remotes.stat(&current_url)?;
         let baseline = std::fs::metadata(local)
             .ok()
             .and_then(|meta| meta.modified().ok())
-            .unwrap_or_else(|| before.modified.unwrap_or(SystemTime::UNIX_EPOCH));
-        self.inner.open_and_wait(local, None)?;
-        // An already running Office instance may have received the file without handing us a
-        // process to wait on: watch the cache copy for a saved change as well.
-        wait_for_local_save(local, baseline, before.size);
+            .unwrap_or_else(|| before_stat.modified.unwrap_or(SystemTime::UNIX_EPOCH));
+        let office_before = office_pids();
+        self.inner.open(local, None)?;
+        if !wait_for_office_close(&office_before) {
+            // An already running Office instance may have consumed the file without a new
+            // process: fall back to watching the cache copy for a settled save.
+            wait_for_local_save(local, baseline, before_stat.size);
+        }
         let Ok(meta) = std::fs::metadata(local) else {
             return Ok(());
         };
         let changed =
-            meta.len() != before.size || !same_modified(meta.modified().ok(), Some(baseline));
+            meta.len() != before_stat.size || !same_modified(meta.modified().ok(), Some(baseline));
         if !changed {
             return Ok(());
         }
@@ -622,7 +715,9 @@ impl RemoteShell {
                 return Ok(());
             }
         };
-        if current.size != before.size || !same_modified(current.modified, before.modified) {
+        if current.size != before_stat.size
+            || !same_modified(current.modified, before_stat.modified)
+        {
             log::warn!(
                 "not uploading {}: the remote file changed while it was open",
                 url
@@ -663,7 +758,7 @@ impl Shell for RemoteShell {
             Some(url) => {
                 let url = current_dav_url(&self.remotes, &url);
                 let local = self.remotes.fetch(&url, OPEN_MAX)?;
-                if is_slide(&url.path) {
+                if url.scheme.is_dav() && is_slide(&url.path) {
                     self.open_slide(&url, &local)?;
                     Ok(())
                 } else {
@@ -1187,6 +1282,18 @@ mod tests {
         assert!(is_slide("a.ppt"));
         assert!(!is_slide("a.docx"));
         assert!(!is_slide("a.pptx.bak"));
+    }
+
+    #[test]
+    fn only_presentation_apps_count() {
+        assert!(is_office_image(Path::new(
+            r"C://Program Files//Microsoft Office//POWERPNT.EXE"
+        )));
+        assert!(is_office_image(Path::new(r"C://Users//x//wps.exe")));
+        assert!(is_office_image(Path::new(r"C://Users//x//wpp.exe")));
+        assert!(!is_office_image(Path::new(
+            r"C://Program Files//Microsoft Office//WINWORD.EXE"
+        )));
     }
 
     #[test]
