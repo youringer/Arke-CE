@@ -591,6 +591,7 @@ fn office_pids() -> HashSet<u32> {
     let mut pids = vec![0u32; 4096];
     let mut used = 0u32;
     let bytes = u32::try_from(pids.len() * 4).unwrap_or(u32::MAX);
+    // SAFETY: `pids` is writable for `bytes` bytes and `used` is a valid out pointer.
     if unsafe { EnumProcesses(pids.as_mut_ptr(), bytes, &raw mut used) }.is_err() {
         return HashSet::new();
     }
@@ -607,6 +608,7 @@ fn office_pids() -> HashSet<u32> {
         };
         let mut buf = [0u16; 1024];
         let mut len = u32::try_from(buf.len()).unwrap_or(0);
+        // SAFETY: `buf` is writable for `len` characters and the handle has query access.
         let named = unsafe {
             QueryFullProcessImageNameW(
                 process,
@@ -648,7 +650,7 @@ fn wait_for_office_close(before: &HashSet<u32>) -> bool {
     }
     // Safety net: never hold a worker thread forever if a process is left open. This is far
     // longer than a normal edit and is not the usual path; the loop exits as soon as it can.
-    let give_up = Instant::now() + Duration::from_secs(8 * 60 * 60);
+    let give_up = Instant::now() + Duration::from_hours(8);
     while Instant::now() < give_up {
         let still_open = office_pids()
             .difference(before)

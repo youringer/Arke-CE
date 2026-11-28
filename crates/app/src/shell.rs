@@ -850,6 +850,10 @@ pub(crate) trait Shell: Send + Sync + 'static {
     fn open(&self, path: &Path, sort: Option<arke_core::SortSpec>) -> Result<(), ShellError>;
     /// Arke (#381): open and wait until the program that handled the file exits, so a remote
     /// Office file can be uploaded back after editing. Default: same as `open`.
+    #[allow(
+        dead_code,
+        reason = "kept for shell callers that still need a blocking open"
+    )]
     fn open_and_wait(
         &self,
         path: &Path,
